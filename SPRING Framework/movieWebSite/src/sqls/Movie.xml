@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="Movie">
+ 	<!-- 예약추가 -->
+ 	<insert id="movieReserveAdd" parameterType="movie.com.a.model.MovieDto">
+ 		INSERT INTO MOVIE(SEQ, ID, TITLE, MOVIEIMG, MOVIELIKE, CGVSEQ, DIRECTOR, ACTOR, MOVIELOCATION, MOVIETIME)
+ 		VALUES(SEQ_MOVIE.NEXTVAL, #{id}, #{title}, #{movieImg}, #{movieLike}, #{cgvSeq}, #{director}, #{actor}, #{movieLocation}, #{movieTime})
+ 	</insert>
+ 
+ 	<!-- 아이디로 내 예액리스트 찾기 -->
+ 	<select id="myReserve" parameterType="java.lang.String" resultType="movie.com.a.model.MovieDto">
+ 		SELECT *
+ 		FROM MOVIE
+ 		WHERE ID=#{id}
+ 	</select>
+ 
+ 
+ </mapper>

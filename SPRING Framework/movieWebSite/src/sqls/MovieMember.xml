@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="Member">
+	<!-- 멤버 리스트 -->
+	<select id="allMember" resultType="movie.com.a.model.MemberDto">
+		SELECT * FROM MEMBER
+	</select>
+	
+	<!-- 중복체크 -->
+	<select id="memberIdCheck" parameterType="java.lang.String" resultType="java.lang.Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM MEMBER
+		WHERE ID=#{id}
+	</select>
+	
+	<!-- 회원가입 -->
+	<insert id="memberJoin" parameterType="movie.com.a.model.MemberDto">
+		INSERT INTO MEMBER(ID, PWD, NAME, EMAIL, AUTH)
+		VALUES(#{id}, #{pwd},#{name},#{email},0)
+	</insert>
+	
+	<!-- 로그인 -->
+	<select id="memberLogin" parameterType="movie.com.a.model.MemberDto" resultType="movie.com.a.model.MemberDto">
+		SELECT ID, NAME, EMAIL, AUTH
+		FROM MEMBER
+		WHERE ID=#{id} AND PWD=#{pwd}
+	</select>
+</mapper>
