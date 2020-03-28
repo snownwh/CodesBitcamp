@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Work03</title>
+</head>
+<body>
+<h1>미술관 및 박물관의 링크</h1>
+<select id="museum" onchange="selectMuseum()">
+    <option value="대상을 선택">대상을 선택</option>
+    <option value="http://sema.seoul.go.kr/">서울시립미술관</option>
+    <option value="http://www.mmca.go.kr/">국립현대미술관</option>
+    <option value="http://www.sac.or.kr/">예술의전당</option>
+    <option value="http://www.museum.go.kr/">국립중앙박물관</option>
+    <option value="http://www.museum.seoul.kr/">서울역사박물관</option>
+    <option value="http://www.nfm.go.kr/">국립민속박물관</option>
+</select>
+
+<script type="text/javascript">
+function selectMuseum(){
+    var choiceMuseum = document.getElementById("museum");
+
+    var selectedInner = choiceMuseum.options[choiceMuseum.selectedIndex].innerHTML;
+    
+    if(selectedInner == "서울시립미술관"){
+        location.href = choiceMuseum.options[choiceMuseum.selectedIndex].value;
+    } else if(selectedInner == "국립현대미술관"){
+        location.href = choiceMuseum.options[choiceMuseum.selectedIndex].value;
+    } else if(selectedInner == "예술의전당"){
+        location.href = choiceMuseum.options[choiceMuseum.selectedIndex].value;
+    } else if(selectedInner == "국립중앙박물관"){
+        location.href = choiceMuseum.options[choiceMuseum.selectedIndex].value;
+    } else if(selectedInner == "서울역사박물관"){
+        location.href = choiceMuseum.options[choiceMuseum.selectedIndex].value;
+    } else if(selectedInner == "국립민속박물관"){
+        location.href = choiceMuseum.options[choiceMuseum.selectedIndex].value;
+    }
+}
+
+</script>
+
+
+    
+
+</body>
+</html>
+
+
+

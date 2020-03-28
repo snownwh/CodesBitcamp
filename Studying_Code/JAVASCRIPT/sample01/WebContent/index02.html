@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>index02</title>
+</head>
+<body>
+
+변수(Variable)
+
+<p id="demo">p tag</p>
+
+<script type="text/javascript">
+/*
+	var -- int, double, String, Object, char
+
+MyClass cls = new MyClass();
+Object obj = new MyClass();
+	((MyClass)obj).method(); // 이렇게 접근 가능함
+*/
+
+//var 쓰임새
+var pi = 3.141592; // double
+var name = "홍길동"; // String
+var answer = "Yes | No" // String
+var number = "123"; // int
+var updown = true; // boolean
+
+var per = "일지매", num = 234 + 1; // 이렇게 string과 int를 섞어서 사용 가능함
+
+num = "정수동"; // int에 string값을 넣으면 string 타입으로 변한다.
+alert("per: "+ per + " num: "+ num);
+
+var nn = "5"+ 3 + 1;
+alert(nn);
+
+var nn = 3 + 1 + "5"; // 같은 변수 이름을 사용해도 에러가 발생하지 않고 값이 int + string 형식이면 int가 먼저 연산된 다음에 string 타입으로 변환
+alert(nn);
+
+// Array
+var cars = [ "Saab", "Volvo", "BMW" ]; // cars옆에 []가 없어도 된다. node.js에서도 이런 형식으로 사용된다. node.js -> vue, reAct로 발전
+alert(cars[0]);
+
+var cars = new Array(3); // String cars[] = new String[3]; 과 동일하다.
+cars[0] = "Volvo";
+cars[1] = "Saab";
+cars[2] = "BMW";
+alert(cars[2]);
+/* 
+for(i = 0; i < cars.length; i++){ // i의 타입을 선언하지 않아도 된다.
+	console.log(cars[i]);
+}
+ */
+/* 자바에서 for-each
+ for(int i : cars){	 
+ }
+ */
+for(i in cars){ // in은 예약어이다. 변수이름로 사용 불가능
+	console.log(cars[i]);
+}
+
+// Object == class -> json방식으로 활용. key : value
+var obj = { // obj는 인스턴스이다.
+//      key  :  value
+	firstName:"길동",
+	lastName:"홍",
+	age:24, // int
+	funcName:function(){
+		alert("funcName() 호출");
+		alert("lastName: " + this.lastName);
+	}
+};
+
+console.log(obj.firstName + " "+ obj.lastName + " "+ obj.age);
+
+obj.funcName(); // 함수의 key로 호출할 때에는 ();를 뒤에 붙여줘야 한다. 
+
+var y = 123e2; // 123 * 10 * 10
+alert(y);
+
+y = 123e-2;
+alert(y);
+
+// <p id="demo">p tag</p>의 p tag대신 사용되는 var 설정
+document.getElementById("demo").innerHTML = 
+	"홍길동: " + typeof "홍길동" + "<br>" +
+	"325: " + typeof 325 + "<br>" +
+	"3.141592: " + typeof 3.141592 + "<br>" +
+	"true: " + typeof true + "<br>" +
+	"array: " + typeof [1,2,3] + "<br>" +// array는 object 타입
+	"object: " + typeof {num:1, name:"abc"};
+
+</script>
+
+
+
+
+
+</body>
+</html>

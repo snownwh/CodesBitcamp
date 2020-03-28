@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Work04</title>
+</head>
+<body>
+
+<h1>체육관 이용 요금</h1>
+
+기본 사용료(4시간) 40,800원
+<br>
+
+<form name="frm">
+<input type="checkbox" id="gym_light" onclick="sum(0)" value="20000">야간 조명(20,000원)<br> 
+<input type="checkbox" id="gym_net" onclick="sum(1)" value="4000">배구 네트X2면(4,000원)<br> 
+<input type="checkbox" id="gym_ball" onclick="sum(2)" value="5000">배구공X10개(5,000원)<br>
+<br> 
+합계 금액:<input type="text" id="totalPrice" value="40800" size="7">원정
+</form>
+
+<script type="text/javascript">
+var total = parseInt(document.getElementById("totalPrice").value);
+var arr= new Array(3);
+arr[0] =  parseInt(document.getElementById("gym_light").value);
+arr[1] =  parseInt(document.getElementById("gym_net").value);
+arr[2] =  parseInt(document.getElementById("gym_ball").value);
+
+function sum(n){
+	if(document.frm.elements[n].checked == true){
+		total = total + arr[n];
+	} else {
+		total = total - arr[n];
+	}
+	document.frm.elements[3].value = total;
+
+
+var v = document.getElementsByTagName("body")[0];
+alert(v.getElementsByTagName("h1")[0].innerHTML);
+
+v.getElementsByTagName("h1")[0].innerHTML = "추가"; // h1태그를 추가로 셋팅
+}
+
+</script>
+
+
+	<!-- function sum(num){
+	var v = document.getElementById("gym_light").value;
+	alert(v);
+	var b = document.getElementById("gym_light").checked; //true/false
+	alert(b);
+	if(num == 0){
+		var gym_light = document.getElementById("gym_light").checked;
+		var value = parseInt(document.getElementById("gym_light").value);
+		if(gym_light){
+			total = total + value;
+		} else {
+			total = total - value;
+		}
+		document.getElementById("total").checked;
+	}
+} -->
+
+
+
+
+
+	<!-- <input type="checkbox" id="gym_light" onchange="light()" value="light">야간 조명(20,000원)<br>
+<input type="checkbox" id="gym_net" onchange="net()" value="net">배구 네트X2면(4,000원)<br>
+<input type="checkbox" id="gym_ball" onchange="ball()" value="ball">배구공X10개(5,000원)<br><br>
+
+합계 금액
+
+<input type="text" value=40800 id="totalPrice" size="7">
+원정
+
+
+<script type="text/javascript">
+var basicPrice = 40800;
+var a=0, b=0, c=0, d=0, e=0, f=0;
+var totalcost = basicPrice + a + b + c + d + e + f;
+
+function light(){
+	if(document.getElementById("gym_light").checked){
+		a = 20000;
+		totalcost = totalcost + a;
+		document.getElementById("totalPrice").value = totalcost;
+	} else {
+		b = -20000;
+		totalcost = totalcost + b;
+		document.getElementById("totalPrice").value = totalcost;
+		
+	}
+}
+
+function net(){
+	if(document.getElementById("gym_net").checked){
+		c = 4000;
+		totalcost = totalcost + c;
+		document.getElementById("totalPrice").value = totalcost;
+	} else {
+		d = -4000;
+		totalcost = totalcost + d;
+		document.getElementById("totalPrice").value = totalcost;
+	}
+}
+
+function ball(){
+	if(document.getElementById("gym_ball").checked){
+		e = 5000;
+		totalcost = totalcost + e;
+		document.getElementById("totalPrice").value = totalcost;
+	} else {
+		f = -5000;
+		totalcost = totalcost + f;
+		document.getElementById("totalPrice").value = totalcost;
+	}
+}
+
+</script> -->
+
+
+</body>
+</html>

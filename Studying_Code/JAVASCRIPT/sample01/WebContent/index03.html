@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>index03</title>
+</head>
+<body>
+
+<p id="demo">p tag</p>
+
+<h3 id="demo">p tag</h3>
+
+<button type="button" onclick="btnClick()">버튼</button>
+<br><br>
+
+<button type="button" onclick="btnClick1(7)">버튼1</button>
+<br><br>
+
+<button type="button" onclick="btnClick2(5, 6)">버튼2</button>
+<!-- 
+	id -> JavaScript // 제일 많이 사용된다.
+		현 페이지에서 1개만을 인식
+	class
+	name
+ -->
+<script type="text/javascript">
+function btnClick(){
+//	alert("btnClick()");
+	document.getElementById("demo").innerHTML = "Hello"; // 똑같은 id를 2개 쓸 경우에 첫 id만 적용된다. 여기에서는 h3태그의 id에는 적용안됨.
+ }
+ 
+function btnClick1(num){ // num은 파라미터명, 다수의 파라미터가 들어올 수 있다.
+	document.getElementById("demo").innerHTML = num * 6;
+}
+
+function func(x, y) {
+	return x * y; // 리턴 타입 함수
+}
+
+function btnClick2(){
+	document.getElementById("demo").innerHTML = func(5, 6); // 리턴 타입 함수를 호출 할 경우
+}
+
+
+</script>
+ 
+</body>
+</html>

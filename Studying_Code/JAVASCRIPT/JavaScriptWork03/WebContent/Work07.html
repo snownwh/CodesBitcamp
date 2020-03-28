@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Work07</title>
+</head>
+<body>
+  <h1>다음 생일까지 남은 일수</h1>
+  다음 버튼을 클릭하여 생일을 입력하면,<br>
+  다음 생일까지 남은 일수를 볼 수 있습니다.
+  <br><br>
+  <button onclick="func()">생일을 입력</button>
+  <br><br>
+
+  남은 일수:<h3 id="days"></h3>
+
+  <script type="text/javascript">
+  function func(){
+    //prompt
+    var birthMonth = prompt("생일 월을 작성해 주십시오(1~12)"); // 입력값이 변수로 들어간다.
+    var birthDay = prompt("생일 날짜를 작성해 주십시오(1~31)");
+
+    // 현재 날짜와 비교
+    // 현재 날짜를 구한다.
+    var nowDay = new Date();
+    var birth = new Date();
+
+    // 자신의 생일을 Set
+    birth.setMonth(birthMonth-1);
+    birth.setDate(birthDay);
+
+    //mSecond가 -값이 나오는 경우 -> 지났을 경우가 된다.
+    var mSecond = birth.getTime() - nowDay.getTime();
+    if(mSecond <= 0){ // 생일이 지난 경우
+      var birthYear = birth.getFullYear();
+      birth.setFullYear(birthYear + 1); // 1년 후로 만들어준다.
+
+      mSecond = birth.getTime() - nowDay.getTime();
+    }
+    var days = mSecond / (24 * 60 * 60 * 1000); // 일수가 나온다.
+
+    if(days == 366){
+      document.getElementById("days").innerHTML = "생일빵 드세요!"
+    } else{
+      document.getElementById("days").innerHTML = days;
+    }
+
+  }
+  
+  
+  </script>
+
+
+</body>
+</html>
+
+1번 아이디 부여
+2번 크리에이트 엘리먼트
+포털사이트 아이디 사용할 것

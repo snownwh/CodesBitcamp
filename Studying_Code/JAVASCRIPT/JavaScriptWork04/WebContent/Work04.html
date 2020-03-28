@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Work04</title>
+</head>
+<body>
+<h3>(문제)</h3>
+<h4>다음 이차 방정식의 해를 구하고, 그 버튼을 클릭하십시오.</h4>
+
+<h1>x<sup>2</sup>-5x=-6</h1>
+
+<button id=answer1 value="1" onclick="correct_answer(1)">x = 1</button>
+<button id=answer2 value="2" onclick="correct_answer(2)">x = 2</button>
+<button id=answer3 value="3" onclick="correct_answer(3)">x = 3</button>
+<button id=answer4 value="4" onclick="correct_answer(4)">x = 4</button>
+<button id=answer5 value="5" onclick="correct_answer(5)">x = 5</button>
+<br><br>
+* 올바른 답은 2개가 있습니다.
+
+
+<script type="text/javascript">
+function correct_answer(ans){
+    if(ans == "2" || ans == "3"){
+        alert("정답입니다.");
+    } else {
+        alert("정답이 아닙니다.");
+    }
+}
+
+
+</script>
+
+</body>
+</html>

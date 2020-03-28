@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+    10진수<input type="text" id="_10" value="10">
+    <button type="button" id="getNumber" onclick="func()">Button</button><br>
+    2진수: <input type="text" id="_2" value=""><br>
+    8진수: <input type="text" id="_8" value=""><br>
+    16진수: <input type="text" id="_16" value=""><br>
+
+    <script type="text/javascript">
+    function func(){
+        var _10a = parseInt(document.getElementById("_10").value);
+        alert(_10a);
+       	document.getElementById("_2").value = _10a.toString(2);
+        alert(_10a.toString(2));
+        document.getElementById("_8").value = _10a.toString(8);
+        document.getElementById("_16").value = _10a.toString(16);
+    }
+    
+    </script>
+    
+</body>
+</html>

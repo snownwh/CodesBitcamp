@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>index05</title>
+</head>
+<body>
+
+Timer
+
+<p id="demo"></p>
+<br><br>
+
+<input type="text" id="_id" width="500">  
+<br><br>
+
+<script type="text/javascript">
+function displayDate() {
+	document.getElementById("demo").innerHTML = Date();
+	document.getElementById("_id").value = Date();
+}
+
+displayDate();
+//setInterval("displayDate()", 1000); // 초마다 업데이트
+
+</script>
+
+
+
+
+</body>
+</html>

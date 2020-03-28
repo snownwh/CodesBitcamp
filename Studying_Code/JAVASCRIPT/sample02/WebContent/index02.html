@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>index02</title>
+</head>
+<body>
+
+    <form action="" name="frm"> <!-- form name은 JS에서 접근을 용이하기 위함이다. -->
+    <div align="center">
+        <strong>라면 타이머</strong> <br><br>
+
+        <select id="selid" name="myChoice">
+            <option value="180">원하는 시간을 선택해 주십시오(기본시간:3분)</option>
+            <option value="300">5분</option>
+            <option value="180">3분</option>
+            <option value="150">2분 30초</option>
+            <option value="120">2분</option>
+            <option value="60">1분</option>
+            <option value="30">30초</option>    
+        </select>
+
+        <input type="button" value="GO!" onclick="noodle()">
+        <br><br>
+
+        <span id="countdown">선택한 시간</span>
+        <br><br>
+
+        <input type="button" value="close" onclick="window.close()"> <!-- 윈도우 창 닫기 함수 -->
+    </div>
+    <script type="text/javascript">
+    var count = 0;
+    var time = 0;
+    var choice = 0;
+
+    function noodle(){
+        // alert('noodle');
+        clearInterval(time); // 타이머를 초기화 해주는 역할
+        
+        // select value
+        // var val = document.getElementById("selid").value;
+        // alert(val);
+
+        // select index 0 ~
+        // var _index = document.getElementById("selid").selectedIndex;
+        // alert(_index);
+
+        choice = document.frm.myChoice.selectedIndex; // form의 frm안의 select의 myChoice, 실무에서 사용이 되는 방법
+        // alert(_index);
+
+        count = parseInt(document.frm.myChoice.options[choice].value);
+        // alert(count);
+
+        //set time
+        time = setInterval("myTimer()", 1000);
+    }
+
+    function myTimer(){
+        count = count - 1; // 타이머 선택 숫자에서 -1씩 차감한다.
+
+        document.getElementById("countdown").innerHTML = "완료까지 <b>" + count + "</b>초 남았습니다.";
+        if(count == 0){
+            clearInterval(time); // 0에서 멈춤
+            alert("시간이 완료되었습니다.");
+        }
+    }
+
+    //우클릭 금지, 개발자 도구에서 풀 수 있다.
+    document.oncontextmenu = function(){
+        alert("마우스의 우클릭은 사용할 수 없습니다.");
+        return false;
+    }
+    
+    
+    </script>
+
+
+    
+
+    </form>
+</body>
+</html>

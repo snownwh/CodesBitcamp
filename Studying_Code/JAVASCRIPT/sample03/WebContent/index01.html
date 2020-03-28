@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<p id="demo"></p>
+
+<script type="text/javascript">
+document.getElementById("demo").innerHTML = 
+/*    parseInt("10") + "<br>" +
+    parseInt("23.4") + "<br>" +
+    parseFloat("23.4") + "<br>" +
+    parseFloat("23 4"); */
+
+    Number(true) + "<br>" + // true == 1
+    Number(false) + "<br>" + // false == 0
+    Number(new Date()) + "<br>" +
+    Number("123") + "<br>" + 
+    Number("12.3"); // 넘버는 정수 실수 둘다 포용한다.
+
+
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>index</title>
+</head>
+<body>
+
+<!-- 
+	Java Script(Client) != Java(Server)
+	자바와 자바스크립트는 목적이 다르다.
+	
+	자바스크립트 목적 : Front-end를 제어하기 위한 스크립트(logic)
+				      보조 프로그래밍적인 요소이다.
+				      화면을 제어하기 위한 요소. -> JQuery(ver) -> Vue, reAct
+				      컴파일을 하지 않는다. 가볍다 -> 속도가 빠르다.
+				      
+	예1) 회원가입 
+		1) 빈칸을 조사
+	    2) ID글자수를 조사
+	    3) PW에 숫자포함 체크
+	
+	CSS에 대해서 구현
+	Timer를 설정해서 특수효과 처리 가능
+	차트, 그래프로 표현 가능
+	
+	id(하나만 인식 가능, 자바스크립트 접근), class(다수인식 가능, 자바스크립트 접근, CSS역할을 함), name(다수인식 가능, 링크를 통해서 접근) ->  접근하기 위한 속성(attribute)
+									예) web에서 검색을 했을때 검색된 단어에 색깔이 변경되는 것.			   
+--> 
+
+<p id="demo">p tag id demo</p>
+
+<script type="text/javascript">
+// 한줄 주석문
+
+/*
+	범위 주석문
+ */
+ 
+// window.alert("Java Script 실행"); // alert만 적어도 동일하게 작동함
+
+console.log("Java Script 실행"); // 개발자 도구에서 확인 가능함, 개발자 도구에서 에러 확인 가능, 아이콘이 없다는 에러는 브라우져 문제이다. 개발자 도구에 디버깅 모드가 있다.
+
+// getter01
+var v = document.getElementById("demo"); // int도 사용하지만 통상적으로 통합 타입인 var를 변수로 사용한다.
+												  // 모든 코드가 document이다.
+alert(v.innerHTML);
+
+// 혹시나 JQuery가 작동을 안하면 임시방편으로 자바스크립트를 사용해야 함
+
+// setter01
+// document.getElementById("demo").innerHTML = "p태그 demo아이디";
+v.innerHTML = "p태그 demo아이디입니다."; // innerHTML를 사용하면 여기에서는 태그 이름만 가지고 온다..
+
+//----------------------------------------------------------------------------------------------
+/* 
+//getter02
+var v = document.getElementById("demo").innerHTML; // int도 사용하지만 통상적으로 문자열 타입인 var를 변수로 사용한다.
+												  // 모든 코드가 document이다.
+alert(v);
+
+// 혹시나 JQuery가 작동을 안하면 임시방편으로 자바스크립트를 사용해야 함
+
+// setter02
+// document.getElementById("demo").innerHTML = "p태그 demo아이디";
+v = "p태그 demo아이디입니다."; // innerHTML를 사용하면 여기에서는 태그 이름만 가지고 온다..
+ */
+
+</script>
+
+
+
+
+
+</body>
+</html>

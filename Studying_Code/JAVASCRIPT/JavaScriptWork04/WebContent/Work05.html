@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Work05</title>
+</head>
+<body>
+<h1>포털 사이트</h1>
+<h4>"열기"버튼을 클릭하면 해당 홈페이지를 새 창에서 볼 수 있습니다.</h4>
+<table border="1">
+    <tr>
+        <th style="background-color: green; color: white" scope="row">네이버</th>
+        <td id="naver">http://www.naver.com/</td>
+        <td><button onclick = "open_browser1()">열기</button></td>
+    </tr>
+    <tr>
+        <th style="background-color: green; color: white" scope="row">다음</th>
+        <td id="daum">http://www.daum.net/</td>
+        <td><button onclick = "open_browser2()">열기</button></td>
+    </tr>    
+    <tr>
+        <th style="background-color: green; color: white" scope="row">줌</th>
+        <td id="zum">http://zum.com/</td>
+        <td><button onclick = "open_browser3()">열기</button></td>
+    </tr>    
+</table>
+
+<script type="text/javascript">
+function open_browser1(){
+    var naver = document.getElementById("naver").innerHTML;
+    if(document.getElementById("naver").innerHTML == "http://www.naver.com/"){
+        window.open(naver, naver);
+    } 
+}
+function open_browser2(){
+    var daum = document.getElementById("daum").innerHTML;
+    if(document.getElementById("daum").innerHTML == "http://www.daum.net/"){
+        window.open(daum, daum);
+    }
+}
+function open_browser3(){
+    var zum = document.getElementById("zum").innerHTML;
+    if(document.getElementById("zum").innerHTML == "http://zum.com/"){
+        window.open(zum, zum);
+    }
+    
+}
+
+</script>
+
+
+</body>
+</html>

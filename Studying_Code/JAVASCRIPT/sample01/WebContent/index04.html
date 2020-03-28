@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>index04</title>
+</head>
+<body>
+
+<h3 id="h3tag"><b>h3 Tag</b></h3>
+<br><br>
+
+<p id="ptag">p tag</p>
+<br><br>
+
+입력:<input type="text" id="text" value="">
+<br><br>
+
+<button type="button" onclick="btnClick()">버튼</button>
+
+<script type="text/javascript">
+function btnClick(){
+// 	var str = document.getElementById("h3tag").innerHTML; // <b>까지 가지고 온다.
+//	document.getElementById("ptag").innerHTML = str;
+	
+	var str = document.getElementById("text").value; // input 태그는 .value로 값을 가지고 온다. 
+//	alert("str: " + str);
+	document.getElementById("ptag").innerHTML = parseInt(str) * 12; //str은 String이므로 parseInt를 사용하면 int형으로 정확한 연산이 가능
+	
+}
+
+
+</script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<!-- 10진수-> 2진수, 8진수, 16진수 -->
+<p id="demo"></p>
+
+<button type="button" onclick="func()">클릭</button>
+
+<script type="text/javascript">
+function func(){
+    // var number = 12;
+    
+    // 10진수 -> 2진수, 8진수, 16진수(String)
+    // document.getElementById("demo").innerHTML = 
+    //     "10진수: " + number + "<br>" +
+    //     "2진수: " + number.toString(2) + "<br>" + // number.toString(2) <- 10진수를 2진수로 바꿔라.
+    //     "8진수: " + number.toString(8) + "<br>" +
+    //     "16진수: " + number.toString(16);
+
+    // 2진수, 8진수, 16진수 -> 10진수
+    var bin = "11001010";
+    var oct = "24";
+    var hex = "ab";
+    document.getElementById("demo").innerHTML = 
+        "2진수: "+ bin + " - 10진수: " + parseInt(bin, 2) + "<br>" +
+        "8진수: "+ oct + " - 10진수: " + parseInt(oct, 8) + "<br>" +
+        "16진수: "+ hex + " - 10진수: " + parseInt(hex, 16);
+}
+
+
+</script>
+
+</body>
+</html>

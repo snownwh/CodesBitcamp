@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Work04</title>
+</head>
+<body>
+<h1>2개의 주사위</h1>
+<p>버튼을 클릭하면 2개의 주사위가 랜덤됩니다.</p>
+<img name ="targetImg1" src="sai_1.gif">
+<img name ="targetImg2" src="sai_6.gif"><br>
+<button type="button" onclick="random_image()">주사위를 굴린다.</button>
+
+<script type="text/javascript">
+function random_image(){
+    
+    var arrImage = new Array("sai_1.gif","sai_2.gif","sai_3.gif","sai_4.gif","sai_5.gif","sai_6.gif");
+    var imgSource1 = document.targetImg1;
+    var imgSource2 = document.targetImg2;
+    var intRandom1 = Math.round(Math.random()*6);
+    var intRandom2 = Math.round(Math.random()*6);
+
+    imgSource1.src=arrImage[intRandom1];
+    imgSource2.src=arrImage[intRandom2];
+}
+
+
+
+</script>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<!-- 
+<body onload="checkMessage()"> 바디가 시작되는 순간 함수 호출
+    onload
+    <p id="p1"></p>
+
+    <script type="text/javascript">
+    function checkMessage(){
+        document.getElementById("p1").innerHTML = "checkMessage() 호출";
+
+    }
+    
+    
+    </script>
+
+</body>
+-->
+<!-- 
+  <body onload="viewScroll()">
+    <h1>15살 나이차 전현무♥이혜성 결혼 운 보니 천생연분이지만… </h1>
+    <pre>
+        방송
+        인 전현무와 
+        이혜성 KBS 아나운서
+        의 궁합과 결혼 운이 공개돼 눈길을 
+        끈다.
+  
+        지난 6일 오후 방송된 케이블채널 XtvN
+        ‘프리한19’에서는 ‘2020년! 대박 예약하고 가실게요 19’ 특집으로 
+        꾸며져 MC들의 운세를 점치는
+         모습이 전파를 탔다.
+
+
+        앞서 지난해 전현무는 이 방송을 통해 결
+        혼 운을 점친 바 있다. 리투아니아식으로 결혼 운을 점쳤는데, 
+        뒤로 신발을 던져서 신발 코의 방향에 따라 
+        운세가 정해진다.
+
+
+        신발 코가 문 쪽과 반대방향을 향하면 결혼 운이 없
+        는 것. 전현무의 신발 코 방향은 결혼 운이 없다고 나왔고, 
+        실제로 그는 지난해 결혼하지 않았다.
+
+  
+        올해 전현무의 결혼 운은 어떨까. 전현무와 이 아
+        나운서의 궁합을 본 역술가는 “이야~ 이거! 궁
+        합이 너무 좋은 거야~ 
+        거의 천생연분”이라면서 “그래서 ‘아, 서로의 인연
+        을 이렇게 만났나?’ 싶을 정도로 나는 굉장히 좋게 봤다”고
+         주장했다.
+    </pre>
+
+    <script type="text/javascript">
+    posY = 0;
+    function viewScroll() {
+        window.scroll(0, posY);
+        posY = posY + 2;
+        if(posY == 300) posY = 0;
+
+        setTimeout(viewScroll(), 100);
+    }
+    </script>
+  </body> -->
+
+  <body>
+    <!-- onblur : 포커스가 이동 -->
+    나이:<input type="text" onblur="isRegNum()" size="10" maxlength="3">세<br>
+
+    <script type="text/javascript">
+    function isRegNum(){
+        alert("onblur 실행");
+    }    
+    
+    </script>
+
+    <!-- onchange : 입력값이 바뀌고 포커스가 다른 곳으로 이동했을 때
+    우편번호 입력란 -->
+    T:<input type="text" size="5" maxlength="3" onchange="isPostNum(this)">
+                                                <!-- 메세지 핸들러 -->
+    -
+    <input type="text" size="5" maxlength="3" onchange="isPostNum(this)"><br>
+
+    <script type="text/javascript">
+    function isPostNum(obj){
+    /* alert("isPostNum 실행됨"); */
+
+    var str = obj.value;
+    // alert(str);
+    if(str.match(/[^0-9]/g)){ // 순자가 아닌 문자가 포함되어 있는 경우
+        alert("순자가 아닌 문자가 포함되어 있습니다.");
+    }
+    }
+    </script>
+    
+    <br><br>
+
+    <!-- onkeydown, onkeypress -->
+    <input type="text" name="title">
+
+    <script type="text/javascript">
+
+        /* document.getElementsByName("title")[0].onkeydown = function(event){
+            console.log("keydown = keycode:"+ event.keyCode);
+        } --> */
+    
+        document.getElementsByName("title")[0].onkeypress = function(event){
+            console.log("keypress = keycode:"+ event.keyCode);// ascii 코드를 보여준다.
+        }
+    </script>
+
+    <!-- onMouseDown, onMouseUp, onMouseOver, onMouseOut -->
+    <br><br>
+    <input type="image" src="san0.gif" 
+        onmousedown="mouseDown(this)"
+        onmouseup="mouseUp(this)"
+        onmouseover="mouseOver(this)"
+        onmouseout="mouseOut(this)">
+
+    <script type="text/javascript">
+        function mouseDown(obj){
+            obj.src = "san1.gif";
+        }
+        function mouseUp(obj){
+            obj.src = "san0.gif";
+        }
+        function mouseOver(obj){
+        	obj.src = "san2.gif";
+        }
+        function mouseOut(obj){
+        	obj.src = "san0.gif";
+        }
+    </script>
+    
+    <br><br>
+    <a href="#" onmouseover="document.box.src='surprise.gif'"
+                onmouseout="document.box.src='box.gif'">
+        <img alt="" src="box.gif" name="box">
+    </a>
+	
+
+
+
+
+  </body>
+</html>

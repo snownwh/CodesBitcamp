@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+ <html><!--  <!--root node -->
+    <head> <!-- html child node -->
+        <meta charset="UTF-8">
+        <title>Insert title here</title>
+    </head> <!-- html child node -->
+    <body>
+        <!-- 
+        DOM : Document Object Model
+        -> 각각의 Tag는 obj로 처리된다. 그 Object를 접근하기 위한 함수
+        getElementById()가 돔에 들어간다 -->
+
+        <!-- childNodes -->
+        <h3 id="intro">h3 tag intro</h3>
+
+        <p id="demo">p tage demo</p>
+
+        <button type="button" onclick="func()">버튼</button>
+
+        <script type="text/javascript">
+        function func(){
+            var text = document.getElementById("intro").childNodes[0].nodeValue;
+            alert(text)
+        }
+        </script>
+        <br><br>
+        
+        <select id = "car">
+            <option>BMW</option>  <!-- <option>(1번자리)BMW</option>(2번자리)-->
+            <option>BENZ</option> <!-- <option>(3번자리)BENZ</option>(4번자리)-->
+            <option>VOLVO</option>
+        </select>
+
+        <button type="button" onclick="myfunc()">선택</button>
+
+        <script type="text/javascript">
+        function myfunc(){
+            var text = document.getElementById("car").childNodes;
+            alert(text[3].text); // 1번 BMW 5번 BENZ 9번 VOLVO 주석에도 옵션자리 인식함
+        }        
+        </script>
+        <br><br>
+        <!-- appendChild, insertBefore -->
+        <div id="div1">
+            <p id="p1">첫번째 p태그</p>
+            <p id="p2">두번째 p태그</p>
+        </div>
+
+        <button onclick="appendBtn()">뒤에 추가</button>
+        <button onclick="insertBtn()">앞에 추가</button>
+        <button onclick="deleteBtn()">삭제</button>
+
+        <script type="text/javascript">
+            function appendBtn(){
+                // tag 생성
+                var ptag = document.createElement("p"); // <p></p> 생성
+                var textNode = document.createTextNode("새로운 태그"); // p태그 사이의 문자열
+
+                ptag.appendChild(textNode); // <p>새로운 태그</p>
+
+                //div1에 추가
+                var element = document.getElementById("div1");
+                element.appendChild(ptag);
+            }
+            function insertBtn(){
+                 // tag 생성
+                var h3tag = document.createElement("h3"); // <p></p> 생성
+                var textNode = document.createTextNode("새로운 h3태그"); // p태그 사이의 문자열
+
+                h3tag.appendChild(textNode); // <p>새로운 태그</p>
+
+                //div1에 추가
+                var element = document.getElementById("div1");
+                var elementBefore = document.getElementById("p2");
+                element.insertBefore(h3tag, elementBefore);
+            }
+            function deleteBtn(){
+                var element = document.getElementById("div1");
+                var delChild = document.getElementById("p2");
+                element.removeChild(delChild);
+            }
+        </script>
+
+        <br><br>
+
+
+        <!-- Nodelist // 특정 태그의 이름 및 스타일 등을 변경하고 싶을때 사용하면 됨 -->
+        <p>Hello</p> 
+        <p>World</p>
+        <p>I can do it</p>
+        <p>Never Change My Mind</p>
+
+        <button type="button" onclick="listFunc()">Nodelist</button>
+
+        <script type="text/javascript">
+        function listFunc(){
+            var nodeList = document.getElementsByTagName("p"); // 배열로 접근 가능
+            // alert(nodeList.length);
+
+            nodeList[3].innerHTML = "안녕하세요";
+
+            for(i = 0; i <nodeList.length;i++){
+                nodeList[i].style.backgroundColor = "#0000ff";
+            }
+
+        }
+        
+        
+        </script>
+
+
+    </body>
+</html><!--  root node -->

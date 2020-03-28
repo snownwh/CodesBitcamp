@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Work06</title>
+</head>
+<body style="background-color: black; color:white">
+<h1>사진들</h1>
+<img id="mainPic" src="meiji01.jpg" style="border: 5px solid yellow" align="left" hspace="20"></img>
+<br>
+사진의 선택<br>
+<form name="frm">
+    <select name="links" id="_links" onchange="golink()">
+        <option>사진의 선택</option>
+        <option>meiji01.jpg</option>
+        <option>meiji02.jpg</option>
+        <option>meiji03.jpg</option>
+        <option>meiji04.jpg</option>
+    </select>
+</form>
+<br clear="left">
+
+<script type="text/javascript">
+function golink(){
+    var selectIndex = document.frm.links.selectedIndex;
+    var url = document.frm.links.options[selectIndex].value;
+    
+    document.getElementById("mainPic").src = url;
+}
+
+
+
+
+</script>
+
+
+
+
+
+</body>
+</html>

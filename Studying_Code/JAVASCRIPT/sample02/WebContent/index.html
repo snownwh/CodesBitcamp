@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Work01</title>
+</head>
+<body>
+
+<p id="demo">p tag</p>
+
+<script type="text/javascript">
+//var d = new Date();
+//alert(d);
+
+//setter
+
+//var d = new Date("October 12, 2020 12:32:30");
+//alert(d);
+
+var d = new Date(2020, 5-1, 4, 6, 12, 32, 0); // 월은 조심 -> 0~11까지이다.
+//alert(d);
+
+document.getElementById("demo").innerHTML 
+//	= d.getFullYear();  // 연도 
+//	= d.getMonth() + 1;	// 월
+//	= d.getDate();		// 일
+//	= d.getHours();		// 시
+//	= d.getMinutes();	// 분
+//	= d.getSeconds();	// 초
+	= d.getDay();
+
+</script>
+
+</body>
+</html>

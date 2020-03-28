@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Work01</title>
+</head>
+<body>
+
+    <!-- id, class, name -->
+
+    <p id="pid">p id pid</p> <!-- input -->
+    <br><br>
+
+    <p class="pclass">p class pclass</p>
+    <br><br>
+
+    <h3 class="pclass">h3 class h3class</h3>
+    <br><br>
+    
+    <p name="pname">p name pname</p> <!-- input -->
+    <br><br>
+
+    <button type="button" onclick="func()">button</button>
+    <br>
+    <input type="text" id="_str" name="str"> <!-- name은 값을 날려주는 역할을 한다. -->
+
+    <script type="text/javascript">
+    function func() {
+        // alert("func()");
+        // id
+        // var text = document.getElementById("pid").innerHTML;
+        // document.getElementById("str").value = text;
+        
+        //class
+        // var text = document.getElementsByClassName("pclass")[0].innerHTML; // 배열 번호로 구분한다.
+        // alert(text);
+
+        //name
+        var text = document.getElementsByName("pname")[0].innerHTML; // name이 pname인 텍스트를 text에 담는다.
+        document.getElementsByName("str")[0].value = text; // text를 id가 str인 텍스트에 호출한다.
+        
+
+    }
+    </script>
+
+
+</body>
+</html>

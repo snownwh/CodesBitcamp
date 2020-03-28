@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Work01</title>
+</head>
+<body>
+<h1>배열의 연산</h1>
+<table border="1">
+    <col width="25%"><col width="25%"><col width="25%"><col width="25%">
+    <tr>
+        <th>첨자</th>
+        <th>a</th>
+        <th>b</th>
+        <th>a * b를 계산</th>
+    </tr>
+    <tr>
+        <th>0</th>
+        <td id="r2w2">6</td>
+        <td id="r2w3">33</td>
+        <td><button onclick="r2_calculate()">계산결과</button></td>
+    </tr>
+    <tr>
+        <th>1</th>
+        <td id="r3w2">12</td>
+        <td id="r3w3">14</td>
+        <td><button onclick="r3_calculate()">계산결과</button></td>
+    </tr>
+    <tr>
+        <th>2</th>
+        <td id="r4w2">18</td>
+        <td id="r4w3">65</td>
+        <td><button onclick="r4_calculate()">계산결과</button></td>
+    </tr>
+
+    <script type="text/javascript">
+    function r2_calculate(){
+        var _r2w2 = parseInt(document.getElementById("r2w2").innerHTML);
+        var _r2w3 = parseInt(document.getElementById("r2w3").innerHTML);
+        alert(_r2w2 * _r2w3);
+    }
+    function r3_calculate(){
+        var _r3w2 = parseInt(document.getElementById("r3w2").innerHTML);
+        var _r3w3 = parseInt(document.getElementById("r3w3").innerHTML);
+        alert(_r3w2 * _r3w3);
+    }
+    function r4_calculate(){
+        var _r4w2 = parseInt(document.getElementById("r4w2").innerHTML);
+        var _r4w3 = parseInt(document.getElementById("r4w3").innerHTML);
+        alert(_r4w2 * _r4w3);
+    }
+    </script>
+</table>
+</body>
+</html>

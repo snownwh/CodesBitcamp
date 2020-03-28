@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Work05</title>
+</head>
+<body onload="display()">
+<h1>환영합니다</h1>
+*현재 시각은
+<input type="text" id="correct_time">
+입니다.
+
+<script type="text/javascript">
+function display(){
+    var today = new Date();
+    var hour = today.getHours();
+    var minute = today.getMinutes();
+    var seconds = today.getSeconds();
+
+    var output = hour + ":" + minute  + ":" + seconds;
+
+    document.getElementById("correct_time").value = output;
+};
+
+setInterval("display()", 1000);
+</script>
+
+</body>
+</html>
