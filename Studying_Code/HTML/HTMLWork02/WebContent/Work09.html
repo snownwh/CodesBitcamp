@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="NewFile.jsp">
+<h1>설문조사</h1>
+
+이름:<input type="text" name="name" value="" size="20">
+<br><br>
+[질문1]<br>
+영어로 대화할 수 있습니까?<br>	
+<input type="radio" name="answer" value="예">예
+<input type="radio" name="answer" value="모르겠습니다">모르겠습니다
+<input type="radio" name="answer" value="아니오">아니오
+<br><br>
+[질문2]<br>
+영어외에 관심있는 언어가 있으면 선택(복수 선택 가능)<br>
+<input type="checkbox" name="language" value="독일어">독일어
+<input type="checkbox" name="language" value="중국어">중국어
+<input type="checkbox" name="language" value="프랑스어">프랑어
+<br><br>
+[질문3]<br>
+영어 수업에 대한 의견이 있으시면 기입해 주십시오.<br>
+<textarea rows="5" name="opinion" cols="55"></textarea>
+<br><br>
+[질문4]<br>
+당신의 연령을 선택해 주십시오.
+<select name="ages">
+	<option value="10대">10대
+	<option value="20대">20대
+	<option value="30대">30대
+	<option value="40대">40대
+	<option value="50대 이상">50대 이상
+</select>
+<br>
+<input type="submit" value="제출">
+</form>
+
+</body>
+</html>

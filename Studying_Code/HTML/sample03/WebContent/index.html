@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>index</title>
+
+<style type="text/css">
+.cls li{ /* . == class, cls 클래스명 */
+	display:inline; /* list 가로모드 */
+}
+</style>
+
+</head>
+<body>
+
+<!-- list -->
+<ul> <!-- unordered list(순서 없는 목록) -->
+	<li>coffee</li>
+	<li>tea</li>
+	<li>milk</li>
+</ul>
+
+<ul style="list-style-type: disc;"> <!-- disc는 디폴트 값이다. -->
+	<li>coffee</li>
+	<li>tea</li>
+	<li>milk</li>
+</ul>
+
+<!-- 네모박스 -->
+<ul style="list-style-type: square;"> 
+	<li>coffee</li>
+	<li>tea</li>
+	<li>milk</li>
+</ul>
+
+<!-- 표시가 없음 --> <!-- 가장 많이 사용된다. -->
+<ul style="list-style-type: none;"> 
+	<li>가장 많이 사용된다.</li>
+	<li>
+		<a href="#">coffee</a>
+	</li>
+	<li>tea</li>
+	<li>milk</li>
+</ul>
+
+<ol> <!-- 순서가 있는 목록 -->
+	<li>Apple</li>
+	<li>Pear</li>
+	<li>Banana</li>
+</ol>
+
+<ol type="1"> <!-- html4에서 사용됨 -->
+	<li>Apple</li>
+	<li>Pear</li>
+	<li>Banana</li>
+</ol>
+
+<ol start="2"> <!-- 2로 시작 -->
+	<li>Apple</li>
+	<li>Pear</li>
+	<li>Banana</li>
+</ol>
+
+<ol type="A"> <!-- 알파벳(대소문자 가능) -->
+	<li>Apple</li>
+	<li>Pear</li>
+	<li>Banana</li>
+</ol>
+
+<ol type="I"> <!-- 로마자(대소문자 가능) -->
+	<li>Apple</li>
+	<li>Pear</li>
+	<li>Banana</li>
+	<li>Apple</li>
+	<li>Pear</li>
+	<li>Banana</li>
+	<li>Apple</li>
+	<li>Pear</li>
+	<li>Banana</li>
+	<li>Apple</li>
+	<li>Pear</li>
+	<li>Banana</li>
+	<li>Apple</li>
+	<li>Pear</li>
+	<li>Banana</li>
+</ol>
+
+<!-- list안의 list -->
+<ul>
+	<li>coffee
+		<ol>
+			<li>black coffee</li>
+			<li>milk coffee</li>
+		</ol>
+	</li>
+	<li>tea</li>
+	<li>milk</li>
+</ul>
+
+<br>
+<!-- list를 가로로 표현 -->
+<p>좋아하는 과일은?</p>
+<ol class="cls"> <!-- 가로로 표현하면 숫자는 표현되지 않는다. -->
+	<li>Apple</li>
+	<li>Pear</li>
+	<li>Banana</li>
+</ol>
+
+</body>
+</html>

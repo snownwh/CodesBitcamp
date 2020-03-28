@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>index</title>
+
+<style type ="text/css">
+table, th, td{
+	border-collapse: collapse; /* 단선으로 처리하라 */
+</style>
+</head>
+<body>
+<!-- 
+link -> anchor <a href="이동하고 싶은 파일 또는 URL">표시문자열 이미지</a>
+ -->
+ 
+<!-- 
+form
+event, resource와 같이 많이 사용.
+입력데이터 등을 전송할 수 있다.
+
+	id(#)	: 현재 페이지에서 1개만 인식. JavaScript(=JQuery)에서 취급을 많이 한다.
+	class(.): 다중 인식. CSS(디자인)에 많이 사용된다. JavaScript(=JQuery)에서 접근 가능
+	name	: link용. 값을 전송. 변수의 역할
+ -->
+ 
+<!-- 
+<form action="이동을 하고 싶은 파일 또는 URL"> submit
+	입력 리소스가 여기에 들어간다.
+	<input type="submit" value="클릭"> 클릭이라는 버튼을 submit하면 이동하고 싶은 곳으로 간다. 
+</form>
+ -->
+ 
+<h3>index.html</h3>
+ 
+<form action="NewFile.html">
+	<input type="submit" value="클릭">
+</form>
+
+<br><br>
+
+<!-- 
+	input type 종류: button(submit), checkbox, radiobutton, textfiled, tool kit.. 등등
+ -->
+<form action="NewFile.html">
+name:<input type="text" value="여기에 입력" size="12"> <!-- 독립체이다. -->
+<br>
+age:<input type="text" value="" size="10">
+<br>
+<input type="button" value="button이동"> <!-- 독립적이다. -->
+<input type="submit" value="submit이동"> <!-- 폼 안에서만 기능 구현 -->
+<br>
+<input type="reset" value="초기화"> <!-- 폼 안에서만 기능 구현 -->
+</form>
+
+<!-- 독립체 예제 -->
+name:<input type="text" value="여기에 입력" size="12">
+<input type="button" value="button이동">
+
+<br><br>
+
+<form action="NewFile.jsp">
+id:<input type="text" name="id" value="" size="12"><br> <!-- NewFile.jsp에 name의 변수를 넘겨준다. -->
+password:<input type="password" name="pwd" size="12"><br>
+<input type="submit" value="이동"> <!-- 넘겨주는 역할 -->
+<input type="reset" value="초기화">
+</form>
+
+<br><br><br>
+<form action="NewFile.jsp">
+<table border="1">
+<tr>
+	<td>id:</td>
+	<td>
+		<input type="text" name="id" value="" size="12"><br> <!-- name의 변수를 넘겨준다. -->
+	</td>
+</tr>
+<tr>
+	<td>password:</td>
+	<td>
+		<input type="password" name="pwd" size="12"><br>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">
+		<input type="submit" value="이동">
+	</td>
+</tr>
+</table>
+</form>
+
+<br><br>
+
+<!-- html5 -->
+<form action="NewFile1.jsp">
+number:<input type="number" name="number" max="5" min="1">
+<br>
+date:<input type="date" name="date">
+<br>
+color:<input type="color" value="#000000" name="color">
+<br>
+range:<input type="range" max="10" min="0" name="range">
+<br>
+search:<input type="search" name="search">
+<br>
+<input type="submit" value="선택">
+</form>
+
+<br><br><br>
+
+CheckBox
+<form action="NewFile2.jsp">
+<input type="checkbox" name="job" value="패션">패션<br>
+<input type="checkbox" name="job" value="음악">음악<br>
+<input type="checkbox" name="job" value="게임">게임<br>
+<input type="submit" value="이동">
+</form>
+
+<br><br><br>
+
+RadioButton<br><br>
+<input type="radio" name="car" value="벤츠">벤츠<br>
+<input type="radio" name="car" value="아우디" checked>아우디<br>
+<input type="radio" name="car" value="BMW">BMW<br>
+
+<br><br><br>
+
+<!-- select == choice, combobox -->
+
+<select name="cars" multiple="multiple"> <!-- multiple을 이용하면 배열로 받아야 한다. -->
+	<option value="볼보">Volvo</option>
+	<option value="샤브">Saab</option>
+	<option value="피아트">Fiat</option>
+	<option value="프리우스">Prius</option>
+</select>
+
+<br><br><br>
+
+<textarea rows="20" cols="30">여기에 입력</textarea>
+
+<br><br><br>
+
+<input type="button" value="버튼"><br>
+
+<button type="button" onclick="alert('클릭했음')">버튼 타이틀</button>
+
+
+</body>
+</html>

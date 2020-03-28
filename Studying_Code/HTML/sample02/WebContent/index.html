@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css"> 
+td{ /* 이 클래스의 모든 td의 데이터값을 원하는 방식의 정렬 가능 */
+	text-align: center;
+}
+
+</style>
+
+</head>
+<body>
+
+<div align="center">
+
+<h1>1번 테이블</h1>
+<table border="1">
+<!-- <table border="1" style="width: 100%"> -->
+	<col width="40"><col width="100"><col width="200"><col width="40"> <!-- 행 사이즈 설정 -->
+	<!-- <col width="20%"><col width="30%"><col width="40%"><col width="10%"> %로 사이즈 설정 -->
+	<tr> <!-- table row -->
+		<th>번호</th>
+		<th>성</th>
+		<th>이름</th>
+		<th>나이</th>
+	</tr>
+	<tr>
+		<th>1</th>
+		<td>홍</td>
+		<td>길동</td>
+		<td align="right">24</td>
+	</tr>
+	<tr>
+		<th>2</th>
+		<td>일</td>
+		<td>지매</td>
+		<td>21</td>
+	</tr>
+	<tr>
+		<th>3</th>
+		<td>성</td>
+		<td>춘향</td>
+		<td>17</td>
+	</tr>
+</table>
+
+</div>
+
+<br><br>
+<h1>2번 테이블</h1>
+<table border="2" style="width: 80%">
+	<caption >주소록</caption>
+<colgroup>
+	<col width="40"><col width="50"><col width="100"><col width0.0="200">
+</colgroup>.
+
+<thead>
+	<tr>
+		<th>번호</th>
+		<th>성</th>
+		<th>이름</th>
+		<th>주소</th>
+	</tr>
+</thead>
+
+<tbody>
+	<tr>
+		<th>1</th>
+		<td>홍</td>
+		<td>길동</td>
+		<td>서울시 강남</td>
+	</tr>
+	<tr>
+		<th>2</th>
+		<td>일</td>
+		<td>지매</td>
+		<td>부산시 해운대</td>
+	</tr>
+	<tr>
+		<th>3</th>
+		<td>성</td>
+		<td>춘향</td>
+		<td>남원시</td>
+	</tr>
+</tbody>
+
+</table>
+
+<br><br>
+
+<h1>3번 테이블</h1>
+<h2>column title 병합</h2>
+<table border="1" style="width: 70%">
+	<caption>주소록</caption>
+	<tr>
+		<th>성</th>
+		<th>이름</th>
+		<th>나이</th>
+		<th colspan="2">전화번호</th> <!-- colspan="2" -> 동일한 타입의 데이터 값이 2개 일때 타이틀을 병합한다. -->
+		<!-- <th>전화번호</th>
+		<th>전화번호</th> -->
+	</tr>
+	<tr>
+		<td>홍</td>
+		<td>길동</td>
+		<td>24</td>
+		<td>123-4567</td>
+		<td>234-5678</td>
+	</tr>
+</table>
+
+<br><br>
+
+<h1>4번 테이블</h1>
+<h2>row title 병합</h2>
+<table border="1" styke="width: 70%">
+	<tr>
+		<th>이름</th>
+		<td>길동</td>
+	</tr>
+	<tr>
+		<th rowspan="2">전화번호</th>
+		<td>123-4567</td>
+	</tr>
+	<tr>
+		<!-- <th>전화번호</th> -->
+		<td>234-5678</td>
+	</tr>
+	
+</table>
+
+
+
+
+</body>
+</html>
