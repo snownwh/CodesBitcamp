@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>index03</title>
+</head>
+<body>
+
+    <div id="demo">Hello CSS World</div>
+    <br>
+    <button type="button" onclick="func()">적용</button>
+
+    <script type="text/javascript">
+        function func(){
+            obj = document.getElementById("demo");
+            
+            obj.style.color = "white";
+            obj.style.backgroundColor = "blue";
+            obj.style.textAlign = "center";
+            obj.style.borderStyle = "double"; // 테두리선
+            obj.style.borderColor = "green"; //테두리선 색깔
+            obj.style.fontFamily = "MS PGothic"; // 글자 종류
+            obj.style.fontStyle = "italic"; // 글자 스타일
+            obj.style.fontSize = "24pt";
+            
+        }
+
+    </script>
+
+</body>
+</html>
