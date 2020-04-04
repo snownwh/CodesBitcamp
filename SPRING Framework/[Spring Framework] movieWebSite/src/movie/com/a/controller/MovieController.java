@@ -27,7 +27,7 @@ public class MovieController {
 	@Autowired
 	MovieService movieService;
 	
-	// 영화전체리스트 
+	// 영화전체리스트(CGV에서 크롤링으로 제목, 포스터 좋아요 데이터 가지고 옴)
 	@RequestMapping(value="movielist.do", method={RequestMethod.GET, RequestMethod.POST})
 	public String getMovieList(Model model) {
 		Document doc;
@@ -40,9 +40,9 @@ public class MovieController {
 			
 			//영화제목
 			Elements titles = doc.select("div.box-contents strong.title");
-			//영화포스
+			//영화포스터
 			Elements img = doc.select("div.box-image span.thumb-image img");
-			//영화 좋아
+			//영화 좋아요
 			Elements likes = doc.select("div.box-contents span.count Strong i");
 	
 			
@@ -83,7 +83,7 @@ public class MovieController {
 		return "movie/movielist";
 	}
 		
-	// 영화디테일
+	// 영화디테일(CGV에서 크롤링으로 제목, 포스터 좋아요, 감독, 배우 데이터 가지고 옴)
 	@RequestMapping(value="moviedetail.do", method={RequestMethod.GET, RequestMethod.POST})
 	public String movieDetail(String cgvSeq, Model model) {
 		Document doc, doc1;
@@ -137,7 +137,7 @@ public class MovieController {
 		return "movie/movie_detail";
 	}
 	
-	//영화선택 뷰
+	//영화선택 뷰(CGV에서 크롤링으로 제목, 포스터 좋아요 데이터 가지고 옴)
 	@RequestMapping(value="movieSelect.do", method={RequestMethod.GET, RequestMethod.POST})
 	public String movieSelect(String cgvSeq, Model model) {
 Document doc;
@@ -250,7 +250,7 @@ Document doc;
 		return "movie/movieReserveAf";
 	}
 	
-	// 아이디로 예매리스트
+	// 아이디 기준 예매리스트
 	@RequestMapping(value="movieMyReserve.do", method={RequestMethod.GET, RequestMethod.POST})
 	public String movieMyReserve(String id, Model model) {
 		

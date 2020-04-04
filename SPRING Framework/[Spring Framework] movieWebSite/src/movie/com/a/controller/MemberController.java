@@ -24,7 +24,7 @@ public class MemberController {
 	
 	private Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
-	@Autowired // 의존성 Dependency Injection(DI) 스프링이 클래스를 찾아준다.
+	@Autowired
 	MemberService memberService;
 	
 	// 메인페이지
@@ -34,7 +34,7 @@ public class MemberController {
 		return "/main/main";
 	}
 	
-	
+	// 모든 회원 리스트
 	@RequestMapping(value="allmember.do", method=RequestMethod.GET)
 	public String allmember(Model model) {
 		logger.info("MemberController allmember " + new Date());
@@ -46,7 +46,7 @@ public class MemberController {
 		return "allMember";
 	}
 	
-	// 중복체크
+	// 회원가입시 아이디 중복체크
 	@ResponseBody
 	@RequestMapping(value="idCheck.do", produces="application/String; charset=utf-8", method={RequestMethod.GET, RequestMethod.POST})
 	public String idCheck(MemberDto mem) {

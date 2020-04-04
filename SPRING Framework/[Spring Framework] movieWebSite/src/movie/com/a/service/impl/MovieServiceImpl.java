@@ -15,11 +15,13 @@ public class MovieServiceImpl implements MovieService {
 	@Autowired
 	MovieDao movieDao;
 
+	//영화예매 추가
 	@Override
 	public boolean reserve(MovieDto movie) {
 		return movieDao.reserve(movie);
 	}
 
+	// 아이디 기준 예매리스트
 	@Override
 	public List<MovieDto> myReserve(String id) {
 		return movieDao.myReserve(id);

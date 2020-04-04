@@ -12,23 +12,25 @@ import movie.com.a.dao.MemberDao;
 import movie.com.a.model.MemberDto;
 
 
-@Repository // == 저장소
+@Repository
 public class MemberDaoImpl implements MemberDao {
 	
 	// DB와 통신
-	@Autowired // <- 객체 생성(의존성) // applicationContext에서 설정한 DB와 연결 bean의 아이디와 변수명이 일치해야 한다.
+	@Autowired
 	SqlSession sqlSession;
 	
 	
 	
-	String namespace = "Member."; // 아이디값을 연결하는 역할
+	String namespace = "Member.";
 
+	// 모든 회원 리스트
 	@Override
 	public List<MemberDto> allMember() {
 		List<MemberDto> list = sqlSession.selectList(namespace + "allMember");
 		return list;
 	}
 
+	// 회원가입시 아이디 중복체크
 	@Override
 	public boolean idCheck(String id) {
 		int idCheck = sqlSession.selectOne(namespace + "memberIdCheck", id);
@@ -42,6 +44,7 @@ public class MemberDaoImpl implements MemberDao {
 		
 	}
 
+	// 회원가입
 	@Override
 	public boolean join(MemberDto mem){
 		try {
@@ -59,6 +62,7 @@ public class MemberDaoImpl implements MemberDao {
 		}
 	}
 
+	// 로그인
 	@Override
 	public MemberDto login(MemberDto mem) {
 		try {
@@ -74,18 +78,7 @@ public class MemberDaoImpl implements MemberDao {
 			return null;
 		}	
 	}	
-//		try {
-//			List<MemberDto> memLogin = sqlSession.selectList(namespace + "memberLogin", mem);
-//			System.out.println(memLogin.get(0).toString());		
-//			if(memLogin != null) {
-//				return memLogin;
-//			} else {
-//				return null;
-//			}
-//		} catch(Exception e) {
-//			e.printStackTrace();
-//			return null;
-//		}	
+
 	
 	
 	

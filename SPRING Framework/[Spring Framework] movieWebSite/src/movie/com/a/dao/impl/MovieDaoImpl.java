@@ -16,6 +16,7 @@ public class MovieDaoImpl implements MovieDao {
 	SqlSession sqlSession;
 	String ns = "Movie.";
 
+	//영화예매 추가
 	@Override
 	public boolean reserve(MovieDto movie) {
 		try {
@@ -32,7 +33,8 @@ public class MovieDaoImpl implements MovieDao {
 			return false;
 		}
 	}
-
+	
+	// 아이디 기준 예매리스트
 	@Override
 	public List<MovieDto> myReserve(String id) {
 		List<MovieDto> list = sqlSession.selectList(ns + "myReserve", id);

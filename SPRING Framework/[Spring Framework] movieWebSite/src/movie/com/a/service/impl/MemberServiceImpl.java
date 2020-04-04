@@ -13,24 +13,28 @@ import movie.com.a.service.MemberService;
 @Service
 public class MemberServiceImpl implements MemberService {
 	
-	@Autowired // 멤버다오의 정보를 스프링이 넣어준다.(의존성)
+	@Autowired
 	MemberDao memberDao;
 
+	// 모든 회원 리스트
 	@Override
 	public List<MemberDto> allMember() {
 		return memberDao.allMember();
 	}
 
+	// 회원가입시 아이디 중복체크
 	@Override
 	public boolean idCheck(String id) {
 		return memberDao.idCheck(id);
 	}
 
+	// 회원가입
 	@Override
 	public boolean join(MemberDto mem) {
 		return memberDao.join(mem);
 	}
 
+	// 로그인
 	@Override
 	public MemberDto login(MemberDto mem) {
 		return memberDao.login(mem);
