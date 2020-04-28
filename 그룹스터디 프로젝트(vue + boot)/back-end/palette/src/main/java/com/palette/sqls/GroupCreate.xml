@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.palette.dao.GroupDao">
+
+    <select id="searchInterBigSeq" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    SELECT INTER_BIG_SEQ
+    FROM INTER_SMALL
+    WHERE INTER_SMALL_SEQ = #{interSmallSeq}
+    </select>
+
+    <insert id="createGroup" parameterType="com.palette.model.GroupDto">
+        INSERT INTO GROUP_INFO(MEMBER_SEQ, INTER_BIG_SEQ, INTER_SMALL_SEQ, GROUP_NAME, GROUP_LOCATION, INFO, SMALL_INFO, MAX_MEMBER, IMAGE, START_DATE, END_DATE, DEL, PERMISSION)
+        VALUES (#{memberSeq}, #{interBigSeq}, #{interSmallSeq}, #{groupName}, #{groupLocation}, #{info}, #{smallInfo}, #{maxMember}, #{image}, #{startDate}, #{endDate}, 0, 0)
+    </insert>
+
+    <insert id="addSchedule" parameterType="com.palette.model.GroupSchedule">
+        INSERT INTO GROUP_SCHEDULE(GROUP_INFO_SEQ, SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY)
+        VALUES ( #{groupInfoSeq}, #{sunday}, #{monday}, #{tuesday}, #{wednesday}, #{thursday}, #{friday}, #{saturday} )
+    </insert>
+
+    <select id="currGroupInfoSeq" resultType="java.lang.Integer">
+        SELECT max(GROUP_INFO_SEQ)
+        FROM GROUP_INFO
+    </select>
+
+
+
+</mapper>

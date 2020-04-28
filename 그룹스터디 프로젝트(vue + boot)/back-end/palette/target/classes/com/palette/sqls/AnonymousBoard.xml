@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.palette.dao.AnonymousBoardDao">
+
+	<resultMap type="com.palette.model.AnonymousBoardDto" id="AnonymousBoard">
+		<id column="FINALNUM" property="finalnum"/>
+		<result column="BOARD_SEQ" property="boardSeq"/>
+		<result column="MEMBER_SEQ" property="memberSeq"/>
+		<result column="CATEGORY" property="category"/>
+		<result column="TITLE" property="title"/>
+		<result column="CONTENT" property="content"/>
+		<result column="WRITE_DATE" property="writeDate"/>
+		<result column="READ_COUNT" property="readCount"/>
+		<result column="IMAGE" property="image"/>
+		<result column="CV_START_DATE" property="cvStartDate"/>
+		<result column="CV_END_DATE" property="cvEndDate"/>
+		<result column="FILE_NAME" property="fileName"/>
+		<result column="DB_FILE_NAME" property="dbFileName"/>
+		<result column="DEL" property="del"/>
+		<result column="BOARD_AUTH" property="boardAuth"/>
+		<result column="CAREER" property="career"/>
+		<result column="EDUCATION" property="education"/>
+		<result column="WORKING_TYPE" property="workingType"/>
+		<result column="SALARY" property="salary"/>
+		<result column="POSITION" property="position"/>
+		<result column="WORKING_LOCATION" property="workingLocation"/>
+		<result column="WEB_URL" property="webUrl"/>
+		<collection property="memberDto" resultMap="MemberInfo"/>
+	</resultMap>
+	 
+	<resultMap type="com.palette.model.MemberDto" id="MemberInfo">
+		<id column="MEMBER_SEQ" property="memberSeq"/>
+		<result column="MEMBER_ID" property="memberId"/>
+		<result column="MEMBER_NAME" property="memberName"/>
+		<result column="BIRTH" property="birth"/>
+		<result column="ADDRESS" property="address"/>
+		<result column="LOCATION" property="location"/>
+		<result column="EMAIL" property="email"/>
+		<result column="MYMONEY" property="myMoney"/>
+		<result column="CV" property="cv"/>
+		<result column="AUTH" property="auth"/>
+		<result column="DEL" property="del"/>
+		<result column="COMPANY_LOGO" property="companyLogo"/>
+		<result column="DISLIKE" property="dislike"/>
+	</resultMap>
+<!-- /get Employment Member Name -->
+
+	<!-- 익명 게시판 리스트 호출 -->
+	<select id="getAnonymousBoardPagingList" parameterType="com.palette.model.BoardParams" resultMap="AnonymousBoard">
+		select *
+		from(select @finalnum:=@finalnum+1 as finalnum, sub.*
+			from (select @rownum:=@rownum+1 as rownum, b.*
+				 from BOARD b 
+		         join MEMBER m
+		         	on b.MEMBER_SEQ = m.MEMBER_SEQ
+		         where (@rownum:=0)=0 and b.del = 0 and b.board_auth = 1 
+				 order by WRITE_DATE desc) sub, (select @finalnum:=0) ftmp
+			order by sub.rownum desc) fsub
+			<where>
+				<if test="keyWord == 'title'">
+					TITLE like CONCAT('%', #{searchWord}, '%')
+				</if>
+			</where>
+		order by fsub.finalnum desc
+		limit #{start}, #{limit}
+	</select>
+	
+	<!-- 익명 게시판 리스트 갯수 -->
+	<select id="anonymousBoardList" parameterType="com.palette.model.BoardParams" resultType="java.lang.Integer">
+		select count(*)
+		from BOARD b
+		join MEMBER m
+		on b.MEMBER_SEQ = m.MEMBER_SEQ
+		<where>
+			<if test="keyWord == 'title'">
+				TITLE like CONCAT('%', #{searchWord}, '%')
+			</if>
+		and b.DEL=0 and b.board_auth = 1
+		</where>	
+	</select>
+
+
+
+
+
+
+
+</mapper>

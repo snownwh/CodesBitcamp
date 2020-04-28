@@ -1,0 +1,176 @@
+@font-face { 
+  font-family: 'Noto Sans KR'; 
+  font-style: normal; 
+  font-weight: 100; 
+  src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.woff2) format('woff2'), 
+      url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.woff) format('woff'), 
+      url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.otf) format('opentype'); 
+} 
+@font-face { 
+  font-family: 'Noto Sans KR'; 
+  font-style: normal; 
+  font-weight: 300; 
+  src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.woff2) format('woff2'), 
+      url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.woff) format('woff'), 
+      url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.otf) format('opentype'); 
+} 
+@font-face { 
+  font-family: 'Noto Sans KR'; 
+  font-style: normal; 
+  font-weight: 400; 
+  src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff2) format('woff2'), 
+        url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff) format('woff'), 
+        url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.otf) format('opentype'); 
+ } 
+@font-face { 
+  font-family: 'Noto Sans KR'; 
+  font-style: normal; 
+  font-weight: 500; 
+  src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.woff2) format('woff2'), 
+        url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.woff) format('woff'), 
+        url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.otf) format('opentype'); 
+ } 
+@font-face { 
+  font-family: 'Noto Sans KR'; 
+  font-style: normal; 
+  font-weight: 700; 
+  src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.woff2) format('woff2'), 
+        url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.woff) format('woff'), 
+        url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.otf) format('opentype'); 
+ } 
+@font-face { 
+  font-family: 'Noto Sans KR'; 
+  font-style: normal; 
+  font-weight: 900; 
+  src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Black.woff2) format('woff2'), 
+        url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Black.woff) format('woff'), 
+        url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Black.otf) format('opentype'); 
+ } 
+
+html,body {width:100%;}
+html {overflow-y:scroll; box-sizing:border-box;}
+html.active, body.active {overflow-y:hidden;}
+*, *:before, *:after{box-sizing:inherit;}
+
+body {word-break:break-all;-ms-word-break:break-all; }
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,textarea,p,blockquote,th,td,input,select,textarea,button {margin:0; padding:0;}
+fieldset,img {border:0px none; vertical-align:top;}
+dl,ul,ol,menu,li {list-style:none;}
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after,q:before, q:after {content:''; content:none;}
+button {border:0 none; background-color:transparent; cursor:pointer;}
+body { background:#fff;}
+body,th,td,input,select,textarea,button {font-size:15px; line-height:1.6; font-family: 'Noto Sans KR';  color:#333;} 
+input, select, textarea, button{vertical-align:middle; }
+a:link,a:active,a:visited{color:#333; text-decoration:none; border:0px;}
+a:hover,a:focus{color:#333; text-decoration:none}
+
+table {border-collapse:collapse; border-spacing:0;}
+address,caption,cite,code,dfn,em,var {font-style:normal; font-weight:normal;}
+summary, caption, legend {width:0; height:0; overflow: hidden; visibility: hidden; border: none; position:absolute; left:-1000em;}
+caption {position:static;}
+/* label hidden 처리 */
+.invisible, .hide{overflow:hidden; visibility:hidden; width:0; height:0; font-size:0; line-height:0; position:absolute;}
+label.invisible{*position:Absolute;}
+
+/* common */
+.clfix:after {content: "."; display: block; height:0px; clear: both; visibility: hidden;}
+.clfix {display:inline-block;}
+.clfix {display:block;}
+* html .clfix {height:1%;} /* Hides from IE-mac */
+.clfix {zoom:1;} /*for IE 5.5-7*/
+
+
+body {line-height: 1;}
+ol, ul {list-style: none;}
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after, q:before, q:after {content: ''; content: none;}
+table {border-collapse: collapse;border-spacing: 0;}
+
+.inner {width:1050px; margin:0 auto;}
+a {text-decoration:none !important;}
+
+/* modal padding */
+.el-popup-parent--hidden {
+  overflow: hidden;
+  padding:0 !important;
+}
+
+#wrap {position:relative; width:100%;  min-width:1200px; overflow:hidden;}
+#header {width:100%;}
+#header-top {width: 100%; height: 115px; border-bottom: solid 1px #cecece;} 
+#header-top .member{margin-top: 15px; position: relative;}
+#header.sub{box-shadow:0 5px 10px rgba(0,0,0,0.1);}
+.header_top {width:100%; height:41px; text-align:right;}
+.logo { text-align: center; padding-left: 251px; padding-top: 38px; z-index: 1; float: left}
+#banner {width: 100%;height: 450px; line-height: 450px;}
+#contents {width: 100%;height: auto; min-height: 500px; background: #fff;}
+.footer {width: 100%;height: 220px; background: #fff;}
+#footer-nav {width: 100%; height: 60px;}
+#footer-info {width: 100%; height: 160px; line-height: 10px;}
+.container {width: 1050px; margin: 0 auto; height: inherit;}
+
+.header-btm .inner {position:relative; }
+.header-btm.fixed {position:fixed; top:0; left:50%; margin-left:-1000px; width:2000px; z-index:9999; background:#fff; box-shadow:0 5px 10px rgba(0,0,0,0.1);}
+.header-btm.fixed .gnb {margin-top:0;}
+
+.gnb {width:100%; height: 50px;}
+.gnb > li {position:relative; float:left; width:204px; height:50px; line-height:50px;}
+.gnb > li:before {position:absolute; top:12px; left:0; content:''; width:1px; height:18px; background:#ebebeb;}
+.gnb > li:first-child:before {display:none;}
+.gnb > li:after {position:absolute; bottom:0; left:50%; margin-left:-70px; content:''; width:140px; height:2px; transform:scale(0); background-color:#ff5151; transition:all 0.3s ease-in-out;}
+.gnb > li:hover:after {transform:scale(1)}
+.gnb > li.on:after {transform:scale(1)}
+.gnb > li > a {display:block; height:100%; font-size:16px; color:#333; text-align:center; font-size: 17px; font-weight: 500}
+.gnb > li > a:hover {color:#ff5151;}
+.gnb > li > a > img {position:absolute; top:28px; left:0; height:15px;}
+
+#header-nav {width: 100%; height: 52px; border-bottom: solid 1px #cecece; margin-bottom: 10px; }
+
+.hamburger {position:absolute; top:22px; left:0; width:24px; z-index:9999;}
+.header-btm.fixed .hamburger.active {top:160px;}
+.hamburger span.line{
+  width: 100%;
+  height:3px;
+  background-color: #6c757d;
+  display: block;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.hamburger.active span.line:nth-child(2){opacity: 0;}
+
+.hamburger.active span.line:nth-child(1){
+  -webkit-transform: translateY(6px) rotate(45deg);
+  -ms-transform: translateY(6px) rotate(45deg);
+  -o-transform: translateY(6px) rotate(45deg);
+  transform: translateY(6px) rotate(45deg);
+  background-color: #fff;
+}
+
+.hamburger.active span.line:nth-child(3){
+  -webkit-transform: translateY(-10px) rotate(-45deg);
+  -ms-transform: translateY(-10px) rotate(-45deg);
+  -o-transform: translateY(-10px) rotate(-45deg);
+  transform: translateY(-10px) rotate(-45deg);
+  background-color: #fff;
+}
+
+.all_menu {display:none; position:fixed; top:0; left:0; width:100%; height:100vh; background:rgba(0,0,0,0.9); z-index:1100;}
+.all_menu .active {display:block;}
+.all_menu .inner {position:relative; height:100%;}
+.all_menu ul {position:absolute; top:250px; left:50%;  margin-left:-525px; width:1050px; }
+.all_menu ul li {float:left; width:25%; text-align:center;}
+.all_menu ul li strong {display:block; font-size:36px; color:#fff; margin-bottom:10px;}
+.all_menu ul li a {display:block; line-height:50px; color:#fff; font-size:23px; transition:all 0.2s ease-in-out;}
+.all_menu ul li a:hover {color:#ff5151;}
+
+.searchWrap { width: 65%; margin-top: 20px;}
+.searchWrap input {border: 2px solid #ff5151; width:278px; height:45px; color:#868686; padding-left:20px; outline:none; border-radius:30px;}
+.searchWrap input ::placeholder {font-size:15px; color:#c1c0c0;}
+.searchWrap input::-webkit-input-placeholder { /* Chrome/Opera/Safari */font-size:15px; color:#c1c0c0;}
+.searchWrap input::-moz-placeholder { /* Firefox 19+ */font-size:15px; color:#c1c0c0;}
+.searchWrap input:-ms-input-placeholder { /* IE 10+ */font-size:15px; color:#c1c0c0;}
+.searchWrap input:-moz-placeholder { /* Firefox 18- */font-size:15px; color:#c1c0c0;}

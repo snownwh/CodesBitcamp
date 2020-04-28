@@ -1,0 +1,8582 @@
+@charset "utf-8";
+
+/* layout 관련 공통 css */
+
+/* reset & common class*/
+html {
+    color: #000;
+    background: #fff
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    -webkit-text-size-adjust: none
+}
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, button {
+    margin: 0;
+    padding: 0;
+    font-family: "Malgun Gothic", dotum, gulim, sans-serif
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    font-family: "Malgun Gothic", dotum, gulim, sans-serif;
+    font-size: inherit;
+    line-height: 100%
+}
+
+fieldset, img {
+    border: 0
+}
+
+address, caption, cite, code, dfn, em, strong, th, var {
+    font-weight: normal;
+    font-style: normal
+}
+
+strong, b {
+    font-weight: bold
+}
+
+ol, ul, li {
+    list-style: none
+}
+
+caption, th {
+    text-align: left
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: normal
+}
+
+q:before, q:after {
+    content: ""
+}
+
+del, ins {
+    text-decoration: none
+}
+
+abbr, acronym {
+    border: 0;
+    font-variant: normal
+}
+
+sup {
+    vertical-align: text-top
+}
+
+sub {
+    vertical-align: text-bottom
+}
+
+legend {
+    color: #000
+}
+
+a {
+    color: #444;
+    text-decoration: none
+}
+
+header, footer, section, nav, article {
+    display: block
+}
+
+input, button, textarea, select, optgroup, option {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    font-style: inherit
+}
+
+input, button, textarea, select {
+    line-height: normal
+}
+
+button {
+    border: 0;
+    background: transparent;
+    cursor: pointer
+}
+
+.hidden, .blind {
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute !important;
+    width: 1px;
+    height: 1px
+}
+
+.ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.noSelect {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    -o-user-select: none;
+    -khtml-user-select: none
+}
+
+#skipnavigation a {
+    position: absolute;
+    left: -3000%
+}
+
+#skipnavigation a:focus {
+    display: block;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 30px;
+    color: #fff;
+    line-height: 30px;
+    text-align: center;
+    background: #6174d1
+}
+
+/* layout */
+.sri_lnb_icon {
+    display: inline-block;
+    vertical-align: top;
+    background: url(//www.saraminimage.co.kr/sri/common/layout/sri_lnb_icon_181004.png) no-repeat;
+    background-size: 300px 150px
+}
+
+.sri_gnb_option {
+    display: inline-block;
+    vertical-align: middle;
+    background: url(//www.saraminimage.co.kr/sri/common/layout/sri_gnb_option_menu.png) no-repeat;
+    background-size: 210px 44px
+}
+
+body {
+    position: relative;
+    padding-top: 60px;
+    min-width: 1004px;
+    box-sizing: border-box
+}
+
+body#sri_layout_popup {
+    padding-top: 0
+}
+
+#sri_header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    min-width: 1260px;
+    height: 60px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+    box-sizing: border-box;
+    background: #4876EF
+}
+
+body#sri_layout_popup #sri_header {
+    display: none
+}
+
+#sri_header:after {
+    display: table;
+    clear: both;
+    content: "";
+    table-layout: fixed
+}
+
+#sri_header.narrow {
+    min-width: 900px
+}
+
+#sri_header.narrow .wrap_nav.primary {
+    display: none
+}
+
+#sri_section {
+    display: table;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box
+}
+
+body.has_lnb #sri_section {
+    padding-left: 220px
+}
+
+#sri_lnb_wrap {
+    position: fixed;
+    top: 60px;
+    bottom: 0;
+    left: 0;
+    z-index: 20;
+    width: 220px;
+    border-right: 1px solid #e7e7e8;
+    box-sizing: border-box;
+    background: #fcfcfc
+}
+
+#sri_lnb_wrap.tablet_support {
+    position: absolute;
+    top: 0
+}
+
+#sri_lnb_wrap .viewport {
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%
+}
+
+#sri_lnb_wrap .overview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    list-style: none
+}
+
+#sri_lnb_wrap .scrollbar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    width: 6px;
+    transition: opacity 0.5s linear;
+    opacity: 0
+}
+
+#sri_lnb_wrap .track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #fcfcfc
+}
+
+#sri_lnb_wrap .thumb {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 20px;
+    background: #f2f2f3;
+    cursor: pointer
+}
+
+#sri_lnb_wrap .thumb .end {
+    overflow: hidden;
+    width: 100%;
+    height: 5px;
+    background: #f2f2f3
+}
+
+#sri_lnb_wrap .disable {
+    display: none
+}
+
+#sri_lnb_wrap:hover .scrollbar {
+    opacity: 1
+}
+
+#sri_lnb_wrap .btn_fold {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: -30px;
+    width: 30px;
+    height: 51px;
+    border: 1px solid #cbcbcb;
+    box-sizing: border-box;
+    background: rgba(000, 000, 000, .17)
+}
+
+#sri_lnb_wrap .btn_fold.folded .ic_open {
+    background-position: -50px 0
+}
+
+#sri_wrap {
+    display: table-row;
+    width: 100%;
+    height: 100%
+}
+
+#content {
+    position: relative;
+    z-index: 1;
+    margin: 44px auto 80px auto;
+    width: 960px
+}
+
+#sri_section.has_banner #content {
+    padding-right: 160px;
+    min-height: 960px
+}
+
+#sri_banner {
+    position: absolute;
+    top: 130px;
+    left: 50%;
+    margin-left: 440px;
+    width: 120px
+}
+
+body.has_lnb #sri_banner {
+    z-index: 10;
+    margin-left: 550px
+}
+
+#sri_banner_fixed {
+    position: relative;
+    z-index: 20;
+    width: 120px;
+    box-sizing: border-box
+}
+
+#sri_footer {
+    display: table-row;
+    width: 100%;
+    height: 1px
+}
+
+body#sri_layout_popup #sri_footer {
+    display: none
+}
+
+.sri_ready {
+    display: block;
+    visibility: hidden;
+    overflow: hidden;
+    position: fixed;
+    top: -1px;
+    left: -1px;
+    z-index: -1;
+    width: 1px;
+    height: 1px
+}
+
+.sri_dimmed {
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7)
+}
+
+.has_lnb .sri_dimmed {
+    z-index: 1
+}
+
+/* icon */
+.sri_lnb_icon.arrow {
+    width: 11px;
+    height: 28px;
+    background-position: -150px 0
+}
+
+.sri_lnb_icon.ic_golink {
+    width: 6px;
+    height: 45px;
+    background-position: -250px 0
+}
+
+.sri_lnb_icon.ic_open {
+    width: 30px;
+    height: 49px;
+    background-position: 0 0
+}
+
+.sri_lnb_icon.btn_recently_del {
+    width: 19px;
+    height: 26px;
+    background-position: 0 -50px
+}
+
+.sri_lnb_icon.btn_go_top {
+    width: 40px;
+    height: 40px;
+    background-position: -250px -50px
+}
+
+.sri_lnb_icon.ic_up {
+    width: 19px;
+    height: 12px;
+    background-position: -150px -50px
+}
+
+.sri_lnb_icon.ic_hot {
+    width: 25px;
+    height: 12px;
+    background-position: -100px -50px
+}
+
+.sri_lnb_icon.ic_new {
+    width: 13px;
+    height: 12px;
+    background-position: -200px -50px
+}
+
+.sri_lnb_icon.ic_renew {
+    width: 13px;
+    height: 12px;
+    background-position: 0 -100px
+}
+
+.sri_lnb_icon.ic_window {
+    width: 11px;
+    height: 11px;
+    background-position: -50px -50px
+}
+
+.sri_lnb_icon.ic_company {
+    width: 46px;
+    height: 14px;
+    background-position: -200px 0
+}
+
+.sri_gnb_option.ic_log_out {
+    margin-right: 6px;
+    width: 15px;
+    height: 44px;
+    background-position: -60px 0
+}
+
+.sri_gnb_option.ic_log_in {
+    margin-right: 8px;
+    width: 17px;
+    height: 44px;
+    background-position: -120px 0
+}
+
+.sri_gnb_option.ic_join {
+    margin-right: 8px;
+    width: 17px;
+    height: 44px;
+    background-position: -90px 0
+}
+
+.sri_gnb_option.ic_go_arrow {
+    margin-left: 10px;
+    width: 5px;
+    height: 44px;
+    background-position: -150px 0
+}
+
+.sri_gnb_option.ic_reg {
+    margin-right: 6px;
+    width: 19px;
+    height: 19px;
+    background-position: 0 -12px
+}
+
+.sri_gnb_option.ic_manage {
+    margin-right: 8px;
+    width: 17px;
+    height: 19px;
+    background-position: -30px -12px
+}
+
+.sri_gnb_option.ic_talent {
+    margin-right: 5px;
+    width: 20px;
+    height: 20px;
+    background-position: -180px -12px
+}
+
+.lnb_menu.no_depth .sri_lnb_icon.ic_new, .lnb_menu.no_depth .sri_lnb_icon.ic_renew {
+    margin-top: 0;
+    vertical-align: middle
+}
+
+/* sri_header */
+.wrap_logo {
+    float: left;
+    padding: 9px 0 0 21px
+}
+
+.wrap_logo a:hover {
+    text-decoration: none
+}
+
+.wrap_logo a img {
+    vertical-align: top
+}
+
+.wrap_logo .title {
+    display: inline-block;
+    margin: 10px 0 0 4px;
+    color: #fff;
+    font-size: 23px;
+    font-weight: bold;
+    letter-spacing: -3px;
+    vertical-align: top
+}
+
+#sri_header .wrap_header {
+    float: right;
+    position: relative;
+    height: 60px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+    box-sizing: border-box
+}
+
+#sri_header .wrap_header:after {
+    display: table;
+    clear: both;
+    content: "";
+    table-layout: fixed
+}
+
+.wrap_search {
+    float: left;
+    position: relative;
+    margin-right: 15px;
+    padding-top: 12px
+}
+
+.wrap_search legend {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute;
+    width: 1px;
+    height: 1px
+}
+
+.wrap_search .box_search {
+    position: relative
+}
+
+.wrap_search .box_search_input {
+    display: inline-block;
+    height: 36px;
+    border-radius: 36px;
+    box-sizing: border-box;
+    vertical-align: top;
+    background-color: #fff
+}
+
+.wrap_search .box_search_input input {
+    display: block;
+    padding: 8px 37px 8px 14px;
+    width: 232px;
+    height: 36px;
+    border: 0;
+    border-radius: 36px;
+    box-sizing: border-box;
+    color: #444;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    background: none
+}
+
+.wrap_search .box_search_input input:focus {
+    border: 1px solid #425bd5;
+    outline: none
+}
+
+.wrap_search .box_search_input input::-webkit-input-placeholder {
+    color: #777;
+    font-weight: normal
+}
+
+.wrap_search .box_search_input input:-ms-input-placeholder {
+    color: #777;
+    font-weight: normal
+}
+
+.wrap_search .box_search_input input::-ms-clear {
+    display: none
+}
+
+.wrap_search .box_search_input .pseudo_placeholder {
+    display: inline-block;
+    padding-left: 5px;
+    letter-spacing: -1px;
+    text-align: center
+}
+
+.wrap_search .btn_search {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 1px;
+    padding: 18px;
+    width: 17px;
+    height: 17px;
+    border: 0;
+    text-indent: -9999px;
+    background: url(//www.saraminimage.co.kr/sri/common/btn/btn_search_new.png) 50% 50% no-repeat
+}
+
+.wrap_nav {
+    float: left
+}
+
+.wrap_nav.primary {
+    margin: 0 15px 0 -9px
+}
+
+.wrap_nav ul.nav li.depth1 {
+    float: left;
+    height: 60px;
+    vertical-align: top
+}
+
+.wrap_nav ul.nav li.depth1 a.depth1_link {
+    display: inline-block;
+    padding: 0 7px 0 8px;
+    height: 60px;
+    color: #fff;
+    font-size: 15px;
+    letter-spacing: -2px;
+    line-height: 58px;
+    cursor: pointer
+}
+
+.wrap_nav ul.nav li.depth1 a.depth1_link:hover {
+    display: inline-block;
+    padding: 0 7px 0 8px;
+    height: 60px;
+    color: #fff;
+    line-height: 58px;
+    _height: 62px;
+    text-decoration: underline
+}
+
+.wrap_nav ul.nav li.depth1 a.depth1_link.new_window {
+    display: inline-block;
+    padding-right: 18px;
+    background: url(//www.saraminimage.co.kr/sri/common/ico/ico_new_window.png) no-repeat 66px 25px
+}
+
+.wrap_nav ul.nav li.depth1.selected a.depth1_link {
+    display: inline-block;
+    padding: 0 14px;
+    height: 42px;
+    border-top: 2px solid #364fc7;
+    border-right: none;
+    border-left: none;
+    color: #364fc7;
+    font-weight: bold;
+    line-height: 40px;
+    text-decoration: none;
+    background: #f6f6f6
+}
+
+.wrap_nav ul.nav li.depth1.selected a.depth1_link:hover {
+    padding: 0 14px;
+    border-right: none;
+    border-left: none;
+    background: #fff
+}
+
+.wrap_nav ul.nav li.depth1:first-child.selected a.depth1_link {
+    padding: 0 14px 0 17px;
+    border-right: none;
+    border-left: 2px solid #364fc7
+}
+
+.wrap_nav ul.nav li.depth1 a.depth1_link .icon {
+    position: absolute;
+    top: -9px;
+    left: 0;
+    width: 60px;
+    height: 20px;
+    color: #425bd5;
+    font-size: 0;
+    line-height: 20px;
+    text-indent: -9999px;
+    background: url(//www.saraminimage.co.kr/ui/common/nav/sp_gnb_0406.png) 0 0 no-repeat
+}
+
+.wrap_nav ul.nav li.depth1 a.depth1_link .icon_talent_market {
+    left: 50%;
+    margin-left: -27px;
+    width: 54px;
+    background: url(//www.saraminimage.co.kr/ui/common/nav/sp_gnb_0328.png) no-repeat 0 -60px
+}
+
+.wrap_nav ul.nav li.depth1 a.depth1_link .icon_beta {
+    top: -8px;
+    left: 50%;
+    margin-left: -18px;
+    width: 36px;
+    height: 16px;
+    background-position: 0 -80px
+}
+
+.wrap_nav ul.nav .wrap_depth2 {
+    display: none;
+    position: absolute;
+    top: 59px;
+    letter-spacing: -1px
+}
+
+.wrap_nav ul.nav li.depth1 a.depth1_link.total_menu {
+    padding: 0;
+    width: 60px;
+    background: url(//www.saraminimage.co.kr/sri/common/layout/ic_total_menu.png) no-repeat
+}
+
+#recruit-nav .wrap_depth2, #curation-level .wrap_depth2, #public-level .wrap_depth2 {
+    right: 0
+}
+
+.wrap_nav ul.nav .hover {
+    display: block
+}
+
+.wrap_nav ul.nav .wrap_depth2 {
+    overflow: hidden;
+    z-index: 900;
+    padding: 14px 0 2px 0;
+    border: 1px solid #444;
+    font-weight: normal;
+    text-align: left;
+    background-color: #fff
+}
+
+.wrap_nav ul.nav .wrap_depth2 li {
+    padding: 0;
+    min-height: 20px;
+    color: #444;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 22px
+}
+
+.wrap_nav ul.nav .wrap_depth2 li > a {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: -1px;
+    line-height: 20px;
+    vertical-align: top
+}
+
+.wrap_nav ul.nav .wrap_depth2 li > a:hover {
+    text-decoration: underline
+}
+
+.wrap_nav ul.nav .wrap_depth2 li.typ_spc > a {
+    color: #425bd5
+}
+
+.wrap_nav ul.nav .wrap_depth2 {
+    padding: 8px 10px 10px 6px;
+    width: 450px
+}
+
+.wrap_nav ul.nav .wrap_depth2 .content {
+    width: 750px
+}
+
+.wrap_nav ul.nav .wrap_depth2 .gnb_sub_home {
+    position: relative;
+    padding: 0 0 8px 20px;
+    height: 19px;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 14px;
+    letter-spacing: -1px;
+    line-height: 19px
+}
+
+.wrap_nav ul.nav .wrap_depth2 .gnb_sub_home .title_local_home {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold
+}
+
+.wrap_nav ul.nav .wrap_depth2 .gnb_sub_home .btn_info_search {
+    overflow: hidden;
+    position: absolute;
+    top: -3px;
+    right: 18px;
+    width: 123px;
+    height: 25px;
+    text-indent: -3000px;
+    background: url(//www.saraminimage.co.kr/ui/common/nav/btn_gnb_info_search.png) no-repeat
+}
+
+.wrap_nav ul.nav .wrap_depth2 .gnb_sub_home > div > a {
+    font-weight: bold
+}
+
+.wrap_nav ul.nav .wrap_depth2 .gnb_sub_home > div > a:hover {
+    text-decoration: underline
+}
+
+.wrap_nav ul.nav .wrap_depth2 .column.last {
+    padding-right: 0;
+    background: #fff none
+}
+
+.wrap_nav ul.nav .wrap_depth2 .column .tit_depth2_link {
+    clear: both;
+    margin: 0 0 5px -8px;
+    padding-left: 8px;
+    height: 16px;
+    color: #2d45bf;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    line-height: 16px;
+    background: url(//www.saraminimage.co.kr/main/new/bul_point.gif) no-repeat 0 50%
+}
+
+.wrap_nav ul.nav .wrap_depth2 .column .tit_depth2_link a {
+    color: #2d45bf;
+    text-decoration: none
+}
+
+.wrap_nav ul.nav .wrap_depth2 .column .tit_depth2_link a:hover {
+    text-decoration: underline
+}
+
+.wrap_nav ul.nav .wrap_depth2 .separate {
+    display: inline-block;
+    overflow: hidden;
+    margin: 7px 4px 3px 6px;
+    width: 1px;
+    height: 10px;
+    vertical-align: top;
+    background-color: #e8e8e8
+}
+
+.wrap_nav ul.nav .wrap_depth2 img.icon {
+    margin: 5px 0 0 2px;
+    vertical-align: top
+}
+
+.wrap_nav ul.nav .wrap_depth2 img.icon_new {
+    margin: 10px 0 0 4px;
+    vertical-align: top
+}
+
+.wrap_nav ul.nav .wrap_depth2 .list_column_link {
+    margin: 5px 0 14px;
+    padding: 2px;
+    list-style: none
+}
+
+.wrap_nav ul.nav .wrap_depth2 .list_column_link li .area_side {
+    float: none;
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+    padding-left: 0;
+    width: auto
+}
+
+.wrap_nav ul.nav .wrap_depth2 .list_column_link li .area_side img {
+    vertical-align: top
+}
+
+.wrap_nav ul.nav .wrap_depth2 .list_column_link li .area_side a {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 0 0 0 6px;
+    color: #2d45bf !important;
+    font-weight: normal !important;
+    text-decoration: none !important;
+    vertical-align: top;
+    background: url(//www.saraminimage.co.kr/main/new/bul_point_small.gif) 0 50% no-repeat
+}
+
+.wrap_nav ul.nav .wrap_depth2 .list_column_link li .area_side a:hover {
+    text-decoration: underline !important
+}
+
+.wrap_nav ul.nav .wrap_depth2 .list_column_link li.separate_img_link {
+    margin-top: 5px
+}
+
+.wrap_nav ul.nav .wrap_depth2 .list_column_link .reduce_ltp {
+    letter-spacing: -1px
+}
+
+.wrap_nav ul.nav .wrap_depth2 .visit_mark {
+    position: absolute;
+    top: 390px;
+    left: 615px
+}
+
+.wrap_nav ul.nav .wrap_depth2 .rct-lnk {
+    display: block;
+    margin: -2px 4px 14px -8px
+}
+
+.wrap_nav ul.nav .wrap_depth2 .rct-lnk img {
+    vertical-align: top
+}
+
+.wrap_nav ul.nav li .list_depth3 {
+    display: none;
+    position: absolute;
+    top: 36px;
+    left: 193px;
+    padding-top: 12px;
+    box-sizing: border-box
+}
+
+.wrap_nav ul.nav li .list_depth3 li {
+    float: left;
+    padding-left: 17px;
+    width: 190px;
+    box-sizing: border-box
+}
+
+.wrap_nav ul.nav li .list_depth3 li a {
+    display: block;
+    font-weight: normal !important;
+    text-decoration: none !important
+}
+
+.wrap_nav ul.nav li .list_depth3 li a:hover {
+    text-decoration: underline !important
+}
+
+.wrap_nav ul.nav.typ_etc li.depth1 a.depth1_link {
+    color: #bbc7ff
+}
+
+.wrap_nav ul.nav.typ_etc li.depth1 a.depth1_link:hover {
+    color: #364fc7
+}
+
+.wrap_nav ul.nav .depth1.selected .wrap_depth2_type1 {
+    display: block
+}
+
+.wrap_nav ul.nav .wrap_depth2_type1 {
+    display: none;
+    position: absolute;
+    right: 0;
+    left: 0;
+    z-index: 10;
+    margin-left: -200px;
+    width: 900px;
+    height: 40px
+}
+
+.wrap_nav ul.nav .wrap_depth2_type1 ul {
+    background-color: #f6f6f6
+}
+
+.wrap_nav ul.nav .wrap_depth2_type1 ul:after {
+    display: block;
+    clear: both;
+    content: ""
+}
+
+.wrap_nav ul.nav .wrap_depth2_type1 ul li {
+    float: left;
+    padding: 0 15px;
+    height: 40px;
+    box-sizing: border-box;
+    font-size: 13px;
+    letter-spacing: -1px;
+    line-height: 40px;
+    text-align: center
+}
+
+.wrap_nav ul.nav .wrap_depth2_type1 ul li:hover, .wrap_nav ul.nav .wrap_depth2_type1 ul li.selected {
+    border-bottom: 2px solid #4057c9
+}
+
+.wrap_nav ul.nav .wrap_depth2_type1 ul li a {
+    display: block;
+    text-decoration: none
+}
+
+.wrap_nav ul.nav .wrap_depth2_type1 ul li.selected a {
+    color: #364fc7;
+    font-weight: bold
+}
+
+.wrap_nav ul.nav #recruit-nav .wrap_depth2 {
+    padding: 8px 191px 0 0;
+    width: 767px
+}
+
+.wrap_nav ul.nav #recruit-nav .wrap_depth2 .gnb_sub_home {
+    width: 938px
+}
+
+.wrap_nav ul.nav #recruit-nav .wrap_depth2 .column {
+    display: inline-block;
+    height: 430px;
+    vertical-align: top
+}
+
+.wrap_nav ul.nav #recruit-nav .wrap_depth2 .recruit_info_nav .title_depth2 {
+    padding-left: 20px;
+    height: 33px;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 30px;
+    background: #fbfbfb
+}
+
+.wrap_nav ul.nav #recruit-nav .wrap_depth2 .recruit_info_nav .title_depth2 > a {
+    display: block;
+    height: 33px;
+    background: url(//www.saraminimage.co.kr/main/new/bul_gnb_point_sub.png) no-repeat 149px 12px
+}
+
+.wrap_nav ul.nav #recruit-nav .wrap_depth2 .recruit_info_nav .title_depth2 > a.typ_hiddenstar {
+    background: url(//www.saraminimage.co.kr/main/new/bul_gnb_hiddenstar01.png) 56px 50% no-repeat
+}
+
+.wrap_nav ul.nav #recruit-nav .wrap_depth2 .recruit_info_nav .title_depth2 > a:hover {
+    text-decoration: underline
+}
+
+.wrap_nav ul.nav #recruit-nav .wrap_depth2 .recruit_info_nav .title_depth2.add_title {
+    border-top: 1px solid #e5e5e5
+}
+
+.wrap_nav ul.nav #recruit-nav .wrap_depth2 .recruit_info_nav li.depth2 {
+    float: left;
+    width: 191px;
+    height: 186px;
+    border-right: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    box-sizing: border-box
+}
+
+.wrap_nav ul.nav #recruit-nav .wrap_depth2 .recruit_info_nav li.depth2.direct_link_menu {
+    position: absolute;
+    top: 35px;
+    right: 0;
+    width: 194px;
+    height: 385px;
+    border-top: 1px solid #e5e5e5
+}
+
+.wrap_nav ul.nav #recruit-nav .wrap_depth2 .recruit_info_nav li.depth2.type_long_height {
+    height: 198px
+}
+
+.wrap_nav ul.nav #recruit-nav .wrap_depth2 .recruit_info_nav .depth3 {
+    overflow: hidden;
+    padding: 6px 5px 6px 20px;
+    min-height: 98px;
+    box-sizing: border-box
+}
+
+.wrap_nav ul.nav #recruit-nav .wrap_depth2 .recruit_info_nav .depth3 .ico_tit_category {
+    display: inline-block;
+    margin: -2px 2px 0 0;
+    width: 55px;
+    height: 16px;
+    color: #fff;
+    font-size: 0;
+    line-height: 1px;
+    vertical-align: middle;
+    background: url(//www.saraminimage.co.kr/sri/common/ico/ico_tit_category.png) no-repeat
+}
+
+.wrap_nav ul.nav #recruit-nav .wrap_depth2 .recruit_info_nav .link_menu .btn_hightschool_saramin {
+    display: inline-block;
+    margin-top: 7px;
+    padding-right: 16px;
+    width: 150px;
+    height: 31px;
+    border: 1px solid #e5e5e5;
+    box-sizing: border-box;
+    font-size: 13px;
+    line-height: 25px;
+    text-align: center;
+    background: url(//www.saraminimage.co.kr/main/new/bul_gnb_point_sub.png) no-repeat 118px 10px
+}
+
+.wrap_nav ul.nav #recruit-nav .wrap_depth2 .recruit_info_nav .link_menu .btn_hightschool_saramin span.point {
+    color: #778bf5
+}
+
+.wrap_nav ul.nav #recruit-nav .wrap_depth2 .recruit_info_nav .link_menu .btn_hightschool_saramin:hover {
+    color: #555;
+    text-decoration: none
+}
+
+.wrap_nav ul.nav #recruit-nav .wrap_depth2 .recruit_info_nav .depth3 .btn_alba_cokr {
+    display: inline-block;
+    margin-top: 10px;
+    padding-right: 16px;
+    width: 150px;
+    height: 31px;
+    border: 1px solid #e5e5e5;
+    box-sizing: border-box;
+    font-size: 13px;
+    line-height: 25px;
+    text-align: center;
+    background: url(//www.saraminimage.co.kr/main/new/bul_gnb_point_sub.png) no-repeat 102px 10px
+}
+
+.wrap_nav ul.nav #recruit-nav .wrap_depth2 .recruit_info_nav .depth3 .btn_alba_cokr:hover {
+    color: #555;
+    text-decoration: none
+}
+
+.wrap_nav ul.nav #recruit-nav .wrap_depth2 .recruit_info_nav li.depth2 .banner {
+    padding-top: 20px;
+    text-align: center
+}
+
+.wrap_nav ul.nav #recruit-nav .wrap_depth2 .recruit_info_nav .link_menu {
+    margin: 0 23px;
+    padding: 10px 0 12px;
+    border-top: 1px solid #e5e5e5
+}
+
+.wrap_nav ul.nav #recruit-nav .wrap_depth2 .recruit_info_nav .link_menu:first-of-type {
+    padding-top: 6px;
+    border-top: 0
+}
+
+.wrap_nav ul.nav #recruit-nav .wrap_depth2 .recruit_info_nav .link_menu a {
+    display: block;
+    margin-top: 5px;
+    font-size: 13px
+}
+
+.wrap_nav ul.nav #recruit-nav .wrap_depth2 .recruit_info_nav .link_menu a:first-child {
+    margin-top: 0
+}
+
+.wrap_nav ul.nav #recruit-nav .wrap_depth2 .recruit_info_nav .link_menu a.btn_hightschool_saramin {
+    margin-top: 9px
+}
+
+.wrap_nav ul.nav #recruit-nav .wrap_depth2 .recruit_info_nav .link_menu .new_window:after {
+    display: inline-block;
+    margin: 4px 0 0 6px;
+    width: 11px;
+    height: 11px;
+    vertical-align: top;
+    background: url(//www.saraminimage.co.kr/sri/common/ico/ico_new_window.png) no-repeat 0 -50px;
+    content: ""
+}
+
+.wrap_nav ul.nav #recruit-nav .wrap_depth2 .recruit_info_nav .link_menu a[class * ="ico_"] {
+    position: relative;
+    padding-left: 24px
+}
+
+.wrap_nav ul.nav #recruit-nav .wrap_depth2 .recruit_info_nav .link_menu a[class * ="ico_"]:before {
+    position: absolute;
+    content: ""
+}
+
+.wrap_nav ul.nav #recruit-nav .wrap_depth2 .recruit_info_nav .link_menu .ico_recommend:before {
+    top: -2px;
+    left: 0;
+    width: 14px;
+    height: 22px;
+    background: url(//www.saraminimage.co.kr/sri/common/ico/ico_sri_recommend_s.png) no-repeat
+}
+
+.wrap_nav ul.nav #recruit-nav .wrap_depth2 .recruit_info_nav .link_menu .ico_salary:before {
+    top: 4px;
+    left: 0;
+    width: 19px;
+    height: 16px;
+    background: url(//www.saraminimage.co.kr/sri/common/ico/ico_company_salary.png) no-repeat
+}
+
+.wrap_nav ul.nav #recruit-nav .wrap_depth2 .recruit_info_nav .link_menu .ico_talent:before {
+    top: 3px;
+    left: 2px;
+    width: 14px;
+    height: 15px;
+    background: url(//www.saraminimage.co.kr/sri/common/ico/ico_direct_talent.png) no-repeat
+}
+
+.wrap_nav ul.nav #job-category-nav .wrap_depth2 {
+    padding: 8px 0 0;
+    width: 572px
+}
+
+.wrap_nav ul.nav #job-category-nav .wrap_depth2 li a {
+    display: block;
+    font-size: 12px
+}
+
+.wrap_nav ul.nav #job-category-nav .wrap_depth2 .column {
+    display: inline-block;
+    margin-left: 0;
+    padding: 0;
+    width: 191px;
+    vertical-align: top;
+    background: #fbfbfb
+}
+
+.wrap_nav ul.nav #job-category-nav .wrap_depth2 .column .list_column_link {
+    margin: 0;
+    padding: 12px 0;
+    border-right: 1px solid #e5e5e5
+}
+
+.wrap_nav ul.nav #job-category-nav .wrap_depth2 .column .list_column_link li, .wrap_nav ul.nav #job-category-nav .wrap_depth2 .column .list_column_link li a {
+    height: 22px;
+    line-height: 20px;
+    vertical-align: middle
+}
+
+.wrap_nav ul.nav #job-category-nav .wrap_depth2 .column .list_column_link li {
+    padding: 0 20px;
+    border-top: 1px solid #fbfbfb;
+    border-bottom: 1px solid #fbfbfb;
+    background: url(//www.saraminimage.co.kr/main/new/bul_gnb_point_sub01.png) no-repeat 172px -16px
+}
+
+.wrap_nav ul.nav #job-category-nav .wrap_depth2 .column .list_column_link li.mhover {
+    margin-right: -1px;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    background-color: #fff;
+    background-position: 172px 8px
+}
+
+.wrap_nav ul.nav #job-category-nav .wrap_depth2 .column .list_column_link li.mhover .list_depth3 li {
+    padding: 0 0 0 20px;
+    width: 190px;
+    height: 24px;
+    border: none;
+    box-sizing: border-box;
+    background: none
+}
+
+.wrap_nav ul.nav #job-category-nav .wrap_depth2 .column .list_column_link li.mhover .list_depth3 li a {
+    line-height: 22px
+}
+
+.wrap_nav ul.nav #job-category-nav .wrap_depth2 .last_column {
+    width: 130px
+}
+
+.wrap_nav ul.nav #job-category-nav li.mhover .list_depth3 {
+    display: block;
+    width: 380px;
+    height: 351px;
+    background: url(//www.saraminimage.co.kr/main/new/bg_gnb_sub_div01.png) repeat
+}
+
+.wrap_nav ul.nav #job-category-nav li.mhover a:hover {
+    font-weight: bold;
+    text-decoration: none
+}
+
+.wrap_nav ul.nav #job-category-nav .list_column_link .depth2_link:hover {
+    color: #444
+}
+
+.wrap_nav ul.nav #job-category-nav li .depth03 li a {
+    display: block;
+    float: left;
+    padding-left: 7px !important;
+    width: auto !important;
+    font-size: 12px !important;
+    font-weight: normal;
+    text-decoration: none;
+    background: url(//www.saraminimage.co.kr/main/new/bul_point_sub.gif) no-repeat 0 4px
+}
+
+.wrap_nav ul.nav #job-category-nav li .depth03 li a:hover {
+    color: #ff4800;
+    font-weight: normal;
+    letter-spacing: -1px;
+    text-decoration: underline;
+    background: url(//www.saraminimage.co.kr/main/new/bul_point_sub.gif) no-repeat 0 4px
+}
+
+.wrap_nav ul.nav #area-nav .wrap_depth2 {
+    padding: 8px 0 0;
+    width: 763px
+}
+
+.wrap_nav ul.nav #area-nav .wrap_depth2 li a {
+    display: block;
+    font-size: 12px
+}
+
+.wrap_nav ul.nav #area-nav .wrap_depth2 .column {
+    display: inline-block;
+    margin-left: 0;
+    padding: 0;
+    width: 191px;
+    vertical-align: top;
+    background: #fbfbfb
+}
+
+.wrap_nav ul.nav #area-nav .wrap_depth2 .column .list_column_link {
+    margin: 0;
+    padding: 12px 0;
+    border-right: 1px solid #e5e5e5
+}
+
+.wrap_nav ul.nav #area-nav .wrap_depth2 .column .list_column_link li, .wrap_nav ul.nav #area-nav .wrap_depth2 .column .list_column_link li a {
+    height: 23px;
+    line-height: 20px;
+    vertical-align: top
+}
+
+.wrap_nav ul.nav #area-nav .wrap_depth2 .column .list_column_link li {
+    padding: 0 20px;
+    border-top: 1px solid #fbfbfb;
+    border-bottom: 1px solid #fbfbfb;
+    background: url(//www.saraminimage.co.kr/main/new/bul_gnb_point_sub01.png) no-repeat 172px -16px
+}
+
+.wrap_nav ul.nav #area-nav .wrap_depth2 .column .list_column_link li.mhover {
+    margin-right: -1px;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    background-color: #fff;
+    background-position: 172px 8px
+}
+
+.wrap_nav ul.nav #area-nav .wrap_depth2 .column .list_column_link li.mhover .list_depth3 li {
+    padding: 0 0 0 17px;
+    width: 190px;
+    height: 25px;
+    border: none;
+    box-sizing: border-box;
+    background: none
+}
+
+.wrap_nav ul.nav #area-nav .wrap_depth2 .column .list_column_link li.mhover .list_depth3 li a {
+    line-height: 22px
+}
+
+.wrap_nav ul.nav #area-nav .wrap_depth2 .last_column {
+    width: 130px
+}
+
+.wrap_nav ul.nav #area-nav li.mhover .list_depth3 {
+    display: block;
+    width: 572px;
+    height: 476px;
+    background: url(//www.saraminimage.co.kr/main/new/bg_gnb_sub_div01.png) repeat
+}
+
+.wrap_nav ul.nav #area-nav li.mhover a:hover {
+    font-weight: bold;
+    text-decoration: none
+}
+
+.wrap_nav ul.nav #area-nav .list_column_link .depth2_link:hover {
+    color: #444
+}
+
+.wrap_nav ul.nav #area-nav li .depth03 li a {
+    display: block;
+    float: left;
+    padding-left: 7px !important;
+    width: auto !important;
+    font-size: 12px !important;
+    font-weight: normal;
+    text-decoration: none;
+    background: url(//www.saraminimage.co.kr/main/new/bul_point_sub.gif) no-repeat 0 4px
+}
+
+.wrap_nav ul.nav #area-nav li .depth03 li a:hover {
+    color: #ff4800;
+    font-weight: normal;
+    letter-spacing: -1px;
+    text-decoration: underline;
+    background: url(//www.saraminimage.co.kr/main/new/bul_point_sub.gif) no-repeat 0 4px
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 {
+    padding: 8px 0 0;
+    width: 956px
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav:after {
+    display: table;
+    clear: both;
+    content: "";
+    table-layout: fixed
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav li.top_line {
+    margin-top: 7px;
+    padding-top: 7px;
+    border-top: 1px solid #e5e5e5
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav .column_tit {
+    padding-left: 20px;
+    height: 33px;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 30px;
+    background: #fbfbfb
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav .column_tit > a {
+    display: block;
+    position: relative;
+    height: 33px
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav .column_tit > a:hover {
+    text-decoration: underline
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav a.public_link {
+    margin-right: 16px;
+    padding-right: 0;
+    font-size: 14px;
+    background: url(//www.saraminimage.co.kr/main/new/bul_gnb_point_sub.png) no-repeat right center
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav a.public_link:hover {
+    text-decoration: underline
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav .column_tit .more_calendar {
+    position: absolute;
+    top: 0;
+    right: 16px;
+    padding-right: 12px;
+    font-size: 12px;
+    font-weight: normal;
+    background: #fbfbfb url(//www.saraminimage.co.kr/main/new/bul_gnb_point_sub.png) no-repeat 100% 12px
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav li.column {
+    float: left;
+    position: relative;
+    width: 191px;
+    height: 332px;
+    border-left: 1px solid #e5e5e5;
+    box-sizing: border-box;
+    * width:190px
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav > li:first-child {
+    width: 190px;
+    border-left: 0
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav .title_depth3 {
+    height: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 20px
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav .title_depth3 a {
+    font-size: 13px
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav li.class05 {
+    width: 192px;
+    border-right: none;
+    * width:191px
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav li.class06, .wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav li.class07, .wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav li.class08, .wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav li.class09 {
+    padding-bottom: 41px;
+    height: 188px;
+    border-bottom: none
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav li.class10 {
+    overflow: hidden;
+    padding-bottom: 0;
+    width: 192px;
+    border: none;
+    * width:190px
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav .list_category {
+    padding: 6px 20px 0 20px;
+    border: 0 none;
+    box-sizing: border-box
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav .list_category .category_tit {
+    position: relative;
+    height: 22px;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 22px
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav .list_category .category_tit strong {
+    font-size: 13px;
+    line-height: 20px;
+    vertical-align: top
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav .list_category .category_tit span {
+    display: inline-block;
+    overflow: hidden;
+    font-weight: normal;
+    letter-spacing: 0;
+    line-height: 20px;
+    vertical-align: middle
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav .list_category .category_tit .btn_more {
+    display: block;
+    position: absolute;
+    top: 5px;
+    right: 0;
+    width: 15px;
+    height: 15px;
+    background: url(//www.saraminimage.co.kr/sri/common/btn/btn_more_calendar.png) no-repeat 0 0;
+    cursor: pointer
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav .calendar_info {
+    padding-bottom: 3px
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav .calendar_info a {
+    overflow: hidden;
+    width: 90%;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav .list_category .public_link {
+    display: block;
+    position: relative;
+    margin-right: 0;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 20px;
+    background: url(//www.saraminimage.co.kr/main/new/bul_gnb_point_sub.png) no-repeat right center
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav .list_category .last_line {
+    margin-top: 6px;
+    padding: 6px 0 6px 0;
+    border-bottom: 1px solid #e5e5e5
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav .recruit_category .category_tit {
+    margin-top: 5px;
+    padding-top: 5px;
+    height: 21px;
+    border-top: 1px solid #e5e5e5;
+    color: #6d82f3;
+    line-height: 20px
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav .recruit_category .tit_top {
+    margin-top: 0;
+    padding-top: 0;
+    border: none
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav .recruit_category .keyword {
+    width: auto
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav .recruit_category .keyword li {
+    display: inline-block;
+    _display: inline;
+    * zoom:1;
+    _vertical-align: bottom
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav .recruit_category .keyword a {
+    vertical-align: baseline
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav .recruit_category .keyword .block {
+    display: block
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav .column .box_btn {
+    position: absolute;
+    top: auto;
+    bottom: 20px;
+    left: 20px
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav .column .btn_type {
+    display: inline-block;
+    margin-top: 3px;
+    padding: 0 16px 0 12px;
+    width: 150px;
+    height: 31px;
+    border: 1px solid #e5e5e5;
+    box-sizing: border-box;
+    font-size: 13px;
+    line-height: 25px;
+    text-align: left;
+    text-decoration: none;
+    background: url(//www.saraminimage.co.kr/main/new/bul_gnb_point_sub.png) no-repeat 128px 10px
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav .column .btn_type:hover {
+    color: #555;
+    text-decoration: none
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav .column .btn_type .point {
+    color: #778bf5
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav .column .banner {
+    position: absolute;
+    bottom: 20px;
+    left: 20px
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav .column .banner a {
+    color: #fff;
+    font-size: 0;
+    line-height: 0
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav .column .banner img {
+    vertical-align: top
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav .recruit_live_info {
+    margin-top: 6px;
+    padding: 12px 0 0 0;
+    border-top: 1px solid #e5e5e5
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav .recruit_live_info li {
+    padding-bottom: 12px
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav .recruit_live_info a {
+    color: #555;
+    font-size: 12px;
+    line-height: 18px;
+    word-break: break-all
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav .recruit_live_info b {
+    color: #333
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .public_level_nav .recruit_live_info + .category_tit {
+    margin-top: 8px;
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .area_pass_refer {
+    border-top: 1px solid #e5e5e5;
+    background: #f4f4f4
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .area_pass_refer .tit {
+    float: left;
+    margin-top: 14px;
+    width: 190px;
+    height: 45px;
+    border-right: 1px solid #e5e5e5;
+    color: #444;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 45px;
+    text-align: center
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .area_pass_refer:after {
+    display: table;
+    clear: both;
+    content: "";
+    table-layout: fixed
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .area_pass_refer ul {
+    float: left;
+    margin: 15px 21px;
+    width: 723px;
+    _width: 720px
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .area_pass_refer ul:after {
+    display: table;
+    clear: both;
+    content: "";
+    table-layout: fixed
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .area_pass_refer li {
+    float: left;
+    width: 12.5%;
+    text-align: center
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .area_pass_refer li a {
+    display: inline-block;
+    padding-top: 28px;
+    color: #444;
+    font-size: 12px;
+    letter-spacing: -2px;
+    background: url(//www.saraminimage.co.kr/sri/common/ico/ico_gnb_pass_refer.png) 10px 0 no-repeat
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .area_pass_refer li .spec_info {
+    background-position: -86px 0
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .area_pass_refer li .job_fair {
+    background-position: -171px 0
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .area_pass_refer li .aftermote_aptitude {
+    background-position: -262px 0
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .area_pass_refer li .interview {
+    background-position: -349px 0
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .area_pass_refer li .successful_interview {
+    background-position: -448px 0
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .area_pass_refer li .senior_list {
+    background-position: -533px 0
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .area_pass_refer li .self_introduction {
+    background-position: -624px 0
+}
+
+.wrap_nav ul.nav #public-level .wrap_depth2 .area_pass_refer li a:hover {
+    text-decoration: none
+}
+
+.wrap_nav ul.nav #curation-level .wrap_depth2 {
+    padding: 8px 0 0;
+    width: 932px
+}
+
+.wrap_nav ul.nav #curation-level .wrap_depth2 .curation_level_nav:after {
+    display: table;
+    clear: both;
+    content: "";
+    table-layout: fixed
+}
+
+.wrap_nav ul.nav #curation-level .wrap_depth2 .curation_level_nav li.column {
+    float: left;
+    position: relative;
+    width: 311px;
+    height: 153px;
+    border-left: 1px solid #e5e5e5;
+    box-sizing: border-box
+}
+
+.wrap_nav ul.nav #curation-level .wrap_depth2 .curation_level_nav li:nth-child(3n + 1) {
+    width: 310px;
+    border-left: 0
+}
+
+.wrap_nav ul.nav #curation-level .wrap_depth2 .curation_level_nav .column_tit {
+    padding: 0 20px 0 18px;
+    height: 39px;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 36px;
+    background: #fbfbfb
+}
+
+.wrap_nav ul.nav #curation-level .wrap_depth2 .curation_level_nav .column_tit:before {
+    position: absolute;
+    top: 8px;
+    left: 18px;
+    width: 21px;
+    height: 22px;
+    background: url(//www.saraminimage.co.kr/sri/person/jobs_recruit/ico_curation_small_spr.png) 0 0 no-repeat;
+    content: ""
+}
+
+.wrap_nav ul.nav #curation-level .wrap_depth2 .curation_level_nav li:nth-child(4n + 1) .column_tit:before {
+    background-position: 0 0
+}
+
+.wrap_nav ul.nav #curation-level .wrap_depth2 .curation_level_nav li:nth-child(4n + 2) .column_tit:before {
+    background-position: -50px 0
+}
+
+.wrap_nav ul.nav #curation-level .wrap_depth2 .curation_level_nav li:nth-child(4n + 3) .column_tit:before {
+    background-position: -100px 0
+}
+
+.wrap_nav ul.nav #curation-level .wrap_depth2 .curation_level_nav li:nth-child(4n + 4) .column_tit:before {
+    background-position: -150px 0
+}
+
+.wrap_nav ul.nav #curation-level .wrap_depth2 .curation_level_nav .column_tit > a {
+    display: block;
+    position: relative;
+    height: 39px
+}
+
+.wrap_nav ul.nav #curation-level .wrap_depth2 .curation_level_nav .column_tit > a:hover {
+    text-decoration: underline
+}
+
+.wrap_nav ul.nav #curation-level .wrap_depth2 .curation_level_nav a.curation_link {
+    overflow: hidden;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 20px 0 26px;
+    font-size: 14px;
+    background: url(//www.saraminimage.co.kr/main/new/bul_gnb_point_sub.png) no-repeat right center;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.wrap_nav ul.nav #curation-level .wrap_depth2 .curation_level_nav a.curation_link:hover {
+    text-decoration: underline
+}
+
+.wrap_nav ul.nav #curation-level .wrap_depth2 .curation_level_nav .column_list {
+    padding: 10px 0 13px
+}
+
+.wrap_nav ul.nav #curation-level .wrap_depth2 .curation_level_nav .column_list li {
+    position: relative;
+    padding: 5px 0 7px 32px;
+    width: auto;
+    min-height: 0;
+    line-height: 18px
+}
+
+.wrap_nav ul.nav #curation-level .wrap_depth2 .curation_level_nav .column_list li:before {
+    display: block;
+    position: absolute;
+    top: 14px;
+    left: 20px;
+    width: 2px;
+    height: 2px;
+    background: #888;
+    content: ""
+}
+
+.wrap_nav ul.nav #curation-level .wrap_depth2 .curation_level_nav .column_list li a {
+    display: inline-block;
+    overflow: hidden;
+    width: 100%;
+    color: #444;
+    font-size: 12px;
+    letter-spacing: -1px;
+    line-height: 18px;
+    text-overflow: ellipsis;
+    vertical-align: top;
+    white-space: nowrap
+}
+
+.wrap_nav ul.nav #curation-level .wrap_depth2 .curation_refer {
+    border-top: 1px solid #e5e5e5;
+    background: #f4f4f4
+}
+
+.wrap_nav ul.nav #curation-level .wrap_depth2 .curation_refer .tit {
+    float: left;
+    margin-top: 12px;
+    padding: 0 20px;
+    width: 167px;
+    box-sizing: border-box
+}
+
+.wrap_nav ul.nav #curation-level .wrap_depth2 .curation_refer .tit a {
+    display: block;
+    height: 36px;
+    color: #444;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: -2px;
+    line-height: 34px;
+    background: url(//www.saraminimage.co.kr/main/new/bul_gnb_point_sub2.png) no-repeat right center
+}
+
+.wrap_nav ul.nav #curation-level .wrap_depth2 .curation_refer .tit a:hover {
+    text-decoration: underline
+}
+
+.wrap_nav ul.nav #curation-level .wrap_depth2 .curation_refer:after {
+    display: table;
+    clear: both;
+    content: "";
+    table-layout: fixed
+}
+
+.wrap_nav ul.nav #curation-level .wrap_depth2 .curation_refer ul {
+    float: left;
+    padding: 12px 0;
+    width: 765px;
+    box-sizing: border-box;
+    font-size: 0
+}
+
+.wrap_nav ul.nav #curation-level .wrap_depth2 .curation_refer ul:after {
+    display: table;
+    clear: both;
+    content: "";
+    table-layout: fixed
+}
+
+.wrap_nav ul.nav #curation-level .wrap_depth2 .curation_refer li {
+    display: inline-block
+}
+
+.wrap_nav ul.nav #curation-level .wrap_depth2 .curation_refer li + li {
+    margin-left: 8px
+}
+
+.wrap_nav ul.nav #curation-level .wrap_depth2 .curation_refer li a {
+    display: block;
+    padding: 9px 13px 11px;
+    border-radius: 18px;
+    color: #444;
+    font-size: 12px;
+    letter-spacing: -1px;
+    line-height: 16px;
+    background: #fff;
+    box-shadow: 0 1px 0 0 rgba(231, 231, 231, 0.5)
+}
+/* WMG-23769 */
+
+.wrap_nav ul.nav #comsalary-level .wrap_depth2 {
+    padding: 8px 0 0;
+    width: 759px
+}
+
+.wrap_nav ul.nav #comsalary-level .wrap_depth2 .comsalary_level_nav:after {
+    display: table;
+    clear: both;
+    content: "";
+    table-layout: fixed
+}
+
+.wrap_nav ul.nav #comsalary-level .wrap_depth2 .comsalary_level_nav li.column {
+    float: left;
+    position: relative;
+    width: 253px;
+    height: 416px;
+    border-left: 1px solid #e5e5e5;
+    box-sizing: border-box
+}
+
+.wrap_nav ul.nav #comsalary-level .wrap_depth2 .comsalary_level_nav li:first-child {
+    border-left: 0
+}
+
+.wrap_nav ul.nav #comsalary-level .wrap_depth2 .comsalary_level_nav .column_tit {
+    padding-left: 20px;
+    height: 39px;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 36px;
+    background: #fbfbfb
+}
+
+.wrap_nav ul.nav #comsalary-level .wrap_depth2 .comsalary_level_nav .column_tit > a {
+    display: block;
+    position: relative;
+    height: 33px
+}
+
+.wrap_nav ul.nav #comsalary-level .wrap_depth2 .comsalary_level_nav .column_tit > a:hover {
+    text-decoration: underline
+}
+
+.wrap_nav ul.nav #comsalary-level .wrap_depth2 .comsalary_level_nav .column_tit_link li {
+    padding: 0 15px 0 20px;
+    height: 39px;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 30px;
+    background: #fbfbfb
+}
+
+.wrap_nav ul.nav #comsalary-level .wrap_depth2 .comsalary_level_nav .column_tit_link li > a {
+    display: block;
+    position: relative;
+    height: 39px;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 36px;
+    background: url(//www.saraminimage.co.kr/main/new/bul_gnb_point_sub.png) no-repeat right center
+}
+
+.wrap_nav ul.nav #comsalary-level .wrap_depth2 .comsalary_level_nav .column_tit_link li .sri_lnb_icon.ic_window {
+    margin: 9px 0 0 3px;
+    width: 16px;
+    height: 16px;
+    background-position: -48px -45px
+}
+
+.wrap_nav ul.nav #comsalary-level .wrap_depth2 .comsalary_level_nav .column_list {
+    padding: 10px 0 13px
+}
+
+.wrap_nav ul.nav #comsalary-level .wrap_depth2 .comsalary_level_nav .column_list li {
+    position: relative;
+    padding: 5px 0 7px 32px;
+    width: auto;
+    min-height: 0;
+    line-height: 18px
+}
+
+.wrap_nav ul.nav #comsalary-level .wrap_depth2 .comsalary_level_nav .column_list li:before {
+    display: block;
+    position: absolute;
+    top: 14px;
+    left: 20px;
+    width: 2px;
+    height: 2px;
+    background: #888;
+    content: ""
+}
+
+.wrap_nav ul.nav #comsalary-level .wrap_depth2 .comsalary_level_nav .column_list li a {
+    display: inline-block;
+    overflow: hidden;
+    width: 100%;
+    color: #444;
+    font-size: 12px;
+    letter-spacing: -1px;
+    line-height: 18px;
+    text-overflow: ellipsis;
+    vertical-align: top;
+    white-space: nowrap
+}
+
+.wrap_nav ul.nav #comsalary-level .wrap_depth2 .comsalary_level_nav .column_list li a .sri_lnb_icon.ic_window {
+    width: 16px;
+    height: 16px;
+    background-position: -48px -45px
+}
+
+.wrap_nav ul.nav #comsalary-level .wrap_depth2 .comsalary_level_nav .box_banner {
+    position: absolute;
+    bottom: 24px;
+    left: 20px;
+    width: 210px;
+    height: 189px
+}
+
+.wrap_nav ul.nav #comsalary-level .wrap_depth2 .comsalary_level_nav .box_banner a {
+    display: block
+}
+
+.wrap_member {
+    float: left;
+    z-index: 910;
+    height: 60px;
+    border-right: 1px solid #426bd9;
+    border-left: 1px solid #426bd9;
+    font-size: 13px
+}
+
+.wrap_member .member_option:after {
+    display: table;
+    clear: both;
+    content: "";
+    table-layout: fixed
+}
+
+.wrap_member .member_option .box_member, .wrap_member .member_option .box_alram {
+    float: left;
+    line-height: 60px
+}
+
+.wrap_member .member_option .box_member {
+    padding: 0 15px
+}
+
+.wrap_member .member_option .box_member a:hover {
+    text-decoration: underline
+}
+
+.wrap_member .member_option .box_member > a:hover {
+    text-decoration: none
+}
+
+.wrap_member .member_option .box_member a:hover span {
+    text-decoration: underline
+}
+
+.wrap_member .member_option .box_member a:hover span.icon_title {
+    text-decoration: none
+}
+
+.wrap_member .member_option .box_member a:hover span em {
+    text-decoration: underline
+}
+
+.wrap_member .member_option .box_member .photo {
+    display: inline-block;
+    overflow: hidden;
+    margin-top: 12px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    vertical-align: top;
+    background: url(//www.saraminimage.co.kr/sri/common/bg/bg_person_photo_s_new.png) no-repeat 50%
+}
+
+.wrap_member .member_option .box_member .photo img {
+    margin-top: -4px;
+    width: 100%
+}
+
+.wrap_member .member_option .box_member .name {
+    display: inline-block;
+    padding-right: 15px;
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: -1px;
+    line-height: 60px;
+    background: url(//www.saraminimage.co.kr/sri/common/ico/ico_arrow_down.png) no-repeat 100% 53%
+}
+
+.wrap_member .member_option .box_member.on .name {
+    background: url(//www.saraminimage.co.kr/sri/common/ico/ico_arrow_up.png) no-repeat 100% 53%
+}
+
+.wrap_member .member_option .box_member .link_layer.on .name {
+    background: url(//www.saraminimage.co.kr/sri/common/ico/ico_arrow_up.png) no-repeat 100% 53%
+}
+
+.wrap_member .member_option .box_member .text {
+    margin: 0;
+    line-height: 60px;
+    text-align: left
+}
+/* 이력서 개편후 삭제요망 */
+
+.wrap_member .member_option .box_member .sid {
+    color: #888;
+    font-size: 11px;
+    letter-spacing: 0
+}
+
+.wrap_member .member_option .box_member .sid .text {
+    max-width: 70px
+}
+
+.wrap_member .member_option .box_member em {
+    display: inline-block;
+    overflow: hidden;
+    font-style: normal;
+    text-overflow: ellipsis;
+    vertical-align: top;
+    white-space: nowrap
+}
+
+.wrap_member .member_option .box_member .text {
+    padding: 0
+}
+
+.wrap_member .member_option .box_member.join_member {
+    border-left: 1px solid #426bd9;
+    color: #fff;
+    font-size: 14px
+}
+
+.wrap_member .member_option .box_member.join_member a {
+    color: #fff;
+    letter-spacing: -1px
+}
+
+.wrap_member .member_option .box_member.join_member a:hover {
+    text-decoration: underline
+}
+
+.wrap_member .member_person_name {
+    position: relative;
+    padding: 0 15px;
+    width: 135px;
+    text-align: center
+}
+
+.wrap_member .member_person_name .name .text {
+    max-width: 55px;
+    font-weight: bold;
+    letter-spacing: -1px
+}
+
+.wrap_member .notification_myinfo {
+    display: none;
+    position: absolute;
+    top: 12px;
+    right: 242px;
+    padding: 0 21px 0 16px
+}
+
+.wrap_member .notification_myinfo .inner {
+    height: 30px;
+    color: #fff;
+    line-height: 28px;
+    text-align: center;
+    white-space: nowrap;
+    background: url(//www.saraminimage.co.kr/ui/layout/person_mypage_2017/bg_toast_message_spr.png) repeat-x 0 -50px
+}
+
+.wrap_member .notification_myinfo:before, .wrap_member .notification_myinfo:after {
+    display: block;
+    position: absolute;
+    top: 0;
+    height: 30px;
+    background: url(//www.saraminimage.co.kr/ui/layout/person_mypage_2017/bg_toast_message_spr.png) no-repeat 0 0;
+    content: ""
+}
+
+.wrap_member .notification_myinfo:before {
+    left: 0;
+    width: 16px
+}
+
+.wrap_member .notification_myinfo:after {
+    right: 0;
+    width: 21px;
+    background-position: -16px 0
+}
+
+.wrap_member .box_alram {
+    width: 60px;
+    height: 60px;
+    border-left: 1px solid #426bd9
+}
+
+.wrap_member .box_alram a {
+    display: inline-block
+}
+
+.wrap_member .box_alram .btn_alram {
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    width: 60px;
+    height: 40px;
+    font-size: 1px;
+    text-indent: -200%;
+    vertical-align: middle;
+    background: url(//www.saraminimage.co.kr/sri/common/ico/ico_alram_center.png) no-repeat 50%
+}
+
+.wrap_member .box_alram .btn_alram .count {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 12px;
+    width: 18px;
+    height: 18px;
+    border: 0;
+    color: #fff;
+    font-size: 10px;
+    letter-spacing: 0;
+    line-height: 18px;
+    text-align: center;
+    text-indent: 0;
+    background: url(//www.saraminimage.co.kr/sri/common/ico/ico_new.png) no-repeat 0 0
+}
+
+.wrap_member .login_wrap {
+    width: 145px
+}
+
+.wrap_member .login_wrap .photo {
+    display: inline-block;
+    overflow: hidden;
+    margin-top: 10px;
+    width: 33px;
+    height: 33px;
+    border: 1px solid #e5e5e5;
+    border-radius: 50%;
+    vertical-align: top;
+    background: url(//www.saraminimage.co.kr/ui/layout/person_mypage_2017/bg_no_photo_33x33.png) no-repeat 50%
+}
+
+.wrap_member .join {
+    width: 63px
+}
+
+.wrap_member .member_company_name {
+    position: relative;
+    width: 170px;
+    text-align: center
+}
+
+.wrap_member .member_company_name .link_company {
+    cursor: pointer
+}
+
+.wrap_member .member_company_name .link_company .icon_title, .wrap_member .member_company_name .link_manager .icon_title {
+    display: inline-block;
+    padding: 0 9px 0 7px;
+    min-width: 30px;
+    height: 20px;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: -2px;
+    line-height: 16px;
+    text-align: left
+}
+
+.wrap_member .member_company_name .name .text {
+    max-width: 95px;
+    font-weight: bold;
+    letter-spacing: -1px
+}
+
+.wrap_member .member_option .box_member {
+    position: relative
+}
+
+.wrap_member .member_option .layer_box_member {
+    display: none;
+    position: absolute;
+    top: 59px;
+    right: -1px;
+    left: -1px;
+    border: 1px solid #444;
+    background: #fff
+}
+
+.wrap_member #nologin_area:hover .layer_box_member {
+    display: block
+}
+
+.wrap_member #nologin_area:hover .name {
+    background: url(//www.saraminimage.co.kr/sri/common/ico/ico_arrow_up.png) no-repeat 100% 53%
+}
+
+.member_option .link_manager {
+    cursor: pointer
+}
+
+.member_option .layer_box_member .list {
+    padding: 0 18px;
+    letter-spacing: -1px
+}
+
+.member_option .layer_box_member .list.nologin {
+    padding: 0
+}
+
+.member_option .layer_box_member .list.nologin + .list.nologin {
+    margin: 15px 0
+}
+
+.member_option .layer_box_member .list.list_icon {
+    margin-bottom: 12px;
+    font-weight: bold
+}
+
+.member_option .layer_box_member .list.list_icon li {
+    height: 42px;
+    border-bottom: 1px solid #e7e7e8;
+    line-height: 42px
+}
+
+.member_option .layer_box_member .list li {
+    height: 25px;
+    font-size: 13px;
+    line-height: 25px;
+    text-align: left
+}
+
+.member_option .layer_box_member .list.nologin li {
+    height: 25px;
+    padding: 0 18px;
+    font-size: 13px;
+    line-height: 25px;
+    text-align: left
+}
+
+.member_option .layer_box_member .list.nologin .com_member_link {
+    margin: 10px -18px -15px -18px;
+    height: 52px
+}
+/* WMG-20352 */
+
+.member_option .layer_box_member .list li > a {
+    display: inline-block;
+    color: #444
+}
+
+.member_option .layer_box_member .list li > .ico_recommend {
+    position: relative;
+    padding-left: 20px
+}
+
+.member_option .layer_box_member .list li > .ico_recommend:before {
+    position: absolute;
+    top: 0;
+    left: 2px;
+    width: 14px;
+    height: 22px;
+    background: url(//www.saraminimage.co.kr/sri/common/ico/ico_sri_recommend_s.png) no-repeat;
+    content: ""
+}
+
+.member_option .layer_box_member .list.type_center li {
+    height: 42px;
+    line-height: 42px;
+    text-align: center
+}
+
+.member_option .layer_box_member .list.type_center + .btn_link {
+    margin-top: 0
+}
+
+.member_option .layer_box_member .list.nologin .btn_link {
+    margin: 0 0 4px 0;
+    height: 34px;
+    line-height: 34px
+}
+
+.member_option .layer_box_member .list.nologin:first-child li.btn_link {
+    border-top: 0
+}
+
+.member_option .layer_box_member .list.nologin .btn_link .sri_gnb_option.ic_go_arrow {
+    height: 34px;
+    background-position-y: -3px
+}
+
+.member_option .layer_box_member .btn_link {
+    display: block;
+    margin-top: 18px;
+    height: 42px;
+    border-top: 1px solid #e7e7e8;
+    color: #444;
+    line-height: 42px;
+    text-align: center;
+    background: #fbfbfb
+}
+
+.member_option .layer_myarea_wrap {
+    display: none;
+    position: absolute;
+    top: 59px;
+    right: 0;
+    width: 454px;
+    border: 1px solid #444;
+    box-sizing: border-box;
+    background-color: #fff
+}
+
+.member_option.on .layer_myarea_wrap {
+    display: block
+}
+
+.member_option .layer_myarea_wrap .profile_wrap {
+    text-align: left
+}
+
+.member_option .layer_myarea_wrap .profile_wrap .name_wrap {
+    display: inline-block;
+    margin-right: 20px;
+    max-width: 105px;
+    color: #dfdfdf;
+    font-size: 22px;
+    letter-spacing: -2px
+}
+
+.member_option .layer_myarea_wrap .profile_wrap .name_wrap .name {
+    display: inline-block;
+    overflow: hidden;
+    max-width: 82px;
+    height: 40px;
+    text-overflow: ellipsis;
+    vertical-align: top;
+    white-space: nowrap
+}
+
+.member_option .layer_myarea_wrap .profile_wrap .img_spr {
+    background: url(//www.saraminimage.co.kr/ui/layout/person_mypage_2017/ico_profile_spr.png)
+}
+
+.member_option .layer_myarea_wrap .profile_wrap .photo {
+    position: relative
+}
+
+.member_option .layer_myarea_wrap .profile_wrap .photo .thum {
+    display: block;
+    overflow: hidden;
+    width: 96px;
+    height: 96px;
+    border: 1px solid #e0e0e0;
+    border-radius: 50%;
+    background: url(//www.saraminimage.co.kr/sri/common/bg/bg_person_photo.png) no-repeat 50%
+}
+
+.member_option .layer_myarea_wrap .profile_wrap .photo .thum img {
+    margin-top: -10px;
+    width: 100%
+}
+
+.member_option .layer_myarea_wrap .profile_wrap .photo button {
+    position: absolute;
+    border: none;
+    color: #fff;
+    font-size: 1px;
+    line-height: 1px;
+    text-indent: -9999px
+}
+
+.member_option .layer_myarea_wrap .profile_wrap .photo button.btn_del {
+    top: 6px;
+    left: 4px;
+    width: 20px;
+    height: 20px;
+    background-position: 0 -100px
+}
+
+.member_option .layer_myarea_wrap .profile_wrap .photo button.btn_regist {
+    right: 0;
+    bottom: 0;
+    width: 28px;
+    height: 28px;
+    background-position: 0 -50px
+}
+
+.member_option .layer_myarea_wrap .profile_wrap .list_person_settings {
+    margin: 11px 0 0 2px
+}
+
+.member_option .layer_myarea_wrap .profile_wrap .list_person_settings:after {
+    display: table;
+    clear: both;
+    content: "";
+    table-layout: fixed
+}
+
+.member_option .layer_myarea_wrap .profile_wrap .list_person_settings > li {
+    float: left;
+    margin-left: -1px;
+    width: 102px;
+    box-sizing: border-box
+}
+
+.member_option .layer_myarea_wrap .profile_wrap .list_person_settings > li .link {
+    display: inline-block;
+    margin: -1px 0 0 -1px;
+    width: 100%;
+    height: 40px;
+    border: 1px solid #e7e7e8;
+    box-sizing: border-box;
+    color: #6e6d6d;
+    font-size: 13px;
+    letter-spacing: -2px;
+    line-height: 34px;
+    text-align: center;
+    background-color: #fbfbfb
+}
+
+.member_option .layer_myarea_wrap .profile_wrap .list_person_settings > li .link:hover {
+    position: relative;
+    z-index: 10;
+    margin: -1px 0 0 -1px;
+    border: 1px solid #666;
+    text-decoration: none;
+    background-color: #fff
+}
+
+.member_option .layer_myarea_wrap .profile_wrap .list_person_settings > li .ico_recommend {
+    position: relative;
+    padding: 0 2px 0 19px
+}
+
+.member_option .layer_myarea_wrap .profile_wrap .list_person_settings > li .ico_recommend:before {
+    position: absolute;
+    top: -3px;
+    left: 0;
+    width: 14px;
+    height: 22px;
+    background: url(//www.saraminimage.co.kr/sri/common/ico/ico_sri_recommend_s.png) no-repeat;
+    content: ""
+}
+
+.member_option .layer_myarea_wrap .profile_wrap .area_person_photo {
+    position: absolute;
+    top: 17px;
+    left: 17px;
+    letter-spacing: -1px;
+    text-align: center
+}
+
+.member_option .layer_myarea_wrap .profile_wrap .area_person_photo .box_name {
+    margin-top: 7px;
+    color: #656565;
+    font-size: 16px;
+    letter-spacing: -2px
+}
+
+.member_option .layer_myarea_wrap .profile_wrap .area_person_photo .box_name .name {
+    display: inline-block;
+    padding-right: 2px;
+    max-width: 57px;
+    color: #3550d4;
+    font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: top
+}
+
+.member_option .layer_myarea_wrap .profile_wrap .area_person_photo .sid {
+    max-width: 98px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: top;
+    color: #555;
+    font-size: 14px
+}
+
+.member_option .layer_myarea_wrap .profile_wrap .area_person_photo .sid.sns_login {
+    font-size: 11px
+}
+
+.member_option .layer_myarea_wrap .profile_wrap .area_person_photo .sid .ic {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 4px;
+    background: url(//www.saraminimage.co.kr/sri/common/ico/icon_sid_myname.png) no-repeat;
+    vertical-align: middle
+}
+
+.member_option .layer_myarea_wrap .profile_wrap .area_person_photo .sid .social_type01 {
+    margin-right: 4px;
+    background-position: 0 0;
+}
+
+.member_option .layer_myarea_wrap .profile_wrap .area_person_photo .sid .social_type02 {
+    margin-right: 4px;
+    background-position: -10px 0;
+}
+
+.member_option .layer_myarea_wrap .profile_wrap .area_person_photo .sid .social_type03 {
+    margin-right: 4px;
+    background-position: -20px 0;
+}
+
+.member_option .layer_myarea_wrap .profile_wrap .area_person_photo .sid .social_type04 {
+    margin-right: 4px;
+    background-position: -30px 0;
+}
+
+.member_option .layer_myarea_wrap .profile_wrap .area_person_info {
+    position: relative;
+    margin-left: 131px;
+    padding-top: 23px;
+    width: 305px;
+    height: 155px;
+    letter-spacing: -1px
+}
+
+.member_option .layer_myarea_wrap .profile_wrap .area_person_info .person_click_data a {
+    display: inline-block;
+    padding-left: 19px;
+    width: 78px;
+    height: 20px;
+    color: #565656;
+    font-size: 13px;
+    letter-spacing: -2px;
+    background: url(//www.saraminimage.co.kr/sri/common/ico/ico_person_spr.png) no-repeat 0 0
+}
+
+.member_option .layer_myarea_wrap .profile_wrap .area_person_info .person_click_data a.link_scrap {
+    background-position: 0 1px
+}
+
+.member_option .layer_myarea_wrap .profile_wrap .area_person_info .person_click_data a.link_apply {
+    background-position: 0 -49px
+}
+
+.member_option .layer_myarea_wrap .profile_wrap .area_person_info .person_click_data a.link_lately {
+    padding-left: 22px;
+    background-position: 0 -97px
+}
+
+.member_option .layer_myarea_wrap .profile_wrap .area_person_info .person_click_data a .point {
+    margin-left: 3px;
+    color: #ff662f;
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: -1px
+}
+
+.member_option .layer_myarea_wrap .profile_wrap .btn_logout {
+    display: inline-block;
+    position: absolute;
+    top: 145px;
+    right: 2px;
+    padding: 1px 0 0 20px;
+    height: 20px;
+    color: #888;
+    font-size: 13px;
+    vertical-align: top;
+    background: url(//www.saraminimage.co.kr/sri/common/ico/ico_person_spr.png) no-repeat 0 0
+}
+
+.member_option .layer_myarea_wrap .profile_wrap .btn_logout {
+    background-position: 0 -146px
+}
+
+.member_option .layer_myarea_wrap .activity_wrap {
+    border-top: 1px solid #e4e4e4;
+    letter-spacing: -1px
+}
+
+.member_option .layer_myarea_wrap .tabmenu {
+    height: 50px;
+    font-size: 15px
+}
+
+.member_option .layer_myarea_wrap .tabmenu li {
+    float: left;
+    width: 50%;
+    height: 49px;
+    border-bottom: 1px solid #dedede;
+    box-sizing: border-box;
+    color: #999;
+    line-height: 49px;
+    text-align: center;
+    background-color: #f8f8f8;
+    cursor: pointer
+}
+
+.member_option .layer_myarea_wrap .tabmenu li em.new {
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    margin-top: -12px;
+    width: 5px;
+    height: 5px;
+    font-size: 1px;
+    text-indent: -9999px;
+    vertical-align: middle;
+    background: url(//www.saraminimage.co.kr/ui/layout/person_mypage_2017/ico_new01.png) no-repeat
+}
+
+.member_option .layer_myarea_wrap .tabmenu li:first-child {
+    width: 50%;
+    border-right: 1px solid #dedede;
+    box-sizing: border-box
+}
+
+.member_option .layer_myarea_wrap .tabmenu li.selected {
+    border-bottom-color: #fff;
+    color: #444;
+    background-color: #fff
+}
+
+.member_option .layer_myarea_wrap .tabmenu li.disable {
+    color: #aaa
+}
+
+.member_option .layer_myarea_wrap .tabcont_wrap {
+    height: 579px
+}
+
+.member_option .layer_myarea_wrap .tabcont_wrap .tabcont {
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 25px 20px;
+    width: 452px;
+    height: 100%;
+    box-sizing: border-box
+}
+
+.member_option .layer_myarea_wrap .recruit_summary {
+    position: relative;
+    margin-bottom: 10px;
+    padding: 0;
+    width: 100%;
+    border: 1px solid #e5e5e5;
+    box-sizing: border-box;
+    text-align: left;
+    background-color: #fff
+}
+
+.member_option .layer_myarea_wrap .recruit_summary:last-child, .member_option .layer_myarea_wrap .activity_summary:last-child {
+    margin-top: 0
+}
+
+.member_option .layer_myarea_wrap .recruit_summary .desc {
+    height: 32px;
+    border-bottom: 1px solid #ebebeb;
+    font-size: 13px;
+    line-height: 32px
+}
+
+.member_option .layer_myarea_wrap .recruit_summary .desc .point {
+    color: #ff6129
+}
+
+.member_option .layer_myarea_wrap .recruit_summary .wrap_layer_tooltip {
+    margin: 4px 0 0 2px;
+    height: 16px
+}
+
+.member_option .layer_myarea_wrap .recruit_summary .wrap_layer_tooltip button.interested_corp {
+    background-position: -42px 0
+}
+
+.member_option .layer_myarea_wrap .recruit_summary .wrap_layer_tooltip button.interested_on {
+    background-position: -62px 0
+}
+
+.member_option .layer_myarea_wrap .recruit_summary ul.info_list {
+    padding: 11px 0 37px;
+    line-height: 22px
+}
+
+.member_option .layer_myarea_wrap .recruit_summary ul.info_list li.company_name {
+    color: #444;
+    font-size: 15px;
+    font-weight: bold
+}
+
+.member_option .layer_myarea_wrap .recruit_summary ul.info_list li.recruit_name {
+    padding-top: 1px;
+    color: #444;
+    font-size: 14px
+}
+
+.member_option .layer_myarea_wrap .recruit_summary ul.info_list li.recruit_sector {
+    color: #888;
+    font-size: 12px;
+    line-height: 18px
+}
+
+.member_option .layer_myarea_wrap .recruit_summary ul.info_list li.recruit_sector span:before {
+    display: inline-block;
+    padding: 0 5px 0 2px;
+    color: #e5e5e5;
+    font-size: 10px;
+    content: "|"
+}
+
+.member_option .layer_myarea_wrap .recruit_summary ul.info_list li.recruit_sector span:first-child:before {
+    padding: 0;
+    content: ""
+}
+
+.member_option .layer_myarea_wrap .recruit_summary .util {
+    position: absolute;
+    right: 20px;
+    bottom: 47px;
+    left: 20px;
+    height: 19px;
+    line-height: 19px;
+    text-align: right
+}
+
+.member_option .layer_myarea_wrap .recruit_summary.box_my_activity .util {
+    bottom: 15px
+}
+
+.member_option .layer_myarea_wrap .recruit_summary .util .btn_scrap {
+    float: left;
+    height: 19px;
+    line-height: 19px;
+    vertical-align: top
+}
+
+.member_option .layer_myarea_wrap .recruit_summary .util .date {
+    display: inline-block;
+    height: 14px;
+    color: #666;
+    font-size: 12px;
+    line-height: 14px;
+    vertical-align: top
+}
+
+.member_option .layer_myarea_wrap .recruit_summary .util .apply {
+    margin-left: 5px;
+    width: 48px;
+    height: 16px
+}
+
+.member_option .layer_myarea_wrap .recruit_summary .util .apply span {
+    display: inline-block;
+    padding: 0 0 2px 0;
+    width: 46px;
+    height: 12px;
+    border: 1px solid #bebebe;
+    color: #666;
+    font-size: 11px;
+    letter-spacing: -1px;
+    line-height: 12px;
+    text-align: center;
+    vertical-align: top;
+    background: #fff
+}
+
+.member_option .layer_myarea_wrap .recruit_summary .util .apply span.now {
+    border: 1px solid #ff8149;
+    color: #fff;
+    background: #ff8d5a
+}
+
+.member_option .layer_myarea_wrap .recruit_summary .util .apply span.closed {
+    cursor: default
+}
+
+.member_option .layer_myarea_wrap .recruit_summary .from_section {
+    margin: 0;
+    padding: 0 20px 0 30px;
+    height: 32px;
+    box-sizing: border-box;
+    line-height: 32px;
+    text-align: right;
+    background-color: #f9f9f9
+}
+
+.member_option .layer_myarea_wrap .recruit_summary .from_section a {
+    display: inline-block;
+    color: #555;
+    font-size: 12px
+}
+
+.member_option .layer_myarea_wrap .recruit_summary .from_section a span {
+    font-size: 13px
+}
+
+.member_option .layer_myarea_wrap .no_activity {
+    display: table;
+    width: 100%;
+    height: 150px
+}
+
+.member_option .layer_myarea_wrap .no_activity p {
+    display: table-cell;
+    color: #444;
+    font-size: 30px;
+    letter-spacing: -2px;
+    line-height: 38px;
+    text-align: center;
+    vertical-align: middle
+}
+
+.member_option .layer_myarea_wrap .activity_summary {
+    position: relative;
+    margin-bottom: 10px;
+    padding: 0 20px;
+    border: 1px solid #e5e5e5;
+    text-align: left;
+    background-color: #fff
+}
+
+.member_option .layer_myarea_wrap .activity_summary .desc {
+    height: 32px;
+    border-bottom: 1px solid #ebebeb;
+    font-size: 14px;
+    line-height: 32px
+}
+
+.member_option .layer_myarea_wrap .activity_summary .desc a {
+    display: inline-block;
+    color: #444;
+    font-size: 12px
+}
+
+.member_option .layer_myarea_wrap .activity_summary .desc a span {
+    font-size: 14px
+}
+
+.member_option .layer_myarea_wrap .activity_summary .desc .point {
+    color: #ff6129
+}
+
+.member_option .layer_myarea_wrap .activity_summary .desc .date {
+    float: right;
+    color: #999;
+    font-size: 13px
+}
+
+.member_option .layer_myarea_wrap .activity_summary .wrap_layer_tooltip {
+    margin: 4px 0 0 2px;
+    height: 16px
+}
+
+.member_option .layer_myarea_wrap .activity_summary .btn_scrap {
+    display: inline-block;
+    margin-top: 3px;
+    line-height: 20px;
+    vertical-align: top
+}
+
+.member_option .layer_myarea_wrap .activity_summary .text_point01 {
+    padding-top: 15px;
+    color: #ff6129;
+    font-size: 12px;
+    line-height: 14px
+}
+
+.member_option .layer_myarea_wrap .activity_summary ul.info_list {
+    padding: 11px 0 13px;
+    line-height: 22px
+}
+
+.member_option .layer_myarea_wrap .activity_summary ul.info_list li.company_name, .member_option .layer_myarea_wrap .activity_summary ul.info_list li.title {
+    font-size: 15px
+}
+
+.member_option .layer_myarea_wrap .activity_summary ul.info_list li.company_name a, .member_option .layer_myarea_wrap .activity_summary ul.info_list li.title a {
+    color: #444;
+    font-weight: bold
+}
+
+.member_option .layer_myarea_wrap .activity_summary ul.info_list li.recruit_name, .member_option .layer_myarea_wrap .activity_summary ul.info_list li.data {
+    overflow: hidden;
+    width: 308px;
+    font-size: 14px;
+    line-height: 16px;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.member_option .layer_myarea_wrap .activity_summary ul.info_list li.recruit_name a, .member_option .layer_myarea_wrap .activity_summary ul.info_list li.data a {
+    color: #999
+}
+
+.member_option .layer_myarea_wrap .activity_summary ul.info_list li.company_name .sri_layer_tooltip {
+    display: inline-block;
+    margin-top: 3px;
+    height: 16px;
+    line-height: 16px
+}
+
+.member_option .layer_myarea_wrap .activity_summary ul.info_list li.recruit_name {
+    padding-top: 4px
+}
+
+.member_option .layer_myarea_wrap .activity_summary ul.info_list li.recruit_document {
+    color: #666;
+    font-size: 12px
+}
+
+.member_option .layer_myarea_wrap .activity_summary ul.info_list li.recruit_document a {
+    text-decoration: underline
+}
+
+.member_option .layer_myarea_wrap .activity_summary ul.info_list li.recruit_sector {
+    color: #666;
+    font-size: 12px
+}
+
+.member_option .layer_myarea_wrap .activity_summary ul.info_list li.recruit_sector span:before {
+    display: inline-block;
+    padding: 0 5px 0 2px;
+    color: #e5e5e5;
+    font-size: 10px;
+    content: "|"
+}
+
+.member_option .layer_myarea_wrap .activity_summary ul.info_list li.recruit_sector span:first-child:before {
+    padding: 0;
+    content: ""
+}
+
+.member_option .layer_myarea_wrap .activity_summary ul.info_list li.recruit_category {
+    color: #999;
+    font-size: 12px
+}
+
+.member_option .layer_myarea_wrap .activity_summary ul.info_list li.recruit_category span {
+    padding-right: 8px
+}
+
+.member_option .layer_myarea_wrap .activity_summary ul.info_list li.count {
+    padding-top: 3px;
+    color: #444;
+    font-size: 13px
+}
+
+.member_option .layer_myarea_wrap .activity_summary ul.info_list li.count .point {
+    color: #ff6129;
+    font-weight: bold;
+    text-decoration: underline
+}
+
+.member_option .layer_myarea_wrap .activity_summary a.link_wrap, .member_option .layer_myarea_wrap .recruit_summary a.link_wrap {
+    display: block;
+    padding: 0 20px
+}
+
+.member_option .layer_myarea_wrap .recruit_summary a:hover {
+    text-decoration: none
+}
+
+.member_option .layer_myarea_wrap .btn_close {
+    overflow: hidden;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 17px;
+    height: 17px;
+    border: none;
+    font-size: 1px;
+    text-indent: -200%;
+    background: url(//www.saraminimage.co.kr/ui/layout/person_mypage_2017/btn_top_banner01.png) no-repeat
+}
+
+.member_option .alarm_center_layer {
+    display: none;
+    top: 59px;
+    right: 0;
+    min-height: 246px;
+    border: 1px solid #444
+}
+
+.member_option .alarm_center_layer.on {
+    display: block
+}
+
+.member_option .layer_company_wrap {
+    display: none;
+    position: absolute;
+    top: 59px;
+    right: 0;
+    z-index: 20;
+    width: 130px;
+    border: 1px solid #444;
+    background: #fff
+}
+
+.member_option .layer_company_wrap.on {
+    display: block
+}
+
+.member_option .layer_company_wrap ul {
+    margin: 9px 0 12px 17px
+}
+
+.member_option .layer_company_wrap li {
+    margin-left: auto;
+    line-height: 23px;
+    text-align: left
+}
+
+.member_option .layer_company_wrap li a {
+    color: #444;
+    font-size: 12px;
+    letter-spacing: -1px;
+    text-decoration: none
+}
+
+.member_option .layer_company_wrap li a:hover {
+    text-decoration: underline
+}
+
+.loading_action_wrap {
+    padding: 50px 0;
+    text-align: center
+}
+
+.loading_action_wrap .text {
+    display: inline-block;
+    padding-left: 43px;
+    height: 32px;
+    color: #999;
+    font-size: 20px;
+    line-height: 32px;
+    background: url(//www.saraminimage.co.kr/js/libs/images/loading.gif) no-repeat 0 0
+}
+
+/* sri_lnb */
+#sri_lnb .lnb_menu {
+    border-bottom: 1px solid #efefef;
+    background: #fff
+}
+
+#sri_lnb .lnb_menu > a {
+    position: relative
+}
+
+#sri_lnb .lnb_menu .category {
+    display: inline-block;
+    height: 23px;
+    box-sizing: border-box;
+    margin: -1px 6px -3px 0;
+    padding: 0 8px 2px 7px;
+    color: #666;
+    font-size: 11px;
+    letter-spacing: -1px;
+    line-height: 19px;
+    border: 1px solid #d9d9d9;
+    border-radius: 13px;
+    vertical-align: top;
+}
+
+#sri_lnb .lnb_menu .depth_menu {
+    display: block;
+    padding: 14px 0 16px 20px;
+    width: 100%;
+    box-sizing: border-box;
+    color: #444;
+    font-size: 15px;
+    letter-spacing: -1px
+}
+
+#sri_lnb .lnb_menu a.depth_menu {
+    cursor: pointer
+}
+
+#sri_lnb .lnb_menu a.depth_menu:hover {
+    color: #999
+}
+
+#sri_lnb .lnb_menu.on .depth_menu {
+    padding-bottom: 10px
+}
+
+#sri_lnb .lnb_menu.depth_two .arrow {
+    position: absolute;
+    top: 0;
+    right: 21px
+}
+
+#sri_lnb .lnb_menu.depth_two.on .arrow {
+    background-position: -100px 0
+}
+
+#sri_lnb .lnb_menu .depth_menu_inner {
+    display: none
+}
+
+#sri_lnb .lnb_menu .depth_menu_inner a {
+    display: block;
+    padding: 1px 0 5px 30px;
+    width: 100%;
+    box-sizing: border-box;
+    color: #666;
+    font-size: 13px;
+    letter-spacing: -1px;
+    cursor: pointer
+}
+
+#sri_lnb .lnb_menu .depth_menu_inner a:hover {
+    color: #999
+}
+
+#sri_lnb .lnb_menu.on .depth_menu_inner {
+    display: block;
+    padding-bottom: 13px
+}
+
+#sri_lnb .lnb_menu .depth_menu_inner.sep_menu_3 {
+    padding: 0 0 12px 15px
+}
+
+#sri_lnb .lnb_menu .depth_menu_inner.sep_menu_3:after {
+    display: table;
+    clear: both;
+    content: "";
+    table-layout: fixed
+}
+
+#sri_lnb .lnb_menu .depth_menu_inner.sep_menu_3 li {
+    float: left;
+    position: relative;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    width: 52px;
+    text-align: center
+}
+
+#sri_lnb .lnb_menu .depth_menu_inner.sep_menu_3 li:after {
+    position: absolute;
+    top: 7px;
+    left: -6px;
+    width: 1px;
+    height: 10px;
+    background: #ececed;
+    content: ""
+}
+
+#sri_lnb .lnb_menu .depth_menu_inner.sep_menu_3 li:nth-of-type(3n-2):after {
+    display: none
+}
+
+#sri_lnb .lnb_menu .depth_menu_inner.sep_menu_3 a {
+    padding: 2px 0 0 0
+}
+
+#sri_lnb .lnb_menu .depth_menu_inner.sep_menu_2 {
+    padding: 0 0 12px 20px
+}
+
+#sri_lnb .lnb_menu .depth_menu_inner.sep_menu_2:after {
+    display: table;
+    clear: both;
+    content: "";
+    table-layout: fixed
+}
+
+#sri_lnb .lnb_menu .depth_menu_inner.sep_menu_2 li {
+    float: left;
+    position: relative;
+    margin: 0 19px 6px 0;
+    width: 67px;
+    text-align: left
+}
+
+#sri_lnb .lnb_menu .depth_menu_inner.sep_menu_2 li:after {
+    position: absolute;
+    top: 5px;
+    right: -13px;
+    width: 1px;
+    height: 10px;
+    background: #ececed;
+    content: ""
+}
+
+#sri_lnb .lnb_menu .depth_menu_inner.sep_menu_2 li:nth-of-type(2n) {
+    margin-right: 0;
+    width: 75px
+}
+
+#sri_lnb .lnb_menu .depth_menu_inner.sep_menu_2 li:nth-of-type(2n):after {
+    display: none
+}
+
+#sri_lnb .lnb_menu .depth_menu_inner.sep_menu_2 a {
+    padding: 1px 0 0 10px
+}
+
+#sri_lnb .lnb_menu.no_depth {
+    padding: 15px 0
+}
+
+#sri_lnb .lnb_menu.no_depth .ic_golink {
+    position: absolute;
+    right: 13px
+}
+
+#sri_lnb .lnb_menu .link_type {
+    display: inline-block;
+    margin: 0 0 7px 15px;
+    padding-left: 13px;
+    width: 189px;
+    height: 45px;
+    border: 1px solid #e7e7e8;
+    box-sizing: border-box;
+    line-height: 40px
+}
+
+#sri_lnb .lnb_menu .link_type strong {
+    font-size: 15px
+}
+
+#sri_lnb .lnb_menu .link_type.smaller {
+}
+
+#sri_lnb .lnb_menu .link_type.smaller strong {
+    font-size: 14px;
+    letter-spacing: -1px
+}
+
+#sri_lnb .lnb_menu .link_type:last-child {
+    margin-bottom: 0
+}
+
+#sri_lnb .lnb_menu .nav_title {
+    padding: 15px 0 0 15px;
+    height: 51px;
+    box-sizing: border-box;
+    font-size: 14px;
+    letter-spacing: -1px;
+    background: #fff
+}
+
+#sri_lnb .lnb_menu .nav_title .icon_title {
+    display: inline-block;
+    margin-bottom: 1px;
+    padding: 2px 2px 0 2px;
+    width: 55px;
+    height: 20px;
+    border: 1px solid #a1a1a1;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 11px;
+    letter-spacing: -1px;
+    line-height: 12px;
+    text-align: center;
+    vertical-align: top
+}
+
+#sri_lnb .lnb_menu .nav_title strong {
+    margin-left: 1px
+}
+
+.nav_title .icon_title {
+    display: inline-block;
+    margin-bottom: 1px;
+    padding: 2px 2px 0 2px;
+    width: 55px;
+    height: 20px;
+    border: 1px solid #a1a1a1;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 11px;
+    letter-spacing: -1px;
+    line-height: 12px;
+    text-align: center;
+    vertical-align: top
+}
+
+.lnb_menu .sri_lnb_icon.ic_up, .lnb_menu .sri_lnb_icon.ic_hot, .lnb_menu .sri_lnb_icon.ic_new, .lnb_menu .sri_lnb_icon.ic_renew, .lnb_menu .sri_lnb_icon.ic_window, .lnb_menu .sri_lnb_icon.ic_company {
+    margin-top: 6px
+}
+
+.lnb_menu .depth_menu_inner .sri_lnb_icon.ic_up, .lnb_menu .depth_menu_inner .sri_lnb_icon.ic_hot, .lnb_menu .depth_menu_inner .sri_lnb_icon.ic_new, .lnb_menu .depth_menu_inner .sri_lnb_icon.ic_window, .lnb_menu .depth_menu_inner .sri_lnb_icon.ic_company {
+    margin-top: 4px
+}
+
+/* recently_menu_wrap */
+.recently_menu_wrap {
+    padding: 15px 15px 0 15px;
+    box-sizing: border-box
+}
+
+.recently_menu_wrap .title {
+    display: block;
+    margin-bottom: 15px;
+    padding-left: 5px;
+    color: #444;
+    font-size: 13px;
+    letter-spacing: -1px
+}
+
+.recent_list li {
+    display: inline-block;
+    position: relative;
+    margin: 0 5px 5px 0;
+    padding: 0 19px 0 11px;
+    height: 26px;
+    border: 1px solid #dedede;
+    border-radius: 13px;
+    box-sizing: border-box;
+    color: #777;
+    font-size: 12px;
+    letter-spacing: -1px;
+    line-height: 23px;
+    background: #fff
+}
+
+.recent_list li .btn_recently_del {
+    position: absolute;
+    top: 0;
+    right: 0
+}
+
+/* sri_lnb_banner */
+#sri_lnb_banner {
+    margin: 15px auto 0 auto;
+    padding-bottom: 50px;
+    width: 189px
+}
+
+#sri_lnb_banner .items li {
+    display: none;
+    width: 189px;
+    height: 210px
+}
+
+#sri_lnb_banner .items li:first-child {
+    display: block
+}
+
+#sri_lnb_banner .items img {
+    display: block;
+    width: 189px;
+    height: 210px
+}
+
+#sri_lnb_banner .btns {
+    text-align: center
+}
+
+#sri_lnb_banner .btns li {
+    display: inline-block;
+    margin: 0 5px;
+    width: 6px;
+    height: 6px;
+    border: 1px solid #b2b2b2;
+    border-radius: 4px;
+    background-color: #fff
+}
+
+#sri_lnb_banner .btns li.on {
+    background-color: #b2b2b2
+}
+
+#sri_lnb_banner .btns li a {
+    display: block;
+    width: 8px;
+    height: 8px
+}
+
+/* sri_banner_scrolled */
+#sri_banner_scrolled ul li a {
+    display: inline-block;
+    width: 120px
+}
+
+#sri_banner_scrolled ul li a img {
+    vertical-align: top
+}
+
+#sri_banner_scrolled .google-adsense {
+    overflow: hidden;
+    margin-top: 12px;
+    height: 600px
+}
+
+#sri_banner_scrolled + #sri_banner_fixed {
+    margin-top: 13px
+}
+
+#sri_banner_fixed .data_list {
+    display: table;
+    width: 118px;
+    height: 37px;
+    border: 1px solid #e6e6e6;
+    border-top: 0;
+    background: #fff
+}
+
+#sri_banner_fixed .data_list:after {
+    display: table;
+    clear: both;
+    content: "";
+    table-layout: fixed
+}
+
+#sri_banner_fixed .data_list:first-child {
+    border-top: 1px solid #e6e6e6
+}
+
+#sri_banner_fixed .data_list dt {
+    display: table-cell;
+    padding-left: 8px;
+    width: 42px;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    vertical-align: middle
+}
+
+#sri_banner_fixed .data_list dd {
+    display: table-cell;
+    padding-right: 10px;
+    width: 58px;
+    text-align: right;
+    vertical-align: middle
+}
+
+#sri_banner_fixed .data_list dd a {
+    color: #ff4d4d;
+    font-size: 11px
+}
+
+#sri_banner_fixed .data_list dd a em {
+    font-size: 15px;
+    font-weight: bold
+}
+
+#sri_banner_fixed .btn_go_top {
+    display: block;
+    margin: 15px auto 0 auto
+}
+
+/* layout - footer */
+.sri_footer {
+    clear: both;
+    display: block;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+    min-width: 960px
+}
+
+.sri_footer .wrap_award {
+    border-top: #ededed 1px solid;
+    background: #fff
+}
+
+.sri_footer .wrap_footer {
+    min-width: 960px;
+    border: solid #eaeaea;
+    border-width: 1px 0;
+    background: #f8f8f8
+}
+
+.sri_footer .award ul {
+    font-size: 0;
+    text-align: center;
+    width: 960px;
+    margin: 0 auto
+}
+
+.sri_footer .award ul li {
+    box-sizing: border-box;
+    display: -moz-inline-stack;
+    display: inline-block;
+    zoom: 1;
+    * display:inline;
+    width: 110px;
+    padding: 17px 0 18px 0;
+    margin-left: 11px
+}
+
+.sri_footer .award ul li.first {
+    margin-left: 0
+}
+
+.sri_footer .award ul li a {
+    letter-spacing: -1px;
+    text-decoration: none
+}
+
+.sri_footer .award ul li a img {
+    display: block;
+    margin-bottom: 12px
+}
+
+.sri_footer .award ul li a .prize {
+    display: block;
+    height: 28px;
+    margin-bottom: 2px;
+    color: #666;
+    font-family: "Malgun Gothic", dotum, gulim, sans-serif;
+    font-size: 11px;
+    line-height: 14px
+}
+
+.sri_footer .award ul li a .org {
+    display: block;
+    color: #b0b0b0;
+    font-family: "Malgun Gothic", dotum, gulim, sans-serif;
+    font-size: 11px
+}
+
+.sri_footer .links {
+    font-family: "Malgun Gothic", dotum, gulim, sans-serif;
+    text-align: center
+}
+
+.sri_footer .links ul {
+    width: 960px;
+    height: 60px;
+    margin: 0 auto;
+    font-size: 0;
+    line-height: 60px
+}
+
+.sri_footer .links ul li {
+    box-sizing: border-box;
+    display: -moz-inline-stack;
+    display: inline-block;
+    zoom: 1;
+    * display:inline;
+    margin-left: 45px
+}
+
+.sri_footer .links ul li.first {
+    margin-left: 0
+}
+
+.sri_footer .links ul li a {
+    color: #666;
+    font-family: "Malgun Gothic", dotum, gulim, sans-serif;
+    font-size: 13px;
+    letter-spacing: -1px;
+    text-decoration: none
+}
+
+.sri_footer .links ul li.bold a {
+    font-weight: bold
+}
+
+.sri_footer .affiliates {
+    height: 44px;
+    border-top: 1px solid #e7e7e8
+}
+
+.sri_footer .affiliates ul {
+    width: 960px;
+    height: 44px;
+    margin: 0 auto;
+    font-size: 0;
+    line-height: 44px;
+    text-align: center
+}
+
+.sri_footer .affiliates ul li {
+    box-sizing: border-box;
+    display: -moz-inline-stack;
+    display: inline-block;
+    zoom: 1;
+    * display:inline;
+    height: 44px;
+    margin-left: 11px;
+    line-height: 0;
+    vertical-align: top
+}
+
+.sri_footer .affiliates ul li.first {
+    margin-left: 0px
+}
+
+.sri_footer .affiliates ul li a {
+    display: -moz-inline-stack;
+    display: inline-block;
+    zoom: 1;
+    * display:inline;
+    box-sizing: border-box;
+    height: 100%;
+    padding-top: 12px;
+    vertical-align: top
+}
+
+.sri_footer .affiliates ul li a img {
+    vertical-align: top
+}
+
+.sri_footer .inner {
+    position: relative;
+    box-sizing: border-box;
+    width: 960px;
+    padding: 30px 0 21px 214px;
+    margin: 0 auto
+}
+
+.sri_footer .logo {
+    display: block;
+    position: absolute;
+    top: 44px;
+    left: 40px;
+    width: 144px;
+    height: 54px
+}
+
+.sri_footer .customer {
+    margin-bottom: 12px
+}
+
+.sri_footer .customer p, .sri_footer .customer div {
+    height: 16px;
+    padding: 0;
+    margin: 0;
+    color: #444;
+    font-family: "Malgun Gothic", dotum, gulim, sans-serif;
+    font-size: 12px;
+    letter-spacing: -1px;
+    line-height: 16px
+}
+
+.sri_footer .customer p span, .sri_footer .customer div span {
+    letter-spacing: 0
+}
+
+.sri_footer .customer .btns {
+    height: 20px;
+    color: #999;
+    line-height: 20px
+}
+
+.sri_footer .customer .btns a {
+    display: -moz-inline-stack;
+    display: inline-block;
+    zoom: 1;
+    * display:inline;
+    box-sizing: border-box;
+    width: 71px;
+    height: 20px;
+    border: #c8c8c8 1px solid;
+    background: #f8f8f8;
+    color: #888;
+    font-size: 11px;
+    line-height: 18px;
+    text-align: center;
+    text-decoration: none
+}
+
+.sri_footer .customer .btns a.first {
+    margin-left: 8px
+}
+
+.sri_footer .copyright {
+    width: 960px;
+    margin: 0 auto 30px auto
+}
+
+.sri_footer .copyright p {
+    padding: 0;
+    margin: 0;
+    color: #999;
+    font-family: "Malgun Gothic", dotum, gulim, sans-serif;
+    font-size: 12px;
+    letter-spacing: -1px;
+    line-height: 18px;
+    text-align: center
+}
+
+.sri_footer .btn_mobile_view {
+    display: block;
+    box-sizing: border-box;
+    width: 960px;
+    height: 40px;
+    margin: 30px auto 0 auto;
+    border: #e2e2e2 1px solid;
+    background: #f1f1f1;
+    color: #444;
+    font-family: "Malgun Gothic", dotum, gulim, sans-serif;
+    font-size: 16px;
+    line-height: 38px;
+    text-align: center;
+    text-decoration: none
+}
+
+/* 알림센터 */
+.alarm_center_layer {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    z-index: 10;
+    padding: 9px 0 11px 8px;
+    width: 332px;
+    border: 1px solid #a1a1a1;
+    text-align: left;
+    background: #fff
+}
+
+.alarm_center_layer p {
+    margin: 0
+}
+
+.alarm_center_layer .layer_scroll_box {
+    overflow-y: auto;
+    position: relative;
+    width: 332px;
+    background: #fff url(//www.saraminimage.co.kr/ui/top/alarm_list2.gif) repeat-y 19px 0
+}
+
+.alarm_center_layer .no_data {
+    overflow: hidden;
+    background: none
+}
+
+.alarm_center_layer .alarm_list {
+    overflow: hidden;
+    position: relative;
+    width: 100%
+}
+
+.alarm_center_layer .alarm_list li {
+    display: block;
+    position: relative;
+    margin: 5px 8px 0 0;
+    border: 1px solid #cbcbcc;
+    box-sizing: border-box;
+    background: #fff
+}
+
+.alarm_center_layer .alarm_list li .deco_img {
+    display: block;
+    position: absolute;
+    top: -8px;
+    left: 15px;
+    width: 10px;
+    height: 8px;
+    font: 0/0 Arial;
+    background: url(//www.saraminimage.co.kr/ui/notification/bul_deco_alarm.png) no-repeat 0 -10px;
+    * top:-7px
+}
+
+.alarm_center_layer .alarm_list .checked {
+    margin-bottom: 15px;
+    text-align: center
+}
+
+.alarm_center_layer .alarm_list .checked p {
+    color: #444 !important;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 20px;
+    * display:inline;
+    * zoom:1
+}
+
+.alarm_center_layer .alarm_list .checked .deco_img, .alarm_center_layer .alarm_list .etcetera .deco_img {
+    background-position: 0 0
+}
+
+.alarm_center_layer .alarm_list .nudge_banner img {
+    width: 100%
+}
+
+.alarm_center_layer .alarm_list .checked .alarm_tit, .alarm_center_layer .alarm_list .etcetera .alarm_tit {
+    background-color: #fff
+}
+
+.alarm_center_layer .alarm_view {
+    display: block;
+    position: relative;
+    padding: 0 0 12px;
+    width: 100%
+}
+
+.alarm_center_layer .alarm_view:hover {
+    text-decoration: none
+}
+
+.alarm_center_layer .alarm_view:hover span {
+    text-decoration: none
+}
+
+.alarm_center_layer .alarm_view .alarm_tit {
+    display: block;
+    margin-bottom: 10px;
+    padding: 14px 0 8px 14px;
+    color: #6d82f3;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 20px;
+    background-color: #f3f8ff
+}
+
+.alarm_center_layer .alarm_view .alarm_txt {
+    display: block;
+    margin: 0 14px;
+    color: #444;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 20px
+}
+
+.alarm_center_layer .alarm_view .alarm_stxt {
+    display: block;
+    margin: 5px 14px 0;
+    color: #444;
+    font-size: 11px;
+    letter-spacing: 0;
+    line-height: 18px
+}
+
+.alarm_center_layer .alarm_view .alarm_time {
+    position: absolute;
+    top: 18px;
+    right: 45px;
+    color: #a4a4a4;
+    font-size: 11px;
+    letter-spacing: 0;
+    line-height: 18px
+}
+
+.alarm_center_layer .alarm_view .txt_allchecked {
+    display: block;
+    margin: 22px 0 7px !important;
+    color: #444 !important;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center
+}
+
+.alarm_center_layer .alarm_view .web {
+    right: 15px
+}
+
+.alarm_center_layer .alarm_login {
+    display: block;
+    position: relative;
+    padding: 5px
+}
+
+.alarm_center_layer .alarm_login span {
+    text-align: left
+}
+
+.alarm_center_layer .notice_tit {
+    margin: 12px 0 3px;
+    padding-left: 52px;
+    height: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    background: url(//www.saraminimage.co.kr/ui/notification/bul_tit_alarm.png) no-repeat 12px 0
+}
+
+.alarm_center_layer .notice_tit strong {
+    display: inline-block;
+    overflow: hidden;
+    padding-right: 12px;
+    height: 19px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    line-height: 18px;
+    vertical-align: top;
+    background: #6d82f3 url(//www.saraminimage.co.kr/ui/notification/bg_tit_alarm.gif) no-repeat 100% 0
+}
+
+.alarm_center_layer .notice_tit strong\ {
+    display: inline;
+    zoom: 1;
+    line-height: 22px
+}
+
+.alarm_center_layer .tit_no1 {
+    position: relative;
+    margin: 0 0 3px 0
+}
+
+.alarm_center_layer .btn_set_arlam {
+    display: block;
+    position: absolute;
+    top: 18px;
+    right: 14px;
+    width: 25px;
+    height: 19px;
+    background: url(//www.saraminimage.co.kr/ui/top/icon_push2.png) no-repeat 0 0
+}
+
+.alarm_center_layer .height_fixed {
+    height: 527px
+}
+
+.alarm_center_layer .button_box {
+    padding: 10px 0 0;
+    width: 324px;
+    line-height: 1;
+    background: #fff
+}
+
+.alarm_center_layer .button_box .btn_bottom {
+    display: block;
+    height: 31px;
+    color: #fff;
+    font-weight: bold;
+    line-height: 31px;
+    text-align: center;
+    text-decoration: none;
+    background: url(//www.saraminimage.co.kr/ui/notification/btn_alarm_bottom.png) no-repeat
+}
+
+.alarm_center_layer .button_box .btn_bottom:hover {
+    color: #fff
+}
+
+.alarm_center_layer .btn_closed_alarm {
+    margin: 6px 8px 0 0;
+    width: 324px;
+    text-align: right
+}
+
+.alarm_center_layer .btn_closed_alarm .btn_close_layer {
+    display: inline-block;
+    padding-right: 15px;
+    height: 19px;
+    color: #888;
+    font-size: 11px;
+    line-height: 19px;
+    text-decoration: none;
+    background: url(//www.saraminimage.co.kr/ui/notification/bg_close_layer.png) no-repeat 100% 4px;
+    * display:inline;
+    * zoom:1;
+    * line-height:22px
+}
+
+.alarm_center_layer .btn_closed_alarm .btn_close_layer:hover {
+    color: #888
+}
+
+.alarm_center_layer .loading_txt {
+    padding: 10px 0;
+    text-align: center
+}
+
+.alarm_center_layer .loading_txt img {
+    margin: 0 2px;
+    vertical-align: middle
+}
+
+.alarm_center_layer .not-notif {
+    margin-top: 7px;
+    color: #a3a3a3;
+    font-size: 12px;
+    text-align: center
+}
+
+.alarm_center_layer .wrap_no_alarm {
+    position: relative;
+    margin: 20px 0;
+    height: 96px;
+    background: url(//www.saraminimage.co.kr/ui/notification/bg_noalarm_util.png) no-repeat 50% 0
+}
+
+.alarm_center_layer .wrap_no_alarm .link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 78px;
+    width: 100%;
+    color: #b4b4b4;
+    font-size: 11px;
+    line-height: 18px;
+    text-align: center;
+    text-decoration: underline
+}
+
+.alarm_center_layer .wrap_no_alarm .link:hover {
+    color: #b4b4b4
+}
+
+.alarm_center_layer .alarm_view .alarm_cnt {
+    margin-top: 6px
+}
+
+.alarm_center_layer .alarm_view .alarm_cnt .row {
+    padding-left: 15px
+}
+
+.alarm_center_layer .alarm_view .alarm_cnt .row:after {
+    display: block;
+    clear: both;
+    content: ""
+}
+
+.alarm_center_layer .alarm_view .alarm_cnt .row .col_lft {
+    float: left;
+    width: 57px;
+    font-size: 11px;
+    color: #999;
+    line-height: 17px;
+    letter-spacing: 0
+}
+
+.alarm_center_layer .alarm_view .alarm_cnt .row .col_rgt {
+    margin-left: 57px;
+    font-size: 11px;
+    color: #666;
+    line-height: 17px;
+    letter-spacing: 0
+}
+
+.alarm_center_layer .alarm_view .alarm_btn_area {
+    margin: 10px 15px 0 0;
+    padding: 0;
+    color: #666;
+    font-size: 11px;
+    letter-spacing: -1px;
+    line-height: 13px;
+    text-align: right
+}
+
+/* WMG-6853 [유채꽃] 기간체계 변경 */
+.alarm_center_layer.company .height_fixed {
+    height: 426px
+}
+
+.alarm_center_layer.company .alarm_view .alarm_stxt {
+    text-align: right
+}
+
+.alarm_center_layer.company .alarm_view .detail {
+    margin-top: 6px;
+    margin-left: 5px
+}
+
+.alarm_center_layer.company .alarm_view .detail li {
+    margin: 0;
+    padding: 2px 0 2px 10px;
+    border: 0;
+    font-size: 11px;
+    line-height: 12px
+}
+
+.alarm_center_layer.company .alarm_view .detail li .emp {
+    color: #f5543d
+}
+
+.alarm_center_layer.company .layer_scroll_box .hurry {
+    display: inline-block;
+    margin-top: 10px;
+    width: 100%;
+    height: 34px;
+    font-size: 12px;
+    letter-spacing: -1px;
+    text-align: center
+}
+
+.alarm_center_layer.company .button_box .btn_bottom {
+    letter-spacing: 0
+}
+
+/* content bottom googlead */
+#content .google-adsense.doctype {
+    margin: 100px auto 80px;
+    width: 728px
+}
+
+/* 포장이사용 wrap */
+.package_wrap {
+    margin: 0 auto
+}
+
+.package_wrap.w925 {
+    width: 925px
+}
+
+.package_wrap.w890 {
+    width: 890px
+}
+
+.package_wrap.w774 {
+    width: 774px
+}
+
+.package_wrap.w740 {
+    width: 740px
+}
+
+.package_wrap.w695 {
+    width: 695px
+}
+
+.package_wrap.w680 {
+    width: 680px
+}
+
+/* WMG-18108 */
+#sri_lnb .lnb_menu .lnb_pop_nudge, .folded #sri_lnb .lnb_menu .lnb_pop_nudge, .folded #sri_lnb .lnb_menu.on .lnb_pop_nudge {
+    display: none
+}
+
+#sri_lnb .lnb_menu.on .lnb_pop_nudge {
+    display: block;
+}
+
+.lnb_nudge_magazine {
+    position: fixed;
+    z-index: 10;
+    width: 219px;
+}
+
+.lnb_nudge_magazine .inner {
+    position: absolute;
+    top: 20px;
+    right: -228px;
+    width: 220px;
+    height: 102px
+}
+
+.lnb_nudge_magazine .inner img {
+    vertical-align: top
+}
+
+.lnb_nudge_magazine .inner .btn_close {
+    position: absolute;
+    top: 0;
+    right: 1px;
+    width: 33px;
+    height: 33px
+}
+
+.lnb_nudge_magazine .inner .btn_close img {
+    width: 100%;
+    height: 100%
+}
+
+/* wmg-17777 */
+.wrap_nav ul.nav .wrap_depth2 li > a .icon_new {
+    margin: 6px 0 0 0
+}
+
+.wrap_nav ul.nav #area-nav .wrap_depth2 .link_subway {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding-left: 19px;
+    width: 573px;
+    height: 37px;
+    border: 1px solid #e5e5e5;
+    border-width: 1px 0 0 1px;
+    box-sizing: border-box;
+    background: #fff
+}
+
+.wrap_nav ul.nav #area-nav .wrap_depth2 .link_subway .btn_subway_recruit {
+    display: inline-block;
+    padding-right: 16px;
+    line-height: 35px;
+    font-size: 13px;
+    color: #444;
+    background: url(//www.saraminimage.co.kr/sri/common/btn/btn_arr_gnb_link.png) no-repeat 100% 55%
+}
+
+.wrap_nav ul.nav #area-nav .wrap_depth2 .link_subway .btn_subway_recruit:hover {
+    text-decoration: underline
+}
+
+/* WMG-23007 */
+.wrap_nav ul.nav #recruit-nav .wrap_depth2 .recruit_info_nav li.depth2.direct_link_menu {
+    height: 429px
+}
+
+.wrap_nav ul.nav #recruit-nav .wrap_depth2 .recruit_info_nav li.depth2.type_long_height {
+    height: 242px
+}
+
+.wrap_nav ul.nav .wrap_depth2 li > a .icon_beta {
+    margin: 6px 0 0 0;
+    vertical-align: top
+}
+
+@charset "utf-8";
+/* default layout override */
+body {
+    min-width: 1260px
+}
+
+#sri_header {
+    position: absolute
+}
+
+#content {
+    margin: 0;
+    padding: 39px 0 40px;
+    width: 100%;
+    min-height: 2000px;
+    background: #f1f3f9
+}
+
+button {
+    border: 0;
+    background: none
+}
+
+.clipboard_dummy {
+    overflow: hidden;
+    position: fixed;
+    top: -1px;
+    left: -1px;
+    width: 1px;
+    height: 1px
+}
+
+.jview .enc_mail {
+    display: none
+}
+
+#header > .inner.fixed_script {
+    position: absolute !important
+}
+
+/* 공통 요소들 */
+.spr_jview:before, .spr_jview:after {
+    display: inline-block;
+    vertical-align: top;
+    background: url(//www.saraminimage.co.kr/sri/person/jobs_view/spr_jview_190208.png) no-repeat
+}
+
+.jview .btn_jview {
+    display: inline-block;
+    padding: 0 9px 3px;
+    height: 28px;
+    border: 1px solid #e4e4e4;
+    box-sizing: border-box;
+    font-size: 0;
+    vertical-align: top;
+    background-color: #fff
+}
+
+.jview a.btn_jview {
+    line-height: 23px
+}
+
+.jview .btn_jview span {
+    color: #666;
+    font-size: 13px;
+    font-weight: normal;
+    letter-spacing: -1px
+}
+
+.jview .jv_header .btn_jview span {
+    color: #888
+}
+
+.jview .btn_jview strong {
+    color: #666;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: -1px
+}
+
+.jview .btn_interest:before {
+    margin: 3px 5px 0 0;
+    width: 15px;
+    height: 13px;
+    background-position: 0 0;
+    content: ""
+}
+
+.jview .btn_interest.on:before {
+    background-position: -30px 0
+}
+
+.jview .btn_print:before {
+    margin: 3px 5px 0 0;
+    width: 15px;
+    height: 15px;
+    background-position: -100px -70px;
+    content: ""
+}
+
+.jview .btn_share:before {
+    margin: 3px 5px 0 0;
+    width: 12px;
+    height: 13px;
+    background-position: -80px -70px;
+    content: ""
+}
+
+.jview .btn_scrap {
+    display: block;
+    padding: 11px 0 7px;
+    width: 60px;
+    height: 60px;
+    border: 1px solid #e9e9e9
+}
+
+.jview .btn_scrap .txt_scrap {
+    display: block;
+    padding-top: 24px;
+    width: 100%;
+    height: 100%;
+    color: #949494;
+    box-sizing: border-box;
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: 14px
+}
+
+.jview .btn_scrap .txt_scrap:before {
+    position: absolute;
+    left: 50%;
+    top: 11px;
+    margin-left: -10px;
+    width: 19px;
+    height: 19px;
+    background-position: -60px 0
+}
+
+.jview .btn_scrap.on .txt_scrap:before {
+    background-position: -60px -30px
+}
+
+.jview .btn_link:after {
+    margin: 8px 0 0 8px;
+    width: 6px;
+    height: 9px;
+    background-position: 0 -150px;
+    content: ""
+}
+
+.jview .sri_btn_lg {
+    display: block;
+    width: 185px
+}
+
+.jview .sri_btn_lg span {
+    width: 183px
+}
+
+.jview .share {
+    display: inline-block;
+    position: relative;
+    margin-left: 4px;
+    vertical-align: middle
+}
+
+.jview .share .list_share {
+    display: none;
+    position: absolute;
+    top: 38px;
+    left: 50%;
+    margin-left: -62px;
+    padding: 2px;
+    width: 123px;
+    height: 30px;
+    border: 1px solid #eee;
+    background-color: #fff
+}
+
+.jview .share .list_share:before {
+    position: absolute;
+    top: -7px;
+    left: 58px;
+    width: 11px;
+    height: 7px;
+    background-position: -60px -20px;
+    content: ""
+}
+
+.jview .share .list_share:after {
+    position: absolute;
+    top: -20px;
+    left: -1px;
+    width: 129px;
+    height: 20px;
+    background: none;
+    content: ""
+}
+
+.jview .share .list_share li {
+    float: left;
+    border-left: 1px solid #eee
+}
+
+.jview .share .list_share .spr_jview {
+    display: block;
+    padding: 4px;
+    width: 30px;
+    height: 30px;
+    box-sizing: border-box
+}
+
+.jview .share .list_share li:first-child {
+    border-left: 0
+}
+
+.jview .share .list_share .spr_jview:after {
+    display: block;
+    width: 22px;
+    height: 22px;
+    content: ""
+}
+
+.jview .share .list_share .facebook:after {
+    background-position: 0 -40px
+}
+
+.jview .share .list_share .twitter:after {
+    background-position: -30px -40px
+}
+
+.jview .share .list_share .copy_url:after {
+    background-position: -60px -40px
+}
+
+.jview .share .list_share .send_sms:after {
+    background-position: -90px -40px
+}
+
+.jview .share:hover .list_share {
+    display: block
+}
+
+.jv_title {
+    margin-bottom: 14px;
+    color: #222;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    line-height: 22px
+}
+
+.jv_title > strong {
+    color: #4876ef
+}
+
+.jv_title .link_txt {
+    float: right;
+    margin: 2px 11px 0 0;
+    border-bottom: 1px solid #4876ef;
+    font-weight: normal;
+    font-size: 13px;
+    ;
+    line-height: 17px;
+    color: #4876ef
+}
+
+.jv_title .link_txt:after {
+    position: absolute;
+    right: 0;
+    top: 7px;
+    width: 6px;
+    height: 9px;
+    background-position: 0 -170px;
+    content: ""
+}
+
+.jview a + .toolTipWrap, .jview span + .toolTipWrap, .jview strong + .toolTipWrap {
+    margin-left: 6px
+}
+
+.jview .toolTipWrap + .toolTipWrap {
+    margin-left: 4px
+}
+
+.jview .toolTipWrap.opened .toolTip {
+    display: block
+}
+
+.jview .toolTip .toolTipCont {
+    font-size: 12px
+}
+
+.jview .toolTip .toolTipTit, .jview .toolTip p {
+    color: #666;
+    word-break: break-all
+}
+
+.jview .toolTip ul {
+    display: block;
+    font-size: 12px
+}
+
+.jview .toolTip ul > li {
+    position: relative;
+    margin-top: 6px;
+    padding-left: 66px;
+    min-height: 16px;
+    color: #666;
+    line-height: 16px
+}
+
+.jview .toolTip ul > li:first-child {
+    margin-top: 0
+}
+
+.jview .toolTip ul > li > span {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 66px;
+    color: #888;
+    line-height: 16px
+}
+
+.jview .toolTip .txt_noti {
+    margin-top: 10px;
+    padding: 8px 15px 10px;
+    color: #949494;
+    font-size: 11px;
+    letter-spacing: -1px;
+    line-height: 17px;
+    background-color: #f9f9f9
+}
+
+.jview .scroll {
+    scrollbar-3dLight-Color: #fff;
+    scrollbar-arrow-color: #e5e6eb;
+    scrollbar-base-color: #fff;
+    scrollbar-Face-Color: #e5e6eb;
+    scrollbar-Track-Color: #fff;
+    scrollbar-DarkShadow-Color: #fff;
+    scrollbar-Highlight-Color: #fff;
+    scrollbar-Shadow-Color: #fff
+}
+
+.jview .scroll::-webkit-scrollbar {
+    width: 6px;
+    height: 6px
+}
+
+.jview .scroll::-webkit-scrollbar-track {
+    background: #fcfcfc
+}
+
+.jview .scroll::-webkit-scrollbar-thumb {
+    background: #f2f2f3
+}
+
+/* 즉시지원 버튼 컬러
+.jview .sri_btn_lg>span.sri_btn_immediately {border:1px solid #ff6d6a;color:#fff;background:#ff6d6a}
+.offer.list .sri_btn_xs {display:inline-block;overflow:hidden;margin:0;padding:0;width:auto;height:auto;box-sizing:border-box;text-align:center;vertical-align:top;background:#fff;cursor:pointer}
+.offer.list .sri_btn_xs>span.sri_btn_immediately {width:52px;border:1px solid #ff6d6a;color:#ff6d6a;background:0}
+ */
+/* 프로그레스 바 */
+.jview_progress {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 11;
+    width: 100%;
+    height: 4px;
+    background: #e5e6eb
+}
+
+.jview_progress .row {
+    display: block;
+    width: 100%;
+    height: 4px;
+    border: 0;
+    background: #5b76f5;
+    -webkit-transform: scaleX(0);
+    -ms-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    -ms-transform-origin: 0 0;
+    -o-transform-origin: 0 0;
+    transform-origin: 0 0;
+    will-change: transform
+}
+
+/* 추천영역 */
+.jview_wing {
+    overflow: hidden;
+    position: fixed;
+    top: 99px;
+    left: 50%;
+    z-index: 2;
+    margin-left: 350px;
+    width: 280px;
+    height: calc(100vh - 99px);
+    box-sizing: border-box;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform
+}
+
+.jview_wing:after {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 5px;
+    background: #f1f3f9 url(//www.saraminimage.co.kr/sri/person/jobs_view/bg_jview_wing.gif) 0 0 repeat-x;
+    content: ""
+}
+
+.jview_floating.on + .jview_wing:after {
+    display: none
+}
+
+.jview_wing .scroller {
+    overflow-y: scroll;
+    width: 300px;
+    height: 100%
+}
+
+.jview_wing .inner {
+    position: relative;
+    z-index: 1;
+    padding: 25px 0;
+    width: 280px
+}
+
+.jview_wing .inner > .title {
+    margin-bottom: 10px;
+    width: 280px;
+    color: #222;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    line-height: 24px
+}
+
+.jview_wing .inner > .title strong {
+    color: #4876ef
+}
+
+.jview_wing .jv_ads {
+    overflow: hidden;
+    margin: 15px 0 0 15px;
+    width: 250px;
+    height: 250px
+}
+
+.jview_wing .offer.list {
+    width: 280px
+}
+
+.jview_recommendation {
+    margin: 50px auto 0;
+    width: 960px
+}
+
+.offer .info {
+    font-size: 12px;
+    line-height: 16px
+}
+
+.offer .info .txt_bar {
+    display: inline-block;
+    margin: 0 2px;
+    width: 1px;
+    height: 10px;
+    color: #e9e9e9;
+    font-size: 0;
+    vertical-align: middle;
+    background: #e9e9e9
+}
+
+.offer .btn_scrap {
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    z-index: 3;
+    padding: 4px;
+    height: 24px
+}
+
+.offer .btn_scrap:before {
+    width: 17px;
+    height: 16px;
+    background-position: 0 -20px;
+    content: ""
+}
+
+.offer .btn_scrap.on {
+    background-position: -30px -20px
+}
+
+.offer .btn_interest {
+    padding: 3px;
+    width: 21px;
+    height: 19px;
+    vertical-align: middle
+}
+
+.offer .btn_interest:before {
+    display: block;
+    width: 15px;
+    height: 13px;
+    background-position: 0 0;
+    content: ""
+}
+
+.offer .btn_interest.on:before {
+    background-position: -30px 0
+}
+
+.offer .ico_offer {
+    display: inline-block;
+    margin-right: 4px;
+    width: 41px;
+    height: 16px;
+    font-size: 0;
+    line-height: 0;
+    vertical-align: top;
+    background: url(//www.saraminimage.co.kr/sri/person/jobs_view/ico_offer.png) no-repeat 0 0
+}
+
+.offer.list li {
+    display: none;
+    position: relative;
+    margin-bottom: 12px;
+    padding: 76px 20px 0 19px;
+    width: 100%;
+    height: 112px;
+    box-sizing: border-box
+}
+
+.offer.list li:before {
+    display: block;
+    position: absolute;
+    top: 23px;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 89px;
+    border: 1px solid #cfd1d6;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background: #fff;
+    content: ""
+}
+
+.offer.list li.offer:before {
+    border-left: 2px solid #7d90f0
+}
+/* AB test */
+
+.offer.list li.related:before {
+    background: #fcfcfd
+}
+
+.offer.list li .link {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box
+}
+
+.offer.list li .link > span {
+    display: block;
+    position: relative;
+    z-index: 2;
+    letter-spacing: -1px
+}
+
+.offer.list li .link .related {
+    display: inline-block;
+    float: right;
+    margin-right: 4px;
+    color: #222;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 18px;
+    text-align: right;
+    vertical-align: middle
+}
+
+.offer.list li .link .related strong {
+    color: #4876ef
+}
+
+.offer.list li .link .company {
+    overflow: hidden;
+    z-index: 1;
+    margin: 0 0 16px 4px;
+    color: #222;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 18px;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.offer.list li .link .related + .company {
+    width: 176px
+}
+
+.offer.list li .link .title {
+    overflow: hidden;
+    margin: 0 20px 1px;
+    color: #444;
+    font-size: 14px;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.offer.list li .link .title .ico_offer {
+    display: inline-block;
+    margin-right: 4px;
+    width: 41px;
+    height: 16px;
+    font-size: 0;
+    line-height: 0;
+    vertical-align: middle;
+    background: url(//www.saraminimage.co.kr/sri/person/jobs_view/ico_offer.png) no-repeat 0 0
+}
+
+.offer.list li .info {
+    margin: 0 20px
+}
+
+.offer.list li .sri_btn_xs {
+    display: inline-block;
+    float: right;
+    position: relative;
+    z-index: 3;
+    margin-top: 3px
+}
+
+.offer.list li .date {
+    display: inline-block;
+    float: right;
+    position: relative;
+    z-index: 3;
+    margin-top: 3px;
+    color: #666;
+    font-size: 11px;
+    line-height: 16px;
+    text-align: right;
+    vertical-align: top
+}
+
+.offer.list li .sri_btn_xs + .date {
+    margin-right: 8px
+}
+
+.offer.tbl {
+    width: 100%;
+    table-layout: fixed
+}
+
+.offer.tbl td {
+    padding: 14px 0 19px;
+    border-top: 1px solid #444;
+    border-bottom: 1px solid #ebebeb;
+    color: #666;
+    font-size: 14px;
+    letter-spacing: -1px;
+    vertical-align: top;
+    background: #fff
+}
+
+.offer.tbl .company {
+    padding: 14px 0 19px 30px;
+    line-height: 24px
+}
+
+.offer.tbl .link {
+    display: inline-block;
+    overflow: hidden;
+    color: #333;
+    text-overflow: ellipsis;
+    vertical-align: top;
+    white-space: nowrap
+}
+
+.offer.tbl .link:hover {
+    text-decoration: underline
+}
+
+.offer.tbl .company .link {
+    max-width: 128px
+}
+
+.offer.tbl .recruit .link {
+    max-width: 440px;
+    font-size: 16px
+}
+
+.offer.tbl .ico_offer {
+    display: block;
+    margin-top: 3px
+}
+
+.offer.tbl .recruit .txt_recruit {
+    display: block;
+    margin-bottom: 8px;
+    line-height: 24px
+}
+
+.offer.tbl .info {
+    display: block;
+    margin: 0
+}
+
+.offer.tbl .info > em {
+    margin-left: 8px;
+    font-size: 13px;
+    line-height: 16px;
+    vertical-align: middle
+}
+
+.offer.tbl .info > em:before {
+    margin: -1px 8px 0 0;
+    height: 12px;
+    background: #c5c5c5
+}
+
+.offer.tbl .info > em:first-child {
+    margin-left: 0
+}
+
+.offer.tbl .d_day {
+    float: left;
+    width: 128px;
+    box-sizing: border-box;
+    color: #888;
+    font-size: 13px;
+    line-height: 22px
+}
+
+.offer.tbl .d_day .date {
+    display: block;
+    color: #666;
+    font-size: 14px
+}
+
+.offer.tbl .sri_btn_sm {
+    float: left;
+    margin-top: 6px;
+    width: 90px
+}
+
+.offer.tbl .sri_btn_sm span {
+    width: 88px
+}
+
+.jview_wing .btn_help, .jview_recommendation .btn_help {
+    display: inline-block;
+    margin-top: 6px;
+    width: 16px;
+    height: 16px;
+    vertical-align: top
+}
+
+.jview_wing .btn_help span, .jview_recommendation .btn_help span {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute;
+    width: 1px;
+    height: 1px
+}
+
+.jview_wing .btn_help:after, .jview_recommendation .btn_help:after {
+    width: 16px;
+    height: 16px;
+    background-position: -100px -150px;
+    content: ""
+}
+
+.jview_wing .toolTip em, .jview_recommendation .toolTip em {
+    color: #4876ef
+}
+
+.jview_wing .btn_help:hover + .toolTip, .jview_recommendation .btn_help:hover + .toolTip {
+    display: block
+}
+
+.jview_wing .toolTip {
+    margin: 10px 0 0 -178px;
+    width: 220px;
+    font-weight: normal
+}
+
+.jview_recommendation .toolTip {
+    margin: 10px 0 0 -125px;
+    width: 220px;
+    font-weight: normal
+}
+
+.jview_wing .toolTip .tail.tail_top_right {
+    right: 73px
+}
+
+/* 리모콘 */
+.jv_remote {
+    position: fixed;
+    top: 99px;
+    left: 50%;
+    z-index: 2;
+    margin-left: -699px;
+    width: 70px;
+    box-sizing: border-box;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform
+}
+
+.jv_remote > .links > button {
+    display: none;
+    position: relative;
+    padding-top: 45px;
+    width: 70px;
+    height: 76px;
+    border: 1px solid #e5e6eb;
+    border-top: 0;
+    box-sizing: border-box;
+    background: #fbfcfc
+}
+
+.jv_remote > .links > button:first-child {
+    border-top: 1px solid #e5e6eb
+}
+
+.jv_remote > .links > button.ready {
+    display: block
+}
+
+.jv_remote > .links > button.ready.on {
+    border-right-color: #fff;
+    background: #fff
+}
+
+.jv_remote > .links > button > span {
+    display: block;
+    color: #888;
+    font-size: 12px;
+    font-weight: normal;
+    letter-spacing: -1px;
+    line-height: 16px;
+    text-align: center
+}
+
+.jv_remote > .links > button.ready.on > span {
+    color: #444;
+    font-weight: bold
+}
+
+.jv_remote > .links > button:before {
+    position: absolute;
+    top: 15px;
+    left: 23px;
+    width: 23px;
+    height: 25px;
+    content: ""
+}
+
+.jv_remote > .links > button.jv_detail:before {
+    background-position: 0 -90px
+}
+
+.jv_remote > .links > button.jv_howto:before {
+    background-position: -30px -90px
+}
+
+.jv_remote > .links > button.jv_statics:before {
+    background-position: -60px -90px
+}
+
+.jv_remote > .links > button.jv_company:before {
+    background-position: -90px -90px
+}
+
+.jv_remote > .links > button.jv_reference:before {
+    background-position: -120px -90px
+}
+
+.jv_remote > .links > button.jv_detail.ready.on:before {
+    background-position: 0 -120px
+}
+
+.jv_remote > .links > button.jv_howto.ready.on:before {
+    background-position: -30px -120px
+}
+
+.jv_remote > .links > button.jv_statics.ready.on:before {
+    background-position: -60px -120px
+}
+
+.jv_remote > .links > button.jv_company.ready.on:before {
+    background-position: -90px -120px
+}
+
+.jv_remote > .links > button.jv_reference.ready.on:before {
+    background-position: -120px -120px
+}
+
+.jv_remote > .nav {
+    display: none;
+    margin: 24px 0 0 10px;
+    width: 47px;
+    border: 1px solid #e5e6eb;
+    box-sizing: border-box
+}
+
+.jv_remote > .nav > button {
+    display: block;
+    position: relative;
+    padding: 8px 0;
+    width: 100%;
+    height: 43px;
+    box-sizing: border-box;
+    background: #fff
+}
+
+.jv_remote > .nav > button:first-child {
+    border-bottom: 1px solid #e5e6eb
+}
+
+.jv_remote > .nav > button.btn_prev:before, .jv_remote > .nav > button.btn_next:after {
+    display: block;
+    margin-left: 15px;
+    width: 17px;
+    height: 10px;
+    opacity: 0.2
+}
+
+.jv_remote > .nav > button.btn_prev:before {
+    margin-bottom: 4px;
+    background-position: -120px 0;
+    content: ""
+}
+
+.jv_remote > .nav > button.btn_next:after {
+    margin-top: 5px;
+    background-position: -120px -20px;
+    content: ""
+}
+
+.jv_remote > .nav > button span {
+    display: block;
+    color: #949494;
+    font-size: 11px;
+    letter-spacing: -1px;
+    line-height: 13px;
+    opacity: 0.3
+}
+
+.jv_remote > .nav > button.ready:before, .jv_remote > .nav > button.ready.btn_next:after {
+    opacity: 1
+}
+
+.jv_remote > .nav > button.ready span {
+    opacity: 1
+}
+
+.jv_remote > .nav > button.btn_next.ready.blink {
+    background-color: #4876ef;
+    -webkit-animation: btnNextBlink 0.4s ease-in-out infinite;
+    animation: btnNextBlink 0.4s ease-in-out infinite
+}
+
+.jv_remote > .nav > button.btn_next.ready.blink span {
+    color: #fff
+}
+
+.jv_remote > .nav > button.btn_next.ready.blink:after {
+    background-position: -150px -20px
+}
+
+@-webkit-keyframes btnNextBlink {
+    0% {
+        -webkit-transform: translateY(0px);
+        transform: translateY(0px)
+    }
+
+    50% {
+        -webkit-transform: translateY(10px);
+        transform: translateY(10px)
+    }
+
+    100% {
+        -webkit-transform: translateY(0px);
+        transform: translateY(0px)
+    }
+}
+
+@keyframes btnNextBlink {
+    0% {
+        -webkit-transform: translateY(0px);
+        transform: translateY(0px)
+    }
+
+    50% {
+        -webkit-transform: translateY(10px);
+        transform: translateY(10px)
+    }
+
+    100% {
+        -webkit-transform: translateY(0px);
+        transform: translateY(0px)
+    }
+}
+
+.jv_remote.shrink {
+    margin-left: -622px;
+    padding-top: 13px;
+    width: 31px
+}
+
+.jv_remote.shrink > .links {
+    position: relative
+}
+
+.jv_remote.shrink > .links:before {
+    display: block;
+    position: absolute;
+    top: 8px;
+    bottom: 8px;
+    left: 15px;
+    width: 1px;
+    background: #e0e0e0;
+    content: ""
+}
+
+.jv_remote.shrink > .links > button {
+    display: none;
+    margin-top: 5px;
+    padding: 0;
+    width: 31px;
+    height: 27px;
+    border: 0;
+    background: none
+}
+
+.jv_remote.shrink > .links > button:before {
+    display: none
+}
+
+.jv_remote.shrink > .links > button:first-child {
+    margin-top: 0;
+    border: 0
+}
+
+.jv_remote.shrink > .links > button.ready {
+    display: block
+}
+
+.jv_remote.shrink > .links > button.ready.on {
+    background: none
+}
+
+.jv_remote.shrink > .links > button.ready > span {
+    margin: 0 auto;
+    width: 13px;
+    height: 13px;
+    border-radius: 13px;
+    box-sizing: border-box;
+    font-size: 0;
+    line-height: 0;
+    background: #e0e0e0
+}
+
+.jv_remote.shrink > .links > button.ready.on > span {
+    width: 15px;
+    height: 15px;
+    border: 2px solid #444;
+    border-radius: 15px;
+    background: #fff
+}
+
+.jv_remote.shrink > .links > button.ready.on:before {
+    display: block;
+    position: absolute;
+    top: 11px;
+    left: 13px;
+    width: 5px;
+    height: 5px;
+    border-radius: 5px;
+    background: #444;
+    content: ""
+}
+
+.jv_remote.shrink > .nav {
+    display: none;
+    margin: 9px 0 0 0;
+    width: 31px;
+    border: 0
+}
+
+.jv_remote.shrink > .nav > button {
+    padding: 0;
+    width: 31px;
+    height: 27px;
+    background: none
+}
+
+.jv_remote.shrink > .nav > button:first-child {
+    margin-bottom: 1px;
+    border: 0
+}
+
+.jv_remote.shrink > .nav > button:before, .jv_remote.shrink > .nav > button.btn_next:after {
+    display: block;
+    position: absolute;
+    left: 12px;
+    margin-left: 0;
+    width: 7px;
+    height: 4px;
+    opacity: 0.3
+}
+
+.jv_remote.shrink > .nav > button.btn_prev:before {
+    top: 11px;
+    margin-bottom: 0;
+    background-position: -180px 0;
+    content: ""
+}
+
+.jv_remote.shrink > .nav > button.btn_next:after {
+    top: 12px;
+    margin-top: 0;
+    background-position: -180px -20px;
+    content: ""
+}
+
+.jv_remote.shrink > .nav > button span {
+    margin: 0 auto;
+    width: 13px;
+    height: 13px;
+    border: 1px solid #e5e6eb;
+    border-radius: 13px;
+    box-sizing: border-box;
+    font-size: 0;
+    line-height: 0;
+    background: #fcfcfd;
+    opacity: 1
+}
+
+.jv_remote.shrink > .nav > button.ready span {
+    background: #fff
+}
+
+.jv_remote.shrink > .nav > button.ready.blink {
+    background: none
+}
+
+.jv_remote.shrink > .nav > button.ready.blink span {
+    border-color: #4876ef;
+    background-color: #4876ef
+}
+
+.jv_remote.shrink > .nav > button.ready:before, .jv_remote.shrink > .nav > button.ready.btn_next:after {
+    opacity: 1
+}
+
+.jv_remote.shrink > .nav > button.ready.btn_next.ready.blink:after {
+    background-position: -180px -150px
+}
+
+/* TOP 버튼 */
+.jview_top {
+    display: none;
+    position: fixed;
+    left: 50%;
+    bottom: 20px;
+    z-index: 100;
+    margin-left: 645px;
+    padding: 7px 0;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #cbcbcb;
+    box-sizing: border-box;
+    background: #fff
+}
+
+.jview_top:before {
+    display: block;
+    margin: 0 0 2px 11px;
+    width: 17px;
+    height: 10px;
+    background-position: -150px 0;
+    content: ""
+}
+
+.jview_top span {
+    display: block;
+    color: #444;
+    font-family: dotum, gulim, sans-serif;
+    font-size: 11px;
+    line-height: 13px
+}
+
+/* 공고 타이틀 & 플로팅 공통 */
+.jv_header {
+    position: relative;
+    padding-right: 270px;
+    color: #222;
+    font-size: 0;
+    letter-spacing: -1px;
+    line-height: 28px;
+    min-height: 74px
+}
+
+.jv_header .inner {
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform
+}
+
+.jv_header .tag {
+    display: inline-block;
+    position: relative;
+    margin-right: 8px;
+    padding-right: 9px;
+    height: 28px;
+    box-sizing: border-box;
+    color: #888;
+    font-size: 16px;
+    line-height: 23px;
+    text-align: center;
+    vertical-align: middle
+}
+
+.jv_header .tag:after {
+    display: block;
+    position: absolute;
+    top: 5px;
+    right: 0;
+    width: 1px;
+    height: 16px;
+    background: #e4e4e4;
+    content: ""
+}
+
+.jv_header .company {
+    display: inline-block;
+    overflow: hidden;
+    margin-right: 8px;
+    padding-right: 2px;
+    max-width: 380px;
+    height: 28px;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 23px;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    white-space: nowrap
+}
+
+.jv_header .tag + .company {
+    max-width: 420px
+}
+
+.jv_header .tit_job {
+    margin-top: 4px;
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: -1.5px;
+    line-height: 34px
+}
+
+.jv_header .tit_job > .ico_offer {
+    display: inline-block;
+    margin: -5px 4px 0 0;
+    width: 52px;
+    height: 24px;
+    font-size: 0;
+    line-height: 0;
+    vertical-align: middle;
+    background: url(//www.saraminimage.co.kr/sri/person/jobs_view/ico_offer2_200402.png) no-repeat 0 0
+}
+/* WMG-25511 추가 */
+
+.jv_header .btn_jview.btn_careers {
+    margin-left: 4px
+}
+
+.jv_header .btn_jview.btn_careers .num {
+    font-weight: bold;
+    color: #444
+}
+
+.jv_header .btn_scrap {
+    position: absolute;
+    top: 14px;
+    right: 195px
+}
+
+.jv_header .btn_apply {
+    position: absolute;
+    top: 4px;
+    right: 0;
+    width: 185px;
+    text-align: center
+}
+
+.jv_header .btn_apply .sri_btn_lg {
+    position: absolute;
+    top: 10px;
+    z-index: 1
+}
+
+.jv_header .btn_apply .dday {
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+    padding: 0 8px;
+    height: 21px;
+    border: 1px solid #ff7673;
+    border-radius: 21px;
+    color: #ff6d6a;
+    font-size: 12px;
+    letter-spacing: -1px;
+    line-height: 18px;
+    background: #fff
+}
+
+.jv_header_float .jv_header .tag {
+    font-size: 13px
+}
+
+.jv_header_float .jv_header .tag:after {
+    top: 7px;
+    height: 13px
+}
+
+.jv_header_float .jv_header .company {
+    color: #666;
+    font-size: 15px;
+    line-height: 25px
+}
+
+.jv_header_float .jv_header .tit_job {
+    overflow: hidden;
+    margin-top: 4px;
+    width: 100%;
+    font-size: 19px;
+    line-height: 22px;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.jv_header_float .jv_header {
+    padding-top: 14px
+}
+
+.jv_header_float .jv_header .btn_scrap {
+    top: 16px
+}
+
+.jv_header_float .jv_header .btn_apply {
+    top: 6px
+}
+/* WMG-23274 추가 */
+
+.jv_header .ico_recuite_method {
+    display: inline-block;
+    margin: 6px 13px 0 0;
+    padding: 4px 12px 6px;
+    height: 26px;
+    border-radius: 14px;
+    box-sizing: border-box;
+    font-size: 13px;
+    line-height: 15px;
+    color: #fff;
+    background: #444;
+    vertical-align: top
+}
+
+.jv_header .ico_recuite_method:before {
+    display: inline-block;
+    vertical-align: top;
+    content: ""
+}
+
+.jv_header .ico_blind:before {
+    margin: 2px 4px 0 0;
+    width: 18px;
+    height: 14px;
+    background: url(//www.saraminimage.co.kr/sri/person/jobs_view/ico_blind.png) no-repeat 0 0
+}
+
+.jv_header .ico_form:before {
+    margin: 1px 3px 0 0;
+    width: 16px;
+    height: 15px;
+    background: url(//www.saraminimage.co.kr/sri/person/jobs_view/ico_form.png) no-repeat 0 0
+}
+
+.jview_floating .jv_header .ico_recuite_method {
+    margin: 0 9px 0 0
+}
+
+/* 플로팅 */
+.jview_floating.jview {
+    display: none;
+    position: fixed;
+    top: 4px;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 96px;
+    background: #fff;
+    box-shadow: 0 0 12px 0 rgba(100, 107, 113, 0.3)
+}
+
+.jview_floating.on {
+    display: block
+}
+
+.jview_floating .jv_header_float {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -585px;
+    width: 870px
+}
+
+.jv_util {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: 350px;
+    padding-top: 28px;
+    width: 280px
+}
+
+.jv_util .links {
+    font-size: 0
+}
+
+.jv_util .links a {
+    display: inline-block;
+    position: relative;
+    padding: 0;
+    color: #949494;
+    font-size: 13px;
+    letter-spacing: -1px;
+    line-height: 15px;
+    text-align: center;
+    vertical-align: top
+}
+
+.jv_util .links.person a {
+    padding: 0 9px
+}
+
+.jv_util .links a + a {
+    margin-left: 28px
+}
+
+.jv_util .links a + a:before {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -15px;
+    width: 1px;
+    height: 35px;
+    background: #eeefef;
+    content: ""
+}
+
+.jv_util .links.login {
+    padding-right: 31px;
+    text-align: center
+}
+
+.jv_util .links.login a + a:before {
+    top: 10px;
+    height: 14px
+}
+
+.jv_util .links a strong {
+    display: block;
+    margin-top: 5px;
+    color: #444;
+    font-size: 15px;
+    letter-spacing: 0
+}
+
+.jv_util .links a span {
+    display: inline-block;
+    line-height: 32px;
+    vertical-align: top
+}
+
+.jv_util .links a.text {
+    line-height: 35px
+}
+
+.jv_util .links a.text span {
+    line-height: 17px
+}
+
+.jv_util .links a:hover strong {
+    text-decoration: underline
+}
+
+.jv_util .menu {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    width: 31px;
+    height: 31px
+}
+
+.jv_util .menu .btn_menu, .jv_util .menu .btn_close {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 31px;
+    height: 31px;
+    border-radius: 31px
+}
+
+.jv_util .menu .btn_menu {
+    padding-left: 9px;
+    background: #8694b7
+}
+
+.jv_util .menu .btn_menu:before, .jv_util .menu .btn_menu:after, .jv_util .menu .btn_menu span {
+    display: block;
+    overflow: hidden;
+    width: 13px;
+    height: 2px;
+    font-size: 0;
+    line-height: 0;
+    background: #fff;
+    content: ""
+}
+
+.jv_util .menu .btn_menu span {
+    margin: 3px 0
+}
+
+.jv_util .menu .btn_close {
+    display: none;
+    background: #555
+}
+
+.jv_util .menu .btn_close span {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+    width: 10px;
+    height: 10px;
+    font-size: 0;
+    line-height: 0
+}
+
+.jv_util .menu .btn_close span:before, .jv_util .menu .btn_close span:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 12px;
+    height: 2px;
+    background-color: #fff;
+    content: ""
+}
+
+.jv_util .menu .btn_close span:before {
+    -webkit-transform: translate(-50%, -50%) rotate(45deg);
+    -ms-transform: translate(-50%, -50%) rotate(45deg);
+    transform: translate(-50%, -50%) rotate(45deg)
+}
+
+.jv_util .menu .btn_close span:after {
+    -webkit-transform: translate(-50%, -50%) rotate(135deg);
+    -ms-transform: translate(-50%, -50%) rotate(135deg);
+    transform: translate(-50%, -50%) rotate(135deg)
+}
+
+.jv_util .menu .layer_menu {
+    display: none;
+    position: absolute;
+    top: 47px;
+    right: 0;
+    width: 208px;
+    border: 1px solid #cfd1d6;
+    box-sizing: border-box;
+    background: #fff;
+    box-shadow: 2px 3px 5px 0 rgba(0, 0, 0, 0.13)
+}
+
+.jv_util .menu .layer_menu:before {
+    position: absolute;
+    top: -13px;
+    right: 12px;
+    width: 12px;
+    height: 13px;
+    background-position: -90px -20px;
+    content: ""
+}
+
+.jv_util .menu .layer_menu .nav {
+    padding: 13px 0 16px
+}
+
+.jv_util .menu .layer_menu .nav li {
+    line-height: 32px;
+    text-align: center
+}
+
+.jv_util .menu .layer_menu .nav li a {
+    color: #222;
+    font-size: 15px;
+    letter-spacing: -1px
+}
+
+.jv_util .menu .layer_menu .nav li a:hover {
+    color: #5b76f5;
+    font-weight: bold
+}
+
+.jv_util .menu .layer_menu .nav li a:hover:before {
+    display: inline-block;
+    margin-right: 6px;
+    content: "-"
+}
+
+.jv_util .menu .layer_menu .nav li a:hover:after {
+    display: inline-block;
+    margin-left: 6px;
+    content: "-"
+}
+
+.jv_util .menu .layer_menu .lately {
+    padding: 16px 12px 15px;
+    border-top: 1px solid #f1f1f3;
+    font-size: 0;
+    text-align: center
+}
+
+.jv_util .menu .layer_menu .lately span {
+    display: block;
+    margin: 0 auto 4px;
+    width: 70px;
+    height: 21px;
+    border: 1px solid #e7e8ea;
+    border-radius: 21px;
+    box-sizing: border-box;
+    color: #949494;
+    font-size: 12px;
+    letter-spacing: -1px;
+    line-height: 16px;
+    text-align: center
+}
+
+.jv_util .menu .layer_menu .lately li {
+    display: inline-block;
+    margin: 0 3px;
+    line-height: 18px;
+    vertical-align: middle
+}
+
+.jv_util .menu .layer_menu .lately li a {
+    color: #666;
+    font-size: 12px;
+    font-weight: normal;
+    letter-spacing: -1px;
+    text-decoration: underline
+}
+
+.jv_util .menu.on .btn_menu {
+    display: none
+}
+
+.jv_util .menu.on .btn_close {
+    display: block
+}
+
+.jv_util .menu.on .layer_menu {
+    display: block
+}
+
+/* 팝업뷰 */
+#sri_layout_popup {
+    min-width: 960px
+}
+
+#sri_layout_popup .wrap_jview {
+    padding: 0
+}
+
+#sri_layout_popup .jv_remote {
+    top: 39px;
+    margin-left: -549px
+}
+
+#sri_layout_popup .jv_remote.shrink {
+    margin-left: -472px
+}
+
+#sri_layout_popup .jv_remote.fix_pop {
+    top: 99px
+}
+
+#sri_layout_popup .jview_floating .jv_header_float {
+    margin-left: -435px
+}
+
+/* 개인 마이페이지 */
+#pm_contents {
+    padding: 0;
+    width: 100%
+}
+
+#pm_contents .jv_remote {
+    top: 134px
+}
+
+#pm_contents .jview_wing:after {
+    display: none
+}
+
+#pm_contents .jview_wing .inner {
+    padding: 35px 0 25px
+}
+
+#btn_goto_top {
+    display: none !important
+}
+
+/* 공고뷰 컨텐츠 */
+.wrap_jview {
+    position: relative;
+    z-index: 1;
+    margin: 0 auto;
+    padding-right: 300px;
+    width: 960px
+}
+
+.jview {
+    position: relative
+}
+
+.jview + .jview {
+    margin-top: 29px
+}
+
+.jview > .wrap_jv_cont {
+    position: relative;
+    padding: 40px 44px 100px;
+    border: 1px solid #e5e6eb;
+    background: #fff
+}
+
+.jview > .jv_ads {
+    overflow: hidden;
+    margin: 29px auto 0;
+    width: 728px;
+    height: 90px
+}
+
+.jv_cont {
+    position: relative;
+    z-index: 1;
+    margin-top: 50px
+}
+
+.jv_cont > .cont {
+    position: relative;
+    letter-spacing: -1px
+}
+
+.jv_cont > .box {
+    padding: 29px 29px 0;
+    border: 1px solid #ebebeb;
+    border-top-color: #999
+}
+
+.iframe_content {
+    display: block;
+    margin: 0 auto;
+    width: 870px
+}
+
+.wrap_jv_header {
+    padding-bottom: 30px;
+    min-height: 75px
+}
+
+.wrap_jv_header + .jv_cont {
+    margin-top: 0
+}
+
+/* 핵심정보 */
+.jv_summary .col {
+    float: left;
+    padding: 25px 0 30px;
+    width: 420px;
+    border-top: 1px solid #e5e6eb;
+    font-size: 14px;
+    letter-spacing: -0.5px
+}
+
+.jv_summary .col + .col {
+    margin-left: 30px
+}
+
+.jv_summary .col > dl {
+    display: block;
+    position: relative;
+    margin-top: 5px;
+    padding-left: 86px;
+    min-height: 22px
+}
+
+.jv_summary .col > dl:first-child {
+    margin-top: 0
+}
+
+.jv_summary .col > dl > dt {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #888;
+    line-height: 23px
+}
+
+.jv_summary .col > dl > dd {
+    color: #444;
+    line-height: 23px
+}
+
+.jv_summary .col > dl > dd strong {
+    color: #4c78ea;
+    font-weight: normal
+}
+
+.jv_summary .col > dl > dd .etc {
+    color: #888;
+    font-size: 13px
+}
+
+.jv_summary .col > dl > dd > ul {
+    display: block;
+    padding: 2px 0 3px;
+    font-size: 13px
+}
+
+.jv_summary .col > dl > dd > ul > li {
+    position: relative;
+    margin-top: 4px;
+    padding-left: 48px;
+    line-height: 18px
+}
+
+.jv_summary .col > dl > dd > ul > li:first-child {
+    margin-top: 0
+}
+
+.jv_summary .col > dl > dd > ul > li > span {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    color: #888;
+    line-height: 18px
+}
+
+.jv_summary .col .btn_jview {
+    padding: 0 8px 3px;
+    height: 23px;
+    border: 1px solid #dbdcde;
+    vertical-align: top
+}
+
+.jv_summary .col .btn_tooltip:after {
+    margin: 8px 0 0 6px;
+    width: 7px;
+    height: 4px;
+    vertical-align: top;
+    background-position: -120px -70px;
+    content: ""
+}
+
+.jv_summary .col .opened .btn_tooltip:after {
+    margin-top: 7px;
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg)
+}
+
+.jv_summary .col .btn_move_map:after {
+    margin: 6px 0 0 6px;
+    width: 4px;
+    height: 7px;
+    vertical-align: top;
+    background-position: -150px -70px;
+    content: ""
+}
+
+.jv_summary .col .btn_jview span {
+    color: #666;
+    font-size: 12px
+}
+
+.jv_summary .meta {
+    clear: both;
+    position: relative;
+    padding-top: 12px;
+    border-top: 1px solid #e5e6eb;
+    font-size: 0;
+    line-height: 18px;
+    text-align: right
+}
+
+.jv_summary .meta:before {
+    display: block;
+    position: absolute;
+    top: -1px;
+    left: 420px;
+    width: 30px;
+    height: 1px;
+    background: #fff;
+    content: ""
+}
+
+.jv_summary .meta > li {
+    display: inline-block;
+    position: relative;
+    color: #888;
+    font-size: 13px
+}
+
+.jv_summary .meta > li > strong {
+    color: #666;
+    font-weight: bold;
+    letter-spacing: 0
+}
+
+.jv_summary .meta > li + li {
+    margin-left: 8px;
+    padding-left: 10px
+}
+
+.jv_summary .meta > li + li:before {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -1px;
+    width: 2px;
+    height: 2px;
+    background: #bebfc3;
+    content: ""
+}
+
+.jv_summary .meta .share {
+    margin-left: 0;
+    vertical-align: top
+}
+
+.jv_summary .meta .share .btn_share {
+    padding: 0 0 3px;
+    height: 18px;
+    border: 0;
+    color: #888
+}
+
+.jv_summary .meta .share .list_share {
+    top: 28px
+}
+
+.jv_summary .meta .txt_noti {
+    position: absolute;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    color: #888;
+    font-size: 13px;
+    letter-spacing: -1px;
+    line-height: 17px
+}
+
+.jv_summary .meta .txt_noti:before {
+    display: none
+}
+
+.jv_summary .btns {
+    margin-top: 15px;
+    text-align: center
+}
+
+.jv_summary .btns .btn_modify {
+    margin: 0 3px;
+    padding: 0 13px 3px;
+    height: 32px;
+    border: 1px solid #e4e4e4;
+    background: #f8f8f8
+}
+/* WMG-23274 수정 */
+
+.jv_summary .btns .btn_modify span {
+    color: #444;
+    font-size: 14px
+}
+
+.jv_summary .btns .btn_modify:before {
+    margin: 5px 10px 0 0;
+    width: 14px;
+    height: 14px;
+    vertical-align: top;
+    background-position: -180px -70px;
+    content: ""
+}
+
+.jv_summary .btns .btn_modify_type2:before {
+    display: none
+}
+/* WMG-23274 추가 */
+
+.jv_summary .toolTip {
+    margin: 10px 0 0 -118px;
+    width: 262px
+}
+
+.jv_summary .preferred .toolTip {
+    margin: 10px 0 0 0
+}
+
+/* 상세요강 */
+.jv_detail {
+    z-index: auto
+}
+
+/* 더보기 버튼 관련 */
+.jv_cont.expand {
+    z-index: 2
+}
+
+.jv_cont .cont_more {
+    display: none
+}
+
+.jv_cont .btn_more_cont {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 40px;
+    border: 1px solid #ebebeb;
+    border-top: 0;
+    box-sizing: border-box;
+    color: #666;
+    font-size: 14px;
+    letter-spacing: -1px;
+    text-decoration: none;
+    background: #fff
+}
+
+.jv_cont .btn_more_cont .spr_jview:after {
+    margin: 6px 0 0 9px;
+    width: 13px;
+    height: 8px;
+    background-position: -180px -120px;
+    content: "";
+    opacity: 0.5
+}
+
+.jv_cont.expand .btn_more_cont {
+    position: absolute
+}
+
+.jv_cont.expand .btn_more_cont .spr_jview:after {
+    background-position: -180px -90px
+}
+
+.jv_cont .layer_group {
+    overflow: hidden;
+    position: relative;
+    width: 868px;
+    border: 1px solid #ebebeb;
+    border-top-color: #999;
+    background: #fff
+}
+
+.jv_cont .layer_group .layer {
+    width: 868px;
+    box-sizing: border-box
+}
+
+.jv_cont.expand .cont_more {
+    display: block
+}
+
+.jv_cont.expand .layer_group {
+    overflow-y: auto;
+    position: absolute;
+    top: 0;
+    left: 0
+}
+
+.jv_cont.expand .layer_group .layer {
+    height: auto;
+    max-height: none
+}
+
+.jv_cont.expand .layer_group .layer .ellipsis {
+    overflow: visible;
+    max-height: none
+}
+
+/* 복리후생 */
+.jv_benefit .layer_group .layer {
+    padding: 19px 9px;
+    max-height: 114px
+}
+
+.jv_benefit.expand .layer_group {
+    max-height: 342px
+}
+
+.jv_benefit .row {
+    display: table;
+    width: 100%;
+    table-layout: fixed
+}
+
+.jv_benefit .row + .row {
+    margin-top: 11px
+}
+
+.jv_benefit .row .col {
+    display: table-cell;
+    padding: 0 20px;
+    font-size: 14px;
+    line-height: 22px
+}
+
+.jv_benefit .row .col dt {
+    margin-bottom: 6px;
+    color: #444;
+    font-weight: bold
+}
+
+.jv_benefit .row .col dd {
+    color: #888
+}
+
+.jv_benefit .ellipsis {
+    overflow: hidden;
+    max-height: 44px
+}
+
+/* 근무지 위치 */
+.jv_location .wrap_mapapi {
+    margin: 0 0 59px;
+    height: 300px
+}
+
+.jv_location .address {
+    margin-bottom: 30px
+}
+
+.jv_location .address > span {
+    display: block;
+    position: relative;
+    padding-left: 24px;
+    color: #444;
+    font-size: 15px;
+    line-height: 20px
+}
+
+.jv_location .address > span:before {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 14px;
+    height: 18px;
+    content: ""
+}
+
+.jv_location .txt_adr:before {
+    background-position: -120px -40px
+}
+
+.jv_location .txt_subway {
+    margin-top: 6px
+}
+
+.jv_location .txt_subway:before {
+    background-position: -150px -40px
+}
+
+.jv_location .btn_mapview {
+    display: block;
+    width: 100%;
+    height: 37px;
+    border: 0;
+    border-top: 1px solid #ebebeb;
+    color: #666;
+    font-size: 15px;
+    letter-spacing: -1px;
+    background-color: #fff
+}
+
+.jv_location .btn_mapview > span:before {
+    margin-right: 8px;
+    width: 18px;
+    height: 18px;
+    background-position: -180px -40px;
+    content: ""
+}
+
+.jv_location .layer_map {
+    display: none;
+    top: -1px;
+    z-index: 20;
+    margin-left: -435px;
+    padding: 35px 29px 30px
+}
+
+.jv_location.expand {
+    z-index: 5
+}
+
+.jv_location.expand .layer_map {
+    display: block
+}
+
+.jv_location .layer_map .container_map {
+    width: 810px;
+    height: 300px
+}
+
+/* 접수기간 및 방법 */
+.jv_howto {
+    padding-bottom: 28px
+}
+
+.jv_howto .cont.box {
+    display: table;
+    padding: 0;
+    border-right: 0
+}
+
+.jv_howto .status {
+    display: table-cell;
+    position: relative;
+    z-index: 2;
+    padding: 22px 0 30px;
+    width: 289px;
+    box-sizing: border-box;
+    text-align: center;
+    vertical-align: middle
+}
+
+.jv_howto .status .inner {
+    display: inline-block
+}
+
+.jv_howto .status .copy {
+    color: #666;
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 35px
+}
+
+.jv_howto .status .copy.once {
+    margin-bottom: 4px;
+    font-weight: normal;
+    line-height: 26px
+}
+
+.jv_howto .status .copy strong {
+    color: #4876ef;
+    font-weight: bold
+}
+
+.jv_howto .status .copy.end {
+    color: #949494
+}
+
+.jv_howto .status .copy_sub {
+    margin-bottom: 4px;
+    color: #888;
+    font-size: 14px;
+    line-height: 21px
+}
+
+.jv_howto .info_period {
+    padding: 13px 45px 0;
+    text-align: left
+}
+
+.jv_howto .info_period:after {
+    display: table;
+    clear: both;
+    content: "";
+    table-layout: fixed
+}
+
+.jv_howto .info_period dt {
+    float: left;
+    width: 73px;
+    height: 26px;
+    border: 1px solid #cdcdcd;
+    border-radius: 26px;
+    box-sizing: border-box;
+    color: #888;
+    font-size: 14px;
+    line-height: 22px;
+    text-align: center
+}
+
+.jv_howto .info_period dd {
+    float: right;
+    padding: 1px 0;
+    width: 116px;
+    height: 26px;
+    box-sizing: border-box;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 22px;
+    text-align: center
+}
+
+.jv_howto .info_period dt.end, .jv_howto .info_period dt.end + dd {
+    margin-top: 6px;
+    border-color: #4876ef;
+    color: #4876ef
+}
+
+.jv_howto .status .copy.end + .info_period dt, .jv_howto .status .copy.end + .info_period dd {
+    border-color: #cdcdcd;
+    color: #949494
+}
+
+.jv_howto .status .sri_btn_lg {
+    margin: 0 auto
+}
+
+.jv_howto .status .info_period + button, .jv_howto .status .info_period + a {
+    margin-top: 25px
+}
+
+.jv_howto .info_timer {
+    padding-top: 5px;
+    height: 56px;
+    color: #4876ef;
+    font-size: 0;
+    font-weight: bold;
+    line-height: 36px;
+    text-align: center
+}
+
+.jv_howto .info_timer .txt {
+    display: block;
+    height: 20px;
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 20px
+}
+
+.jv_howto .info_timer .day, .jv_howto .info_timer .time {
+    display: inline-block;
+    font-size: 28px;
+    vertical-align: bottom
+}
+
+.jv_howto .info_timer .txt_day {
+    display: none;
+    margin-right: 8px;
+    font-size: 20px;
+    vertical-align: bottom
+}
+
+.jv_howto .info_timer .day + .txt_day {
+    display: inline-block
+}
+
+.jv_howto .guide {
+    display: table-cell;
+    position: relative;
+    z-index: 2;
+    padding: 22px 30px;
+    width: 580px;
+    box-sizing: border-box;
+    font-size: 14px;
+    background: #f8f9fa
+}
+
+.jv_howto .guide:after {
+    display: table;
+    clear: both;
+    content: "";
+    table-layout: fixed
+}
+
+.jv_howto .guide > dt {
+    display: block;
+    float: left;
+    margin-top: 4px;
+    width: 88px;
+    color: #888;
+    line-height: 28px
+}
+
+.jv_howto .guide > dt:first-of-type {
+    margin-top: 0
+}
+
+.jv_howto .guide > dd {
+    display: block;
+    float: left;
+    margin-top: 4px;
+    width: 432px;
+    min-height: 28px;
+    color: #666;
+    line-height: 28px
+}
+
+.jv_howto .guide > dd:first-of-type {
+    margin-top: 0
+}
+
+.jv_howto .guide > dd.manager {
+    color: #444;
+    font-weight: bold
+}
+
+.jv_howto .guide > dd.info {
+    letter-spacing: 0
+}
+
+.jv_howto .guide > dd.method > button, .jv_howto .guide > dd.method > a, .jv_howto .guide > dd.method > span {
+    color: #444;
+    letter-spacing: -1px
+}
+
+.jv_howto .guide > dd.method > button, .jv_howto .guide > dd.method > a {
+    display: inline-block;
+    overflow: visible;
+    line-height: normal;
+    text-decoration: underline
+}
+
+.jv_howto .guide > dd.template {
+    color: #444
+}
+
+.jv_howto .interview .toolTipWrap {
+    margin-left: 8px;
+}
+
+.jv_howto .btn_tooltip:after {
+    margin: 7px 0 0 6px;
+    width: 9px;
+    height: 6px;
+    vertical-align: top;
+    background-position: -30px -150px;
+    content: ""
+}
+
+.jv_howto .opened .btn_tooltip:after {
+    margin-top: 7px;
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg)
+}
+
+.jv_howto .btn_link:after {
+    margin: 5px 0 0 6px;
+    width: 6px;
+    height: 9px;
+    vertical-align: top;
+    background-position: 0 -150px;
+    content: ""
+}
+
+.jv_howto .toolTip {
+    margin: 10px 0 0 -84px;
+    width: 222px
+}
+
+.jv_howto .toolTip .attachment {
+    margin: -4px 0 0 -4px;
+    font-size: 0
+}
+
+.jv_howto .toolTip .attachment a {
+    margin: 4px 0 0 4px
+}
+
+.jv_howto .btn_link {
+    margin-left: 8px
+}
+
+.jv_howto .btn_template {
+    margin-right: 8px;
+    text-decoration: underline
+}
+
+.jv_howto .btn_template:after, .jv_howto .btn_download:after {
+    margin: 7px 0 0 6px;
+    width: 13px;
+    height: 11px;
+    vertical-align: top;
+    background-position: -80px -150px;
+    content: ""
+}
+
+.jv_howto .btn_template:after {
+    margin-top: 9px
+}
+
+.jv_howto .btn_download[target="_blank"]:after {
+    margin: 7px 1px 0 7px;
+    width: 11px;
+    height: 11px;
+    background-position: -60px -150px
+}
+
+.jv_howto .btn_download span {
+    display: inline-block;
+    overflow: hidden;
+    width: 70px;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.jv_howto .noti {
+    position: absolute;
+    bottom: -28px;
+    left: 0;
+    padding-left: 20px;
+    color: #888;
+    font-size: 13px;
+    line-height: 28px
+}
+
+.jv_howto .noti:before {
+    display: block;
+    position: absolute;
+    top: 8px;
+    left: 0;
+    width: 14px;
+    height: 14px;
+    border-radius: 14px;
+    color: #fff;
+    font-size: 9px;
+    font-weight: bold;
+    line-height: 14px;
+    text-align: center;
+    background: #e1e1e1;
+    content: "!"
+}
+
+.jv_cont.expired .btn_modify, .jv_cont.expired .btn_interest, .jv_howto .status .btn_scrap, .jv_howto .status .btn_interest {
+    display: block;
+    margin: 0 auto;
+    padding: 0 0 7px;
+    width: 185px;
+    height: 60px;
+    border: 1px solid #e9e9e9;
+    border-radius: 2px;
+    letter-spacing: -2px;
+    background: #fff
+}
+
+.jv_cont.expired .btn_modify span, .jv_cont.expired .btn_interest span, .jv_howto .status .btn_scrap span, .jv_howto .status .btn_interest span {
+    display: inline-block;
+    color: #888;
+    font-size: 21px;
+    line-height: normal
+}
+
+.jv_cont.expired .btn_interest:before, .jv_howto .status .btn_interest:before {
+    margin: 8px 5px 0 0;
+    width: 20px;
+    height: 17px;
+    background-position: -120px -150px;
+    content: ""
+}
+
+.jv_cont.expired .btn_interest.on:before, .jv_howto .status .btn_interest.on:before {
+    background-position: -150px -150px
+}
+
+.jv_howto .status .btn_scrap:before {
+    margin: 6px 5px 0 0
+}
+
+.jv_cont.expired .btn_modify span {
+    line-height: 51px
+}
+
+/* 지원자 통계 */
+.jv_statics .layer_group .layer {
+    overflow: hidden;
+    max-height: 256px
+}
+
+.jv_statics .layer_group .layer:after {
+    display: table;
+    clear: both;
+    content: "";
+    table-layout: fixed
+}
+
+.jv_statics.expand .layer_group {
+    max-height: 480px
+}
+
+.jv_statics .box_chart {
+    float: left;
+    position: relative;
+    padding: 40px 29px;
+    width: 434px;
+    height: 256px;
+    box-sizing: border-box
+}
+/* WMG-23274 수정 */
+
+.jv_statics .box_chart:before {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: -1px;
+    width: 1px;
+    height: 100%;
+    background: #ebebeb;
+    content: ""
+}
+
+.jv_statics .box_chart:after {
+    display: block;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #ebebeb;
+    content: ""
+}
+
+.jv_statics .box_chart .tit_stats {
+    position: absolute;
+    top: 39px;
+    left: 29px;
+    color: #444;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 16px
+}
+
+.jv_statics .narrow {
+    padding: 54px 29px 0;
+    width: 289px;
+    height: 256px;
+    border-top: 0
+}
+
+.jv_statics .narrow:first-child {
+    width: 290px
+}
+
+.jv_statics .narrow .tit_stats {
+    top: 29px;
+    left: 34px
+}
+
+.jv_statics .count {
+    padding: 103px 0 0 0
+}
+
+.jv_statics .chart_donut {
+    position: relative;
+    margin: 0 27px 0 0;
+    height: 172px;
+    text-align: right
+}
+
+.jv_statics .narrow .chart_donut {
+    margin: 0 auto;
+    width: 172px;
+    height: 172px
+}
+
+.jv_statics .chart_donut .donut {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    -webkit-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    -webkit-transform-origin: 50% 50%;
+    -ms-transform-origin: 50% 50%
+}
+
+.jv_statics .chart_donut .legend {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 72px 0 0 30px;
+    width: 142px;
+    text-align: center
+}
+
+.jv_statics .chart_donut .legend dl {
+    float: left;
+    width: 60px
+}
+
+.jv_statics .chart_donut .legend dt {
+    display: block;
+    position: absolute;
+    top: 109px;
+    padding-left: 22px;
+    color: #888;
+    font-size: 13px;
+    line-height: 18px
+}
+
+.jv_statics .chart_donut .legend dt:before {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 12px;
+    height: 16px;
+    content: ""
+}
+
+.jv_statics .chart_donut .legend dl.male dt {
+    left: -137px
+}
+
+.jv_statics .chart_donut .legend dl.male dt:before {
+    background-position: 0 -70px
+}
+
+.jv_statics .chart_donut .legend dl.female dt {
+    left: -78px
+}
+
+.jv_statics .chart_donut .legend dl.female dt:before {
+    background-position: -30px -70px
+}
+
+.jv_statics .chart_donut .legend dd {
+    display: block;
+    color: #949494;
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: 16px
+}
+
+.jv_statics .chart_donut .legend dd.perc {
+    overflow: hidden;
+    height: 28px;
+    color: #51b0f1;
+    font-size: 14px;
+    line-height: 28px
+}
+
+.jv_statics .chart_donut .legend dd.perc span {
+    display: inline-block;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    vertical-align: baseline
+}
+
+.jv_statics .chart_donut .legend dl.female dd.perc {
+    color: #fa6a71
+}
+
+.jv_statics .chart_donut .legend .total {
+    position: absolute;
+    top: 64px;
+    left: -176px;
+    width: 176px;
+    color: #444;
+    font-size: 28px;
+    line-height: 28px
+}
+
+.jv_statics .chart_donut .legend .total span {
+    display: inline-block;
+    margin: 6px 6px 0 0;
+    font-size: 15px;
+    line-height: 18px;
+    vertical-align: top
+}
+
+.jv_statics .narrow .chart_donut .legend {
+    padding-top: 54px
+}
+
+.jv_statics .narrow .chart_donut .legend .total {
+    display: none
+}
+
+.jv_statics .narrow .chart_donut .legend dt {
+    position: static;
+    padding-left: 0;
+    font-size: 14px
+}
+
+.jv_statics .narrow .chart_donut .legend dt:before {
+    display: none
+}
+
+.jv_statics .narrow .chart_donut .legend dl.male dt {
+    color: #51b0f1
+}
+
+.jv_statics .narrow .chart_donut .legend dl.female dt {
+    color: #fa6a71
+}
+
+.jv_statics .chart_line {
+    display: table;
+    position: relative;
+    margin: 0 0 0 87px;
+    width: 288px;
+    box-sizing: border-box;
+    background: url(//www.saraminimage.co.kr/sri/person/jobs_view/bg_graph_stats.png) 0 0 repeat-x
+}
+
+.jv_statics .narrow .chart_line {
+    margin: 11px 0 0 0;
+    width: 230px
+}
+
+.jv_statics .chart_line .col {
+    display: table-cell;
+    position: relative;
+    padding-bottom: 34px;
+    height: 130px;
+    text-align: center
+}
+
+.jv_statics .chart_line .col .legend {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -24px;
+    width: 48px;
+    height: 30px;
+    color: #888;
+    font-size: 12px;
+    letter-spacing: -1px;
+    line-height: 15px
+}
+
+.jv_statics .chart_line .bar {
+    position: relative;
+    margin: 0 auto;
+    width: 24px;
+    height: 100%
+}
+
+.jv_statics .chart_line .bar .fill {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: #acd9f8
+}
+
+.jv_statics .chart_line .bar .value {
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    margin-left: -24px;
+    width: 48px;
+    height: 18px;
+    color: #92c9f5;
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: 18px
+}
+
+.jv_statics .chart_line .col.emph .bar .fill {
+    background: #4fa4f9
+}
+
+.jv_statics .chart_line .col.emph .bar .value {
+    color: #4fa4f9;
+    font-weight: bold
+}
+
+.jv_statics .chart_line.sub .bar .fill {
+    background-color: #aeb9f0
+}
+
+.jv_statics .chart_line.sub .bar .value {
+    color: #7c90f2
+}
+
+.jv_statics .chart_line.sub .col.emph .bar .fill {
+    background-color: #7c90f2
+}
+
+.jv_statics .count .total {
+    width: 100%;
+    height: 57px;
+    text-align: center
+}
+
+.jv_statics .count.sub .total {
+    position: absolute;
+    top: 23px;
+    left: 0
+}
+
+.jv_statics .count .total dt {
+    display: block;
+    margin-bottom: 2px;
+    color: #444;
+    font-size: 15px;
+    line-height: 22px
+}
+
+.jv_statics .count .total dd {
+    display: block;
+    color: #666;
+    font-size: 20px;
+    line-height: 30px
+}
+
+.jv_statics .count .total dd span {
+    color: #5b76f5;
+    font-size: 28px;
+    font-weight: bold;
+    vertical-align: top
+}
+
+.jv_statics .count .scroll {
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+    height: 153px
+}
+
+.jv_statics .count .detail {
+    padding: 6px 29px;
+    width: 430px;
+    box-sizing: border-box;
+    color: #888;
+    font-size: 13px;
+    letter-spacing: -1px;
+    line-height: 34px
+}
+/* WMG-23274 수정 */
+
+.jv_statics .count .detail:after {
+    display: table;
+    clear: both;
+    content: "";
+    table-layout: fixed
+}
+
+.jv_statics .count .detail dt {
+    overflow: hidden;
+    float: left;
+    width: 310px;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+/* WMG-23274 수정 */
+
+.jv_statics .count .detail dd {
+    overflow: hidden;
+    float: left;
+    width: 52px;
+    text-align: right
+}
+
+.jv_statics .count .detail dd span {
+    color: #5b76f5;
+    letter-spacing: 0;
+    white-space: nowrap
+}
+
+.jv_statics .count.narrow .detail {
+    width: 290px
+}
+/* WMG-23274 추가 */
+
+.jv_statics .count.narrow .detail dt {
+    width: 180px
+}
+/* WMG-23274 추가 */
+
+/* 인사통 */
+.jv_insatong.expand .layer_group {
+    max-height: 480px
+}
+
+.jv_insatong .layer_group .layer {
+    padding-bottom: 15px
+}
+
+.jv_insatong .txt_qna {
+    overflow: hidden;
+    height: 58px;
+    border-bottom: 1px solid #ebebeb;
+    color: #666;
+    font-size: 14px;
+    line-height: 58px;
+    text-align: center
+}
+
+.jv_insatong .txt_qna .company {
+    display: inline-block;
+    overflow: hidden;
+    padding-right: 2px;
+    max-width: 360px;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    vertical-align: top;
+    white-space: nowrap
+}
+
+.jv_insatong .txt_qna .date {
+    padding-left: 18px;
+    color: #999;
+    letter-spacing: 0
+}
+
+.jv_insatong .txt_qna .num {
+    color: #5b76f5;
+    font-weight: bold
+}
+
+.jv_insatong .item_qna {
+    position: relative;
+    padding: 22px 0 3px 0;
+    border-top: 0;
+    font-size: 0;
+    letter-spacing: -1px
+}
+
+.jv_insatong .more .item:first-of-type {
+    border-top: 0
+}
+
+.jv_insatong .item_qna dl {
+    position: relative;
+    padding: 0 0 0 20px;
+    width: 640px
+}
+
+.jv_insatong .item_qna dl dt {
+    margin-left: 10px;
+    color: #222;
+    font-size: 15px;
+    line-height: 20px;
+    word-break: break-all
+}
+
+.jv_insatong .item_qna dl dt > span {
+    display: inline-block;
+    margin-right: 6px
+}
+
+.jv_insatong .item_qna dl dd {
+    display: inline-block;
+    margin: 10px 0 0 10px;
+    padding: 7px 20px 10px 20px;
+    border: 1px solid #cfcfcf;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: #222;
+    font-size: 14px;
+    line-height: 20px;
+    vertical-align: top;
+    word-break: break-all;
+    background: #fcfcfc
+}
+
+.jv_insatong .item_qna .btn_like {
+    position: absolute;
+    top: 16px;
+    left: 706px;
+    padding: 0 7px 0 30px;
+    width: 108px;
+    height: 32px;
+    border: 1px solid #dbdbdb;
+    border-radius: 0;
+    box-sizing: border-box;
+    color: #666;
+    font-size: 12px;
+    letter-spacing: -1px;
+    line-height: 28px;
+    text-align: left
+}
+
+.jv_insatong .item_qna .btn_like span {
+    display: inline-block;
+    margin-left: 3px;
+    width: 21px;
+    text-align: center
+}
+
+.jv_insatong .item_qna .btn_like:after {
+    display: block;
+    position: absolute;
+    top: 6px;
+    left: 7px;
+    width: 19px;
+    height: 19px;
+    background-position: -150px -90px;
+    content: ""
+}
+
+.jv_insatong .item_qna .btn_like.liked {
+    border-color: #9aa9f3;
+    color: #5b76f5
+}
+
+.jv_insatong .item_qna .btn_like.liked:after {
+    background-position: -150px -120px
+}
+
+/* 기업정보 */
+.jv_company > .box {
+    padding: 24px 14px
+}
+
+.jv_company .logo {
+    overflow: hidden;
+    float: left;
+    width: 260px;
+    height: 155px;
+    line-height: 155px;
+    text-align: center
+}
+
+.jv_company .logo > img {
+    vertical-align: middle
+}
+
+.jv_company .wrap_info {
+    padding: 0 15px;
+    width: 810px
+}
+
+.jv_company .wrap_info .title {
+    margin-bottom: 15px;
+    height: 28px;
+    font-size: 0
+}
+
+.jv_company .wrap_info .company_name {
+    display: inline-block;
+    overflow: hidden;
+    margin-right: 5px;
+    padding-right: 2px;
+    max-width: 540px;
+    color: #222;
+    font-size: 18px;
+    line-height: 25px;
+    text-overflow: ellipsis;
+    vertical-align: top;
+    white-space: nowrap
+}
+
+.jv_company .wrap_info .title .btn_link {
+    margin-left: 4px
+}
+
+.jv_company .logo + .wrap_info {
+    padding: 0 15px 0 290px;
+    width: 535px
+}
+
+.jv_company .logo + .wrap_info .company_name {
+    max-width: 238px
+}
+
+.jv_company .info {
+    margin-left: -15px
+}
+
+.jv_company .info:after {
+    display: table;
+    clear: both;
+    content: "";
+    table-layout: fixed
+}
+
+.jv_company .info dl {
+    display: block;
+    float: left;
+    position: relative;
+    margin-left: 15px;
+    padding-left: 70px;
+    width: 190px;
+    min-height: 28px;
+    line-height: 28px
+}
+
+.jv_company .info dl dt {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70px;
+    color: #888;
+    font-size: 14px;
+    line-height: 28px
+}
+
+.jv_company .info dl dd {
+    overflow: hidden;
+    width: 100%;
+    color: #444;
+    font-size: 14px;
+    line-height: 28px;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.jv_company .info dl dd > span {
+    color: #949494
+}
+
+.jv_company .info dl dd > a {
+    display: inline-block;
+    overflow: hidden;
+    padding-right: 1px;
+    max-width: 99%;
+    color: #4876ef;
+    text-decoration: underline;
+    text-overflow: ellipsis;
+    vertical-align: top;
+    white-space: nowrap
+}
+
+.jv_company .info dl.wide {
+    width: 465px
+}
+
+.jv_company .info dl.wide dd {
+    padding-top: 5px;
+    line-height: 18px
+}
+
+.jv_company .btn_modify {
+    position: absolute;
+    top: -34px;
+    right: 0
+}
+
+.jv_company .btn_modify > span {
+    color: #888;
+    font-size: 13px;
+    letter-spacing: -1px
+}
+
+.jv_company .btn_modify:after {
+    margin: 8px 0 0 8px;
+    width: 6px;
+    height: 9px;
+    background-position: 0 -150px;
+    content: ""
+}
+/* 기업인증 WMG-23893 */
+
+.jv_company .noti {
+    margin: 16px 10px 0 0;
+    color: #adadad;
+    font-size: 13px;
+    line-height: 28px;
+    text-align: right
+}
+
+.jv_company sup {
+    display: inline-block;
+    margin: -1px 0 0 2px;
+    color: #adadad;
+    font-size: 13px;
+    vertical-align: top
+}
+
+.jv_company .sub {
+    margin-top: 9px;
+    padding: 0;
+    border-top: 1px solid #ebebeb;
+    font-size: 14px;
+    text-align: center
+}
+/* WMG-23893 추가*/
+
+.jv_company .sub .sub_header {
+    padding: 17px 0 23px;
+    border-bottom: 1px solid #ebebeb;
+    color: #666;
+    line-height: normal;
+    background-color: #fcfcfc
+}
+
+.jv_company .sub .sub_header strong {
+    margin-right: 6px
+}
+
+.jv_company .sub .mark_list {
+    padding: 31px 0
+}
+
+.jv_company .sub .mark_list li {
+    display: inline-block;
+    position: relative;
+    margin-right: 90px;
+    width: 78px;
+    color: #333;
+    line-height: 20px;
+    vertical-align: top;
+    cursor: pointer
+}
+
+.jv_company .sub .mark_list li span {
+    display: table-cell;
+    width: 78px;
+    height: 40px;
+    vertical-align: middle
+}
+
+.jv_company .sub .mark_list li:last-child {
+    margin-right: 0
+}
+
+.jv_company .sub .mark_list li:before {
+    position: absolute;
+    top: -4px;
+    left: -29px;
+    width: 25px;
+    height: 50px;
+    background: url(//www.saraminimage.co.kr/sri/company/layout/line-left.png) center center no-repeat;
+    content: ''
+}
+
+.jv_company .sub .mark_list li:after {
+    position: absolute;
+    top: -4px;
+    right: -29px;
+    width: 25px;
+    height: 50px;
+    background: url(//www.saraminimage.co.kr/sri/company/layout/line-right.png) center center no-repeat;
+    content: ''
+}
+
+.jv_company .sub .mark_list li:hover {
+    text-decoration: underline
+}
+
+/* 합격자료 */
+.jv_reference.expand .layer_group {
+    max-height: 480px
+}
+
+.jv_reference .layer_group .layer:after {
+    display: table;
+    clear: both;
+    content: "";
+    table-layout: fixed
+}
+
+.jv_reference .reference {
+    display: block;
+    float: left;
+    position: relative;
+    padding: 32px 29px 27px;
+    width: 289px;
+    height: 239px;
+    box-sizing: border-box
+}
+
+.jv_reference .reference:first-child {
+    width: 290px
+}
+
+.jv_reference .reference:before {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: -1px;
+    width: 1px;
+    height: 100%;
+    background: #ebebeb;
+    content: ""
+}
+
+.jv_reference .reference:after {
+    display: block;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #ebebeb;
+    content: ""
+}
+
+.jv_reference .cont_more .reference:after {
+    display: none
+}
+
+.jv_reference .reference dl dt {
+    margin-bottom: 12px;
+    color: #444;
+    font-size: 18px
+}
+
+.jv_reference .reference dl dd {
+    overflow: hidden;
+    height: 69px;
+    color: #888;
+    font-size: 14px;
+    line-height: 23px
+}
+
+.jv_reference .reference.cvletter dd {
+    height: 115px
+}
+
+.jv_reference .reference.news dd {
+    height: 115px
+}
+
+.jv_reference .reference dl dd.view {
+    margin-top: 44px;
+    padding-top: 7px;
+    height: 23px;
+    border-top: 1px solid #ebebeb;
+    text-align: right
+}
+
+.jv_reference .reference dl dd.view:before {
+    margin: 8px 5px 0 0;
+    width: 16px;
+    height: 10px;
+    background-position: -60px -70px;
+    content: ""
+}
+
+.jv_reference .reference dl dd.view span {
+    color: #666;
+    font-weight: bold;
+    letter-spacing: 0
+}
+
+.jv_reference .reference.bg {
+    background-image: url(//www.saraminimage.co.kr/sri/person/jobs_view/bg_reference.jpg)
+}
+
+.jv_reference .reference.bg.cvletter {
+    background-position: 0 0
+}
+
+.jv_reference .reference.bg.news {
+    background-position: 0 -250px
+}
+
+.jv_reference .reference.bg dl dt, .jv_reference .reference.bg dl dd, .jv_reference .reference.bg dl dd.view, .jv_reference .reference.bg dl dd.view span {
+    color: #fff
+}
+
+.jv_reference .reference .link {
+    padding-top: 28px;
+    text-align: center
+}
+
+.jv_reference .reference .link span {
+    display: block;
+    color: #444;
+    font-size: 18px;
+    line-height: 26px
+}
+
+.jv_reference .reference .link .guide {
+    display: inline-block;
+    margin-top: 44px;
+    border-bottom: 1px solid #bcbcbc;
+    color: #666;
+    font-size: 14px;
+    line-height: 18px
+}
+
+.jv_reference .reference .more {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    padding-top: 80px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    background: rgba(68, 91, 153, 0.92)
+}
+
+.jv_reference .reference .more span {
+    display: block;
+    color: #fff;
+    font-size: 15px;
+    line-height: 31px
+}
+
+.jv_reference .reference .more .count {
+    display: inline-block;
+    border-bottom: 1px solid #b6bdd3;
+    font-size: 18px;
+    line-height: 24px
+}
+
+.jv_reference .reference .more .count strong {
+    font-weight: bold;
+    letter-spacing: 0
+}
+
+.jv_reference .reference:focus .more, .jv_reference .reference:hover .more {
+    display: block
+}
+
+/* 태그 */
+.jv_footer {
+    margin-top: 41px
+}
+
+.jv_footer .cont {
+    padding-top: 90px
+}
+
+.jv_footer .tags {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    font-size: 0
+}
+
+.jv_footer .tags.on {
+    border: 1px solid #ebebeb;
+    background: #fff
+}
+
+.jv_footer .tags ul {
+    overflow: hidden;
+    padding: 8px 47px 0 0;
+    height: 38px;
+    line-height: 38px
+}
+
+.jv_footer .tags.on ul {
+    overflow-y: auto;
+    padding: 8px 8px 0 0;
+    height: auto;
+    max-height: 152px
+}
+
+.jv_footer .tags ul li {
+    display: inline-block;
+    margin-left: 8px;
+    vertical-align: top
+}
+
+.jv_footer .tags ul li a {
+    display: block;
+    padding: 6px 10px 8px;
+    color: #444;
+    font-size: 12px;
+    line-height: 16px;
+    background: #f1f3f9
+}
+
+.jv_footer .tags .btn_tags {
+    display: none;
+    position: absolute;
+    top: 8px;
+    right: -1px;
+    z-index: 2;
+    width: 32px;
+    height: 30px;
+    border: 1px solid #e5e6eb;
+    background: #fff
+}
+
+.jv_footer .tags .btn_tags:before, .jv_footer .tags .btn_tags:after {
+    display: block;
+    position: absolute;
+    background: #949494;
+    content: ""
+}
+
+.jv_footer .tags .btn_tags:before {
+    top: 9px;
+    left: 14px;
+    width: 2px;
+    height: 10px
+}
+
+.jv_footer .tags .btn_tags:after {
+    top: 13px;
+    left: 10px;
+    width: 10px;
+    height: 2px
+}
+
+.jv_footer .tags.on .btn_tags {
+    top: auto;
+    bottom: -30px
+}
+
+.jv_footer .tags.on .btn_tags:before {
+    display: none
+}
+
+.jv_footer .utils {
+    height: 28px;
+    line-height: 28px;
+    text-align: right
+}
+
+.jv_footer .utils .share {
+    margin: 0 4px 0 0;
+    vertical-align: top
+}
+
+.jv_footer .utils .copy {
+    float: left;
+    position: relative;
+    padding-left: 20px;
+    color: #444;
+    font-size: 13px
+}
+
+.jv_footer .utils .copy:before {
+    display: block;
+    position: absolute;
+    top: 8px;
+    left: 0;
+    width: 14px;
+    height: 14px;
+    border-radius: 14px;
+    color: #fff;
+    font-size: 9px;
+    font-weight: bold;
+    line-height: 14px;
+    text-align: center;
+    background: #e1e1e1;
+    content: "!"
+}
+
+.jv_footer .utils .copy a {
+    display: inline-block;
+    line-height: 18px;
+    text-decoration: underline
+}
+/* 마감표시 */
+
+.expired {
+    z-index: auto;
+    padding: 54px 0 64px;
+    text-align: center;
+    background: #f7f7fa
+}
+
+.expired .copy {
+    margin-bottom: 6px;
+    color: #222;
+    font-size: 26px;
+    letter-spacing: -1px;
+    line-height: 38px
+}
+
+.expired .copy strong {
+    color: #4876ef;
+    font-weight: bold
+}
+
+.expired .copy + .copy {
+    margin-bottom: 28px;
+    font-size: 16px
+}
+
+.expired .copy + .copy strong {
+    display: inline-block;
+    overflow: hidden;
+    max-width: 440px;
+    text-align: left;
+    text-overflow: ellipsis;
+    vertical-align: top;
+    white-space: nowrap
+}
+
+/* SMS공유 WMG-12367 from /css/nudge/content.css */
+.layer_pop_manage {
+    position: absolute;
+    z-index: 30;
+    border: 1px solid #444;
+    box-sizing: border-box;
+    font-family: "Malgun Gothic", gulim, dotum, sans-serif;
+    background: #fff;
+    box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.12)
+}
+
+.layer_pop_manage legend {
+    visibility: hidden;
+    overflow: hidden;
+    margin-left: -1px;
+    width: 1px;
+    height: 1px
+}
+
+.layer_pop_manage.layer_sms {
+    padding: 0;
+    width: 440px
+}
+
+.layer_pop_manage.layer_sms_error {
+    padding: 0;
+    width: 357px
+}
+
+.layer_pop_manage.layer_sms_error .txt_notice {
+    margin: 10px 0 25px
+}
+
+.layer_pop_manage .layer_manage_wrap {
+    position: relative;
+    z-index: 100;
+    padding: 35px 30px 30px
+}
+
+.layer_pop_manage .layer_manage_wrap h4 {
+    margin-bottom: 8px;
+    color: #444;
+    font-size: 19px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    text-align: left
+}
+
+.layer_pop_manage .layer_manage_wrap .txt_sms_desc {
+    color: #666;
+    font-size: 13px;
+    letter-spacing: -1px;
+    line-height: 21px;
+    text-align: left
+}
+
+.layer_pop_manage .layer_manage_wrap .txt_notice {
+    margin: 0;
+    padding: 0;
+    color: #666;
+    font-size: 13px;
+    letter-spacing: -1px;
+    line-height: 21px;
+    text-align: left
+}
+
+.layer_pop_manage .layer_manage_wrap .txt_link {
+    color: #6b80f1;
+    text-decoration: underline
+}
+
+.layer_manage_wrap .bottom_btn_wrap {
+    margin-top: 20px;
+    text-align: center
+}
+
+.layer_manage_wrap .bottom_btn_wrap .btn_basic_type05.btn_send {
+    padding: 5px 33px 9px
+}
+
+.layer_manage_wrap .btn_layer_close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 17px;
+    height: 17px;
+    border: 0 none;
+    background: url(//www.saraminimage.co.kr/ui/layout/person_mypage_2017/btn_layer_close.png) no-repeat 50% 50%;
+    cursor: pointer
+}
+
+.layer_manage_wrap .btn_layer_close span {
+    overflow: hidden;
+    font-size: 0;
+    line-height: 0;
+    text-indent: -100%;
+    white-space: nowrap
+}
+
+.default_table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    font-family: "Malgun Gothic", gulim, dotum, sans-serif;
+    table-layout: fixed
+}
+
+.default_table.nudge_table {
+    margin-top: 15px;
+    border-top: 1px solid #686868
+}
+
+.default_table.nudge_table th {
+    padding-left: 20px;
+    height: 43px;
+    border-bottom: 1px solid #eaeaea;
+    box-sizing: border-box;
+    color: #666;
+    font-size: 13px;
+    font-weight: normal;
+    letter-spacing: -1px;
+    text-align: left;
+    background: #f8f8f8;
+    _height: 50px
+}
+
+.default_table.nudge_table td {
+    padding: 9px 15px 9px;
+    border-bottom: 1px solid #eaeaea;
+    box-sizing: border-box;
+    color: #444;
+    font-family: "Malgun Gothic", gulim, dotum, sans-serif;
+    font-size: 13px;
+    text-align: left;
+    word-break: break-all;
+    _padding: 4px 10px
+}
+
+.default_table.nudge_table td input {
+    padding: 0 5px;
+    height: 32px;
+    border: 1px solid #dbdbdb;
+    box-sizing: border-box;
+    font-family: "Malgun Gothic", gulim, dotum, sans-serif;
+    font-size: 13px;
+    line-height: 32px;
+    vertical-align: middle
+}
+
+.default_table.nudge_table td.tbl_send {
+    overflow: hidden
+}
+
+.default_table.nudge_table .txt_phone {
+    float: left;
+    margin-right: 10px;
+    padding-top: 6px;
+    color: #444;
+    font-size: 13px
+}
+
+.default_table.nudge_table .btn_change {
+    float: left
+}
+
+.btn_basic_type04 {
+    display: inline-block;
+    padding: 5px 13px 9px;
+    height: 32px;
+    border: 1px solid #8f8f8f;
+    box-sizing: border-box;
+    color: #fff;
+    font-size: 13px;
+    letter-spacing: -1px;
+    vertical-align: top;
+    background-color: #9c9c9c
+}
+
+.btn_basic_type05 {
+    display: inline-block;
+    padding: 5px 13px 9px;
+    height: 32px;
+    border: 1px solid #5f75eb;
+    box-sizing: border-box;
+    color: #fff;
+    font-size: 13px;
+    letter-spacing: -1px;
+    vertical-align: top;
+    background-color: #6b80f1
+}
+
+.btn_basic_type06 {
+    display: inline-block;
+    padding: 5px 13px 9px;
+    height: 32px;
+    border: 1px solid #6b80f1;
+    box-sizing: border-box;
+    color: #6b80f1;
+    font-size: 13px;
+    letter-spacing: -1px;
+    vertical-align: top;
+    background-color: #fff
+}
+
+.default_table caption {
+    display: none
+}
+
+/* 플로팅 배너 WMG-19101 from /css/nudge/content.css */
+.main_nudge:before, .main_nudge .btn_close:after {
+    background: url(//www.saraminimage.co.kr/sri/person/bg/bg_resume_nudge.png) no-repeat 0 0
+}
+
+.main_nudge {
+    position: fixed;
+    right: 23px;
+    bottom: 23px;
+    z-index: 1000;
+    padding: 17px 35px 21px 116px;
+    min-width: 354px;
+    height: 100px;
+    box-sizing: border-box;
+    background: #313131
+}
+
+.main_nudge:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    content: ""
+}
+
+.main_nudge .desc_nudge {
+    color: #fff;
+    font-size: 15px;
+    letter-spacing: -1px;
+    line-height: 21px;
+    vertical-align: middle
+}
+
+.main_nudge.main_nudge .link_nudge {
+    text-decoration: underline
+}
+
+.main_nudge .btn_close {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 39px;
+    height: 40px;
+    border: 0;
+    background: none
+}
+
+.main_nudge .btn_close:after {
+    display: block;
+    margin: 0 auto;
+    width: 12px;
+    height: 12px;
+    background-position: 0 -280px;
+    content: ""
+}
+
+.resume_nudge1 {
+    height: 100px
+}
+
+.resume_nudge1:before {
+    height: 100px;
+    background-position: 0 0
+}
+
+.main_nudge.resume_nudge1 .link_nudge {
+    color: #acf1f3
+}
+
+.resume_nudge2 {
+    height: 78px
+}
+
+.resume_nudge2:before {
+    height: 78px;
+    background-position: 0 -110px
+}
+
+.main_nudge.resume_nudge2 .link_nudge {
+    color: #ff98a4
+}
+
+.resume_nudge3 {
+    height: 78px
+}
+
+.resume_nudge3:before {
+    height: 78px;
+    background-position: 0 -200px
+}
+
+.main_nudge.resume_nudge3 .link_nudge {
+    color: #86c2ff
+}
+
+/* 인쇄 */
+@page {
+    margin: 60px 40px;
+    size: A4
+}
+
+body#sri_layout_popup.printing #content {
+    background: #fff
+}
+
+body#sri_layout_popup.printing .main_nudge, body#sri_layout_popup.printing .jview .btn_tooltip, body#sri_layout_popup.printing .jview .btn_link, body#sri_layout_popup.printing .jview .btn_move_map, body#sri_layout_popup.printing .jview .btn_interest, body#sri_layout_popup.printing .jview .btn_share, body#sri_layout_popup.printing .jview .wrap_share, body#sri_layout_popup.printing .jv_summary .btn_modify, body#sri_layout_popup.printing .jv_footer .btn_tags, body#sri_layout_popup.printing .jv_cont .btn_more_cont {
+    display: none !important
+}
+
+body#sri_layout_popup.printing .toolTipWrap {
+    display: block;
+    margin: 0;
+    padding: 2px 0
+}
+
+body#sri_layout_popup.printing .toolTip {
+    display: block;
+    position: static;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    border: 0;
+    color: inherit;
+    background: none;
+    box-shadow: none
+}
+
+body#sri_layout_popup.printing .toolTip .tail, body#sri_layout_popup.printing .toolTip .btnClose {
+    display: none
+}
+
+body#sri_layout_popup.printing .jview .toolTip ul, body#sri_layout_popup.printing .jview .toolTip .toolTipCont {
+    font-size: 12px
+}
+
+body#sri_layout_popup.printing .jview .toolTip ul > li, body#sri_layout_popup.printing .jview .toolTip ul > li span {
+    line-height: 18px
+}
+
+body#sri_layout_popup.printing .jv_cont .layer_group {
+    overflow: visible;
+    position: static
+}
+
+body#sri_layout_popup.printing .jv_cont .layer_group .layer {
+    max-height: none
+}
+
+body#sri_layout_popup.printing .jv_cont .layer_group .layer .cont_more {
+    display: block
+}
+
+body#sri_layout_popup.printing .jv_footer .cont {
+    padding-top: 0
+}
+
+body#sri_layout_popup.printing .jv_footer .cont .tags {
+    overflow: visible;
+    position: static;
+    padding: 9px 0;
+    height: auto
+}
+
+@media print {
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important
+    }
+}
+
+/* 관리자내 공고뷰 미리보기 */
+.desc_txt_preview {
+    _position: absolute;
+    top: 0;
+    _top: expression(eval(document.body.scrollTop));
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    margin: 0 auto;
+    padding: 5px;
+    text-align: center
+}
+
+.desc_txt_preview .txt {
+    padding: 0;
+    margin: 0;
+    font-size: 13px;
+    font-weight: bold;
+    color: #FFF;
+    letter-spacing: -1px;
+    line-height: 24px
+}
+
+.desc_txt_preview .txt .point {
+    font-weight: bold;
+    font-size: 16px;
+    color: #FFF
+}
+
+.job_view_preview {
+    padding-top: 130px
+}
+
+/* 지원 버튼 색상 변경 예외 처리 */
+.jv_header .btn_apply .sri_btn_lg span, .jv_howto .cont.box .sri_btn_lg span {
+    border: 1px solid #dbdbdb;
+    color: #666;
+    background: #fff
+}
+
+.jv_header .btn_apply .sri_btn_lg span.sri_btn_immediately, .jv_howto .cont.box .sri_btn_lg span.sri_btn_immediately {
+    border: 1px solid #ff8d5a;
+    color: #fff;
+    background: #ff8d5a
+}
+
+.jv_header .btn_apply .sri_btn_lg span.sri_btn_tobe_apply, .jv_howto .cont.box .sri_btn_lg span.sri_btn_tobe_apply {
+    border: 1px solid #888;
+    color: #fff;
+    background: #888
+}
+
+.jv_header .btn_apply .sri_btn_lg span.sri_btn_expired_apply, .jv_howto .cont.box .sri_btn_lg span.sri_btn_expired_apply {
+    border: 1px solid #888;
+    color: #fff;
+    background: #888
+}
+
+/* AI헌팅 flag, nudge */
+.flag_reward {
+    display: inline-block;
+    padding: 0 8px;
+    margin-right: 6px;
+    background: #ffe581;
+    color: #363225;
+    font-size: 13px;
+    letter-spacing: -0.5px;
+    line-height: 28px;
+    vertical-align: top
+}
+
+.flag_reward:after {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin: 7px 0 0 2px;
+    background: url(//www.saraminimage.co.kr/sri/common/img/img_reward_flag.png) 0 0 no-repeat;
+    content: "";
+    vertical-align: top;
+}
+
+.wrap_nudge {
+    margin-top: 30px;
+    border: 2px solid #f4f4f4;
+    background: #fff;
+    text-align: center;
+    padding: 11px 0;
+}
+
+.wrap_nudge .nudge_reward {
+    display: inline-block;
+    position: relative;
+    padding: 0 0 0 66px;
+    line-height: 24px;
+    color: #444;
+    letter-spacing: -0.5px;
+    font-size: 16px;
+}
+
+.wrap_nudge .nudge_reward:before {
+    position: absolute;
+    display: block;
+    width: 50px;
+    height: 66px;
+    left: 0;
+    top: -35px;
+    background: url(//www.saraminimage.co.kr/sri/person/img/img_reward_small.png) 0 0 no-repeat;
+    content: ""
+}
+
+
+
+

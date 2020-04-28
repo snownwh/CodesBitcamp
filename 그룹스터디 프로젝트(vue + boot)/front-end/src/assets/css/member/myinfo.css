@@ -1,0 +1,55 @@
+.slib_info {
+    width: 100%;
+    display: inline-block;
+    font-size: 15px;
+    text-align: left;
+    padding: 10px 0;
+    vertical-align: top;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid #dfdfdf;
+    min-height: 240px;
+    margin-bottom: 25px;
+}
+
+.slib_info div{
+  float: left;
+}
+.tit{
+  width:20%;
+  float: left;
+}
+.titup{
+  width:80%;
+ 
+}
+.tit img{
+    width: 120px;
+    margin-left: 28px;
+    margin-top: 24px;
+  
+}
+.elBtn:focus{
+   border-color: #fff;
+}
+.slib_info1{
+   width: 100%;
+    display: inline-block;
+    font-size: 15px;
+    padding: 20px 0;
+    vertical-align: top;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  /*   border: 1px solid #dfdfdf;
+    border-radius: 36px; */
+    min-height: 100px;
+
+}
+
+table.table1 th,
+table.table1 td{padding:10px 0;font-size:15px; text-align:center;color:#222; }
+table.table1 thead th{ border-bottom: solid 1px #cacaca;}
+table.table1 thead th.tline{border-top:1px solid #dfdfdf;}
+table.table1 tbody th,
+table.table1 tbody td{line-height:23px;}
+table.table1 tbody td.eng{font-family:'Roboto';font-weight:400;font-size:15px;letter-spacing:0;}

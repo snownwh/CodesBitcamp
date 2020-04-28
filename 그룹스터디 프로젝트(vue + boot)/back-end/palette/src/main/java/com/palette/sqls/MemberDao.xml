@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.palette.dao.MemberDao">
+
+  <select id="selectAll" resultType="com.palette.model.MemberDto">
+    SELECT * FROM MEMBER
+  </select>
+
+  <select id="getOneMember" parameterType="com.palette.model.MemberDto" resultType="com.palette.model.MemberDto">
+  	SELECT MEMBER_SEQ, MEMBER_ID, MEMBER_NAME, CV, COMPANY_LOGO, AUTH
+  	FROM MEMBER
+  	WHERE MEMBER_ID=#{memberId} AND PWD=#{pwd} AND DEL=0
+  </select>
+  
+  <select id="checkId" parameterType="java.lang.String" resultType="java.lang.Integer">
+	SELECT COALESCE(COUNT(*), 0)
+	FROM MEMBER
+	WHERE MEMBER_ID=#{memberId}
+  </select>
+
+  <insert id="createMember" parameterType="com.palette.model.MemberDto">
+  	INSERT INTO MEMBER ( MEMBER_NAME, MEMBER_ID, PWD, AGE, ADDRESS, EMAIL, AUTH, GENDER, DEL )
+  	VALUES( #{memberName}, #{memberId}, #{pwd}, #{age}, #{address}, #{email}, #{auth}, #{gender}, 0) 
+  </insert>
+  
+ 
+  <select id="getMyInfo" parameterType="com.palette.model.MemberDto" resultType="com.palette.model.MemberDto" >
+  	SELECT *
+  	FROM MEMBER
+  	WHERE MEMBER_SEQ=#{memberSeq}
+  </select>
+ 
+ 	<resultMap type="com.palette.model.MemberDto" id="MemberDetail">
+ 		<id column="MEMBER_SEQ" property="memberSeq"/>
+		<result column="MEMBER_ID" property="memberId"/>
+		<result column="MEMBER_NAME" property="memberName"/>
+		<result column="ADDRESS" property="address"/>
+		<result column="INTERAREA" property="interArea"/>
+		<result column="EMAIL" property="email"/>
+		<result column="AGE" property="age"/>
+		<result column="GENDER" property="gender"/>
+		<result column="MYMONEY" property="myMoney"/>
+		<result column="CV" property="cv"/>
+		<result column="AUTH" property="auth"/>
+		<result column="DEL" property="del"/>
+		<result column="DISLIKE" property="dislike"/>
+		<collection property="memberInterDto" resultMap="MemberInter"></collection>
+		<collection property="interBigDto" resultMap="InterBig"></collection>
+		<collection property="interSmallDto" resultMap="InterSmall"></collection>
+ 	</resultMap>
+ 	
+ <select id="getDetailMember" parameterType="java.lang.Integer" resultMap="MemberDetail">
+		SELECT * 
+	FROM MEMBER_INTERREST inter
+	JOIN MEMBER mem
+		ON inter.MEMBER_SEQ  = mem.MEMBER_SEQ
+	JOIN INTER_BIG bg
+		ON bg.INTER_BIG_SEQ = inter.BIG_SEQ   
+	JOIN INTER_SMALL sm
+		ON inter.SMALL_SEQ = sm.INTER_SMALL_SEQ
+	WHERE mem.MEMBER_SEQ =#{memberSeq};
+ </select>
+ 
+ 
+ <!-- SMALL에서 INTER BIG SEQ 추출-->	
+ <select id="getBigSeq" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+	SELECT INTER_BIG_SEQ
+	FROM INTER_SMALL
+	WHERE INTER_SMALL_SEQ =#{interSmallSeq};
+ </select>
+ 
+ <select id="getSeq" resultType="java.lang.Integer">
+ 	select max(MEMBER_SEQ) 
+	from MEMBER
+ </select>
+ 
+ 
+ <update id="addInterArea" parameterType="com.palette.model.MemberDto" >
+ 	update MEMBER SET INTERAREA =#{interArea}  where MEMBER_SEQ =#{memberSeq};
+ </update>
+ 
+ 
+ <!-- interSeq 추출후에  관심분야insert -->
+ <insert id="addInter" parameterType="com.palette.model.MemberInterParam">
+ 	INSERT INTO MEMBER_INTERREST(MEMBER_SEQ, BIG_SEQ, SMALL_SEQ, DEL)
+	VALUES (#{memberSeq}, #{bigSeq}, #{smallSeq}, 0)
+ </insert>
+ 
+ <!-- 관심분야 update전 del하기 -->
+ <delete id="delInter" parameterType="java.lang.Integer">
+ 	DELETE FROM TODOLIST WHERE MEMBER_SEQ=#{memberSeq} 
+ </delete>
+ 
+ <!-- 이메일, 나이 수정 --> 
+ <update id="updateInfo">
+ 	update MEMBER SET AGE=#{age}, EMAIL=#{email} where MEMBER_SEQ =#{memberSeq}
+ </update>
+ 
+ <!-- 주소 수정 -->
+ <update id="updateAddr">
+ 	update MEMBER SET ADDRESS=#{address} where MEMBER_SEQ=#{memberSeq}
+ </update>
+ 
+ <!-- 비밀번호 수정전 확인 -->
+ <select id="checkPass" resultType="java.lang.Integer">
+    SELECT COALESCE(COUNT(*), 0)
+	FROM MEMBER
+	WHERE PWD=#{pwd} AND MEMBER_SEQ=#{memberSeq}
+ </select>
+ 
+ <!-- 비밀번호 수정 -->
+ <update id="updatePass" parameterType="com.palette.model.MemberDto">
+ 	update MEMBER SET PWD=#{pwd} where MEMBER_SEQ=#{memberSeq}
+ </update>
+ 
+ <!-- 회원탈퇴 -->
+ <update id="delUser" parameterType="com.palette.model.MemberDto">
+ UPDATE MEMBER SET DEL=1 WHERE MEMBER_SEQ=#{memberSeq} AND MEMBER_ID=#{memberId}
+ </update>
+
+ 
+	 <resultMap type="com.palette.model.InterBigDto" id="InterBig">
+		<id column="INTER_BIG_SEQ" property="interBigSeq"/>
+		<result column="BIG_NAME" property="bigName"/>
+		<collection property="interSmallDtos" ofType="com.palette.model.InterSmallDto">
+			<id column="INTER_SMALL_SEQ" property="interSmallSeq"/>
+			<result column="INTER_BIG_SEQ" property="interBigSeq"/>
+			<result column="SMALL_NAME" property="smallName"/>
+		</collection>
+	</resultMap>
+	
+	<resultMap type="com.palette.model.InterSmallDto" id="InterSmall">
+		<id column="INTER_SMALL_SEQ" property="interSmallSeq"/>
+		<result column="INTER_BIG_SEQ" property="interBigSeq"/>
+		<result column="SMALL_NAME" property="smallName"/>
+	</resultMap>
+	
+	<resultMap type="com.palette.model.MemberInterDto" id="MemberInter">
+		<id column="MEMBER_INTERREST_SEQ" property="memberInterrestSeq"/>
+		<result column="MEMBER_SEQ" property="memberSeq"/>
+		<result column="BIG_SEQ" property="bigSeq"/>
+		<result column="SMALL_SEQ" property="smallSeq"/>
+		<result column="DEL" property="del"/>
+	</resultMap> 
+
+</mapper>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.palette.dao.adminCompanyDao">
+
+
+	<!-- show all company -->
+	<select id="adminGetCompanyMemberListAll" resultType="com.palette.model.MemberDto">
+		SELECT * FROM MEMBER
+		WHERE AUTH=2 OR AUTH=3
+	</select>
+
+
+	<update id="changeAUTHforCompanyMember" parameterType="com.palette.model.MemberDto">
+		<!--   
+		SELECT * FROM FINAL.MEMBER;
+		request join to companyMember
+		AUTH 2->3 (wait for companyMember)
+		AUTH 3->2 (cancle companyMember)
+		-->
+		UPDATE MEMBER
+		SET AUTH=#{auth}
+		WHERE 
+			MEMBER_SEQ=#{memberSeq}
+		AND 
+			MEMBER_ID=#{memberId};
+	</update>
+
+
+
+
+	
+	<!-- show company info (SELECT ONE) -->
+	<select id="adminGetCompanyInfoOne" parameterType="com.palette.model.MemberDto" resultType="com.palette.model.MemberDto">
+		SELECT * FROM MEMBER
+		WHERE (AUTH=2 OR AUTH=3)
+		<if test="MEMBER_ID != null">
+			AND MEMBER_ID LIKE'1%'
+		</if>
+		<if test="MEMBER_ID != null">
+			AND MEMBER_NAME LIKE '%근%'
+		</if>
+		<if test="EMAIL != null">
+			AND EMAIL LIKE '%@a%'
+		</if>
+	</select>
+	
+	<!--  Approval Request Company List  -->
+	<select id="approvalrequestCompanyList" parameterType="com.palette.model.MemberDto" resultType="com.palette.model.MemberDto">
+		SELECT *
+		FROM MEMBER
+		WHERE AUTH=2
+	</select>
+	
+	<!-- finish Approval Company List  -->
+	<select id="finishApprovalCompanyList" parameterType="com.palette.model.MemberDto" resultType="com.palette.model.MemberDto">
+		SELECT *
+		FROM MEMBER
+		WHERE MEMBER_ID=#{memberId} AND PWD=#{pwd}
+	</select>
+	
+	
+	
+	
+	
+			<!--  show ONLY ONE COLUMN LIST  -->
+	
+			<!-- show Company Location List All-->
+			<select id="adminGetCompanyLocationALl" resultType="com.palette.model.MemberDto">
+				SELECT LOCATION FROM MEMBER
+				WHERE AUTH=2 or AUTH=3
+			</select>
+			
+			<!-- show Company Name List All-->
+			<select id="adminGetCompanyNmaeAll" resultType="com.palette.model.MemberDto">
+				SELECT Member_name FROM MEMBER
+				WHERE AUTH=2 or AUTH=3
+			</select>
+			
+	
+	
+
+
+</mapper>

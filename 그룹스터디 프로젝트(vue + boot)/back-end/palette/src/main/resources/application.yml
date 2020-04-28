@@ -1,0 +1,18 @@
+spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: 이메일@gmail.com
+    password: 비밀번호
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+cloud:
+  aws:
+    s3:
+      bucket: bit-palette
+    region:
+      static: ap-northeast-2
+    credentials:
+      accessKey: AKIAIIS2JASIYHRR3M2Q
+      secretKey: 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

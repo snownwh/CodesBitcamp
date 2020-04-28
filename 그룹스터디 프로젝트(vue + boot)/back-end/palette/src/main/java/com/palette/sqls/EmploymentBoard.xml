@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.palette.dao.EmploymentDao">
+
+<!-- get Employment Member Name -->
+	<resultMap type="com.palette.model.EmploymentBoardDto" id="EmploymentBoard">
+		<id column="BOARD_SEQ" property="boardSeq"/>
+		<result column="MEMBER_SEQ" property="memberSeq"/>
+		<result column="CATEGORY" property="category"/>
+		<result column="TITLE" property="title"/>
+		<result column="CONTENT" property="content"/>
+		<result column="WRITE_DATE" property="writeDate"/>
+		<result column="READ_COUNT" property="readCount"/>
+		<result column="IMAGE" property="image"/>
+		<result column="CV_START_DATE" property="cvStartDate"/>
+		<result column="CV_END_DATE" property="cvEndDate"/>
+		<result column="FILE_NAME" property="fileName"/>
+		<result column="DB_FILE_NAME" property="dbFileName"/>
+		<result column="DEL" property="del"/>
+		<result column="BOARD_AUTH" property="boardAuth"/>
+		<result column="CAREER" property="career"/>
+		<result column="EDUCATION" property="education"/>
+		<result column="WORKING_TYPE" property="workingType"/>
+		<result column="SALARY" property="salary"/>
+		<result column="POSITION" property="position"/>
+		<result column="WORKING_LOCATION" property="workingLocation"/>
+		<result column="WEB_URL" property="webUrl"/>
+		<collection property="memberDto" resultMap="MemberInfo"/>
+	</resultMap>
+	 
+	<resultMap type="com.palette.model.MemberDto" id="MemberInfo">
+		<id column="MEMBER_SEQ" property="memberSeq"/>
+		<result column="MEMBER_ID" property="memberId"/>
+		<result column="MEMBER_NAME" property="memberName"/>
+		<result column="BIRTH" property="birth"/>
+		<result column="ADDRESS" property="address"/>
+		<result column="LOCATION" property="location"/>
+		<result column="EMAIL" property="email"/>
+		<result column="MYMONEY" property="myMoney"/>
+		<result column="CV" property="cv"/>
+		<result column="AUTH" property="auth"/>
+		<result column="DEL" property="del"/>
+		<result column="COMPANY_LOGO" property="companyLogo"/>
+		<result column="DISLIKE" property="dislike"/>
+	</resultMap>
+<!-- /get Employment Member Name -->
+
+  <select id="getAllRecuritingInfo" resultMap="EmploymentBoard">
+    SELECT b.BOARD_SEQ, b.MEMBER_SEQ, b.CATEGORY, b.TITLE, b.CONTENT, b.WRITE_DATE, b.READ_COUNT, b.IMAGE, b.CV_START_DATE, b.CV_END_DATE, b.FILE_NAME, b.DEL, b.BOARD_AUTH, m.MEMBER_NAME, m.COMPANY_LOGO,
+    	   b.CAREER, b.EDUCATION, b.WORKING_TYPE, b.SALARY, b.POSITION, b.WORKING_LOCATION, b.WEB_URL
+    FROM BOARD b
+    JOIN MEMBER m
+    ON b.MEMBER_SEQ = m.MEMBER_SEQ
+    WHERE b.DEL = 0 AND b.BOARD_AUTH = 3 AND b.CV_END_DATE > NOW();
+  </select>
+  
+  <select id="getOneRecruit" parameterType="java.lang.Integer" resultMap="EmploymentBoard">
+    SELECT b.BOARD_SEQ, b.MEMBER_SEQ, b.CATEGORY, b.TITLE, b.CONTENT, b.WRITE_DATE, b.READ_COUNT, b.IMAGE, b.CV_START_DATE, b.CV_END_DATE, b.FILE_NAME, b.DEL, b.BOARD_AUTH, m.MEMBER_NAME, m.COMPANY_LOGO,
+    	   b.CAREER, b.EDUCATION, b.WORKING_TYPE, b.SALARY, b.POSITION, b.WORKING_LOCATION, b.WEB_URL
+    FROM BOARD b
+    JOIN MEMBER m
+    ON b.MEMBER_SEQ = m.MEMBER_SEQ
+    WHERE b.DEL = 0 AND b.BOARD_AUTH = 3 AND b.BOARD_SEQ = #{empBoardSeq} AND b.CATEGORY = 1;
+  </select>
+  
+  <update id="readCount" parameterType="java.lang.Integer">
+  	UPDATE BOARD
+  	SET READ_COUNT = READ_COUNT + 1
+  	WHERE BOARD_SEQ = #{empBoardSeq};
+  </update>
+  
+  <insert id="insertRecruit" parameterType="com.palette.model.EmploymentBoardDto">
+  	INSERT INTO BOARD(MEMBER_SEQ, CATEGORY, TITLE, CONTENT, WRITE_DATE, READ_COUNT, IMAGE, CV_START_DATE, CV_END_DATE, FILE_NAME, DB_FILE_NAME, DEL, BOARD_AUTH, CAREER, EDUCATION, WORKING_TYPE, SALARY, POSITION, WORKING_LOCATION)
+  	VALUES(#{memberSeq}, 1, #{title}, #{content}, NOW(), 0, "", #{cvStartDate}, #{cvEndDate}, #{fileName}, #{dbFileName}, 0, 3, #{career}, #{education}, #{workingType}, #{salary}, #{position}, #{workingLocation})
+  </insert>
+  
+  <update id="recruitUpdating" parameterType="com.palette.model.EmploymentBoardDto">
+  	UPDATE BOARD
+  	SET TITLE = #{title}, CV_START_DATE = #{cvStartDate}, CV_END_DATE=#{cvEndDate}, CAREER=#{career},
+      	EDUCATION = #{education}, WORKING_TYPE= #{workingType}, SALARY = #{salary},
+      	POSITION = #{position}, WORKING_LOCATION=#{workingLocation}, CONTENT = #{content},
+      	WRITE_DATE = NOW()
+  	WHERE BOARD_SEQ = #{boardSeq};
+  </update>
+  
+  <update id="recruitDelete" parameterType="java.lang.Integer">
+  	UPDATE BOARD
+  	SET DEL = 1
+  	WHERE BOARD_SEQ = #{empBoardSeq};
+  </update>
+  
+  
+  
+  
+  
+  
+
+</mapper>

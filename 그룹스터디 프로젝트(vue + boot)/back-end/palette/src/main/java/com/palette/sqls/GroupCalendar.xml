@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.palette.dao.GroupDao">
+	<select id="getGroupCalendar" parameterType="com.palette.model.GroupDto" resultType="com.palette.model.CalendarDto">
+		select * 
+		from FINAL.CALENDAR
+		where GROUP_INFO_SEQ = #{groupInfoSeq} and AUTH=1;
+	</select>
+	
+	<insert id="insertGroupCalendar" parameterType="com.palette.model.CalendarDto">
+		insert into FINAL.CALENDAR(MEMBER_SEQ, GROUP_INFO_SEQ, TITLE, CONTENT, START, END, COLOR, AUTH)
+		values(#{memberSeq}, #{groupInfoSeq}, #{title}, #{content}, #{start}, #{end}, #{color}, 1)
+	</insert>
+	
+	<delete id="deleteGroupCalendar" parameterType="java.lang.Integer">
+		delete from FINAL.CALENDAR
+		where CALENDAR_SEQ = #{calendarSeq}
+	</delete>
+	
+	<update id="resizeCalendar" parameterType="com.palette.model.CalendarDto">
+		update FINAL.CALENDAR
+		set START = #{start}, END = #{end}
+		where CALENDAR_SEQ =#{calendarSeq}
+	</update>
+	
+	<update id="updateGroupCalendar" parameterType="com.palette.model.CalendarDto">
+		update FINAL.CALENDAR
+		set START = #{start}, END = #{end}, TITLE=#{title}, CONTENT=#{content}, COLOR=#{color}
+		where CALENDAR_SEQ =#{calendarSeq}
+	</update>
+	
+</mapper>

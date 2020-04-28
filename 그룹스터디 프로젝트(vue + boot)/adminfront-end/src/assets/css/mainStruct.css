@@ -1,0 +1,121 @@
+body {
+  font-size: 28px;
+  margin:0;
+}
+
+#ViewStart{
+  width: 100vw;
+  height: 100vh;
+  
+}
+
+.margin-L_25{
+  margin-left: 25%;
+}
+
+
+
+.contentPadding{
+  padding:10px;
+}
+
+.topNavBar{
+  
+  margin: 0;
+  padding: 0;
+  background-color: #333;
+  position: -webkit-sticky; /* Safari */
+  overflow: hidden;
+  position: sticky;
+  top: 0;
+}
+
+/* 
+margin: 0;
+padding: 0;
+width: 25%;
+background-color: #f1f1f1;
+height: 100%;
+overflow: auto;
+position: fixed;
+} */
+
+
+
+
+.topNavBar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  top: 0; 
+  
+}
+
+.topNavBar li {
+  float: left;
+}
+
+.topNavBar li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.topNavBar li a:hover {
+  background-color: #111;
+}
+
+.topNavBar .active {
+  background-color: #4CAF50;
+}
+
+
+
+.mainContent {
+
+  padding: 10px;
+}
+
+
+.rigthContent{
+  margin-left:25%;
+  padding:10px;
+}
+
+
+/*  mainContent-> leftBar    */
+
+.leftBar{
+  margin: 0;
+  padding: 0;
+  width: 25%;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.leftBar ul {
+  list-style-type: none;
+  padding-top: 20px;
+}
+
+.leftBar li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.leftBar li a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.leftBar li a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}

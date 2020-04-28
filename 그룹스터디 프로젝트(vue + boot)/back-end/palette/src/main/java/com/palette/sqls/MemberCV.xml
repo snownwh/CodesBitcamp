@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.palette.dao.MemberCVDao">
+
+	<resultMap type="com.palette.model.MemberCVDto" id="CVPgaing">
+		<id column="FINALNUM" property="finalnum"/>
+		<result column="CV_SEQ" property="cvSeq"/>
+		<result column="MEMBER_SEQ" property="memberSeq"/>
+		<result column="TITLE" property="title"/>
+		<result column="CATEGORY" property="category"/>
+		<result column="WRITE_DATE" property="writeDate"/>
+		<result column="READ_COUNT" property="readCount"/>
+		<result column="FILE_NAME" property="fileName"/>
+		<result column="DB_FILE_NAME" property="dbFileName"/>
+		<result column="DEL" property="del"/>
+		<collection property="memberDto" resultMap="MemberInfo"/>
+	</resultMap>
+	
+	<resultMap type="com.palette.model.MemberDto" id="MemberInfo">
+		<id column="MEMBER_SEQ" property="memberSeq"/>
+		<result column="MEMBER_ID" property="memberId"/>
+		<result column="MEMBER_NAME" property="memberName"/>
+		<result column="BIRTH" property="birth"/>
+		<result column="ADDRESS" property="address"/>
+		<result column="LOCATION" property="location"/>
+		<result column="EMAIL" property="email"/>
+		<result column="MYMONEY" property="myMoney"/>
+		<result column="CV" property="cv"/>
+		<result column="AUTH" property="auth"/>
+		<result column="DEL" property="del"/>
+		<result column="COMPANY_LOGO" property="companyLogo"/>
+		<result column="DISLIKE" property="dislike"/>
+	</resultMap>
+
+	<!-- cv리스트 호출 -->
+	<select id="getCVPagingList" parameterType="com.palette.model.BoardParams" resultMap="CVPgaing">
+		select *
+		from(select @finalnum:=@finalnum+1 as finalnum, sub.*
+			from (select @rownum:=@rownum+1 as rownum, c.*, m.MEMBER_NAME
+				 from MEMBER_CV c 
+		         join MEMBER m
+		         	on c.MEMBER_SEQ = m.MEMBER_SEQ
+		         where (@rownum:=0)=0 and c.del = 0 
+				 order by WRITE_DATE desc) sub, (select @finalnum:=0) ftmp
+			order by sub.rownum desc) fsub
+			<where>
+				<if test="keyWord == 'title'">
+					TITLE like CONCAT('%', #{searchWord}, '%')
+				</if>
+				<if test="keyWord == 'writer'">
+					MEMBER_NAME like CONCAT('%', #{searchWord}, '%')
+				</if>
+			</where>
+		order by fsub.finalnum desc
+		limit #{start}, #{limit}
+	</select>
+	
+	<!-- cv리스트 갯수 -->
+	<select id="CVList" parameterType="com.palette.model.BoardParams" resultType="java.lang.Integer">
+		select count(*)
+		from MEMBER_CV b
+		join MEMBER m
+		on b.MEMBER_SEQ = m.MEMBER_SEQ
+		<where>
+			<if test="keyWord == 'title'">
+				TITLE like CONCAT('%', #{searchWord}, '%')
+			</if>
+			<if test="keyWord == 'writer'">
+				m.MEMBER_NAME like CONCAT('%', #{searchWord}, '%')
+			</if>
+		and b.DEL=0
+		</where>	
+	</select>
+
+	<!-- CV 추가 -->
+	<insert id="insertCV" parameterType="com.palette.model.MemberCVDto">
+		INSERT INTO MEMBER_CV(MEMBER_SEQ, TITLE, CATEGORY, WRITE_DATE, READ_COUNT, FILE_NAME, DB_FILE_NAME, DEL)
+		VALUES (#{memberSeq}, #{title}, #{category}, NOW(), 0, "", "", 0)
+	</insert>
+	
+	<!-- CV 유무 -->	
+	<update id="CVNumChange" parameterType="java.lang.Integer">
+		UPDATE MEMBER
+		SET CV = 1
+		WHERE MEMBER_SEQ = #{memberSeq};
+	</update>
+	
+	<!-- 조회수 증가 -->
+	<update id="readCount" parameterType="java.lang.Integer">
+	  	UPDATE MEMBER_CV
+	  	SET READ_COUNT = READ_COUNT + 1
+	  	WHERE CV_SEQ = #{cvSeq}
+	</update>
+	
+	<!-- CV 디테일(MemberSEQ) -->
+	<select id="getOneCV" parameterType="java.lang.Integer" resultMap="CVPgaing">
+		SELECT *
+		FROM MEMBER_CV c
+		JOIN MEMBER m
+		ON c.MEMBER_SEQ = m.MEMBER_SEQ 
+		WHERE CV_SEQ = #{cvSeq}
+	</select>
+	
+	<!--멤버객체 -->
+	<select id="oneMember" parameterType="java.lang.Integer" resultType="com.palette.model.MemberDto">
+	  	SELECT *
+	  	FROM MEMBER
+	  	WHERE MEMBER_SEQ=#{memberSeq}
+  	</select>
+  	
+  	<!-- CV 수정 -->
+  	<update id="updateCV" parameterType="com.palette.model.MemberCVDto">
+  		UPDATE MEMBER_CV
+  		SET TITLE = #{title}, CATEGORY = #{category}, WRITE_DATE = NOW()
+  		WHERE MEMBER_SEQ = #{memberSeq};
+  	</update>
+	
+	<!-- CV 객체 가지고 오기(MemberSEQ) -->
+	<select id="getOneCVByMemberSeq" parameterType="java.lang.Integer" resultType="com.palette.model.MemberCVDto">
+		SELECT *
+		FROM MEMBER_CV
+		WHERE MEMBER_SEQ = #{memberSeq}
+	</select>
+	
+</mapper>
+

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.palette.dao.AdminGroupDao">
+
+<!-- 
+	필요테이블: 
+	MEMBER
+	INTER_BIG
+	INTER_SAMLL
+	GROUP_MEMBER <<- inner join
+ -->
+
+	<resultMap type="com.palette.model.MemberDto" id="MemberInfo">
+		<id column="MEMBER_SEQ" property="memberSeq"/>
+		<result column="MEMBER_ID" property="memberId"/>
+		<result column="MEMBER_NAME" property="memberName"/>
+		<result column="BIRTH" property="birth"/>
+		<result column="ADDRESS" property="address"/>
+		<result column="LOCATION" property="location"/>
+		<result column="EMAIL" property="email"/>
+		<result column="MYMONEY" property="myMoney"/>
+		<result column="CV" property="cv"/>
+		<result column="AUTH" property="auth"/>
+		<result column="DEL" property="del"/>
+		<result column="DISLIKE" property="dislike"/>
+	</resultMap> 
+	
+	<resultMap type="com.palette.model.InterBigDto" id="InterBig">
+		<id column="INTER_BIG_SEQ" property="interBigSeq"/>
+		<result column="BIG_NAME" property="bigName"/>
+		<collection property="interSmallDtos" ofType="com.palette.model.InterSmallDto">
+			<id column="INTER_SMALL_SEQ" property="interSmallSeq"/>
+			<result column="INTER_BIG_SEQ" property="interBigSeq"/>
+			<result column="SMALL_NAME" property="smallName"/>
+		</collection>
+	</resultMap>
+	
+	<resultMap type="com.palette.model.InterSmallDto" id="InterSmall">
+		<id column="INTER_SMALL_SEQ" property="interSmallSeq"/>
+		<result column="INTER_BIG_SEQ" property="interBigSeq"/>
+		<result column="SMALL_NAME" property="smallName"/>
+	</resultMap>
+	
+	
+	
+	
+	
+
+
+
+<!-- 
+    SELECT
+    g.GROUP_INFO_SEQ, cur.GROUP_INFO_SEQ AS 'groupinfoseqqqq',
+    g.MEMBER_SEQ, mem.MEMBER_NAME AS 'memberNAMEEEE',
+    g.INTER_BIG_SEQ, ib.BIG_NAME AS 'Big_name', 
+    g.INTER_SMALL_SEQ, iss.SMALL_NAME AS 'iss_small'
+    FROM GROUP_INFO g 
+    JOIN MEMBER mem
+		ON g.GROUP_INFO_SEQ = mem.MEMBER_SEQ
+	JOIN INTER_BIG ib
+ 		on g.INTER_BIG_SEQ= ib.INTER_BIG_SEQ
+	JOIN INTER_SMALL iss
+		ON g.INTER_SMALL_SEQ = iss.INTER_SMALL_SEQ
+	JOIN (SELECT GROUP_INFO_SEQ, COUNT(*) AS CURR_MEMBER FROM GROUP_MEMBER GROUP BY GROUP_INFO_SEQ)cur
+		ON g.GROUP_INFO_SEQ = cur.GROUP_INFO_SEQ;
+-->
+<resultMap type="com.palette.model.GroupDto" id="GroupList">
+	<id column="GROUP_INFO_SEQ" property="groupInfoSeq"/>
+		<result column="MEMBER_SEQ" property="memberSeq"/>
+		<result column="INTER_BIG_SEQ" property="interBigSeq"/>
+		<result column="INTER_SMALL_SEQ" property="interSmallSeq"/>
+		<result column="GROUP_NAME" property="groupName"/>
+		<result column="GROUP_LOCATION" property="groupLocation"/>
+		<result column="SMALL_INFO" property="smallInfo"/>
+		<result column="INFO" property="info"/>
+		<result column="MAX_MEMBER" property="maxMember"/>
+		<result column="IMAGE" property="image"/>
+		<result column="START_DATE" property="startDate"/>
+		<result column="END_DATE" property="endDate"/>
+		<result column="PERMISSION" property="permission"/>
+		<result column="DEL" property="del"/>
+		<result column="CURR_MEMBER" property="currMember"/>
+		
+	<collection property="memberDto" resultMap="MemberInfo"/>
+	<collection property="interBigDto" resultMap="InterBig"/>
+	<collection property="interSmallDto" resultMap="InterSmall"/>
+	
+	<!-- 
+	<collection property="interBigDto" resultMap="InterBig"/>
+	<collection property="interSmallDto" resultMap="InterSmall"/>
+	<collection property="memberDto" resultMap="MemberInfo"/> 
+	-->
+</resultMap>
+
+
+<select id="selfOutputTest" resultMap="GroupList">
+    SELECT
+		g.GROUP_INFO_SEQ, 
+		cur.GROUP_INFO_SEQ,
+		g.MEMBER_SEQ, 
+		mem.MEMBER_NAME,
+		g.INTER_BIG_SEQ, 
+		ib.BIG_NAME, 
+		g.INTER_SMALL_SEQ, 
+		iss.SMALL_NAME
+		    
+    FROM GROUP_INFO g 
+    JOIN MEMBER mem
+		ON g.GROUP_INFO_SEQ = mem.MEMBER_SEQ
+	JOIN INTER_BIG ib
+ 		on g.INTER_BIG_SEQ= ib.INTER_BIG_SEQ
+	JOIN INTER_SMALL iss
+		ON g.INTER_SMALL_SEQ = iss.INTER_SMALL_SEQ
+	JOIN (SELECT GROUP_INFO_SEQ, COUNT(*) AS CURR_MEMBER 
+			FROM GROUP_MEMBER 
+			GROUP BY GROUP_INFO_SEQ)cur
+		ON g.GROUP_INFO_SEQ = cur.GROUP_INFO_SEQ
+</select>
+
+	<update id="acceptCreateGroup" parameterType="com.palette.model.GroupDto">
+		<!--   
+		SELECT * FROM FINAL.GROUP_INFO;
+		request Create group
+		permission 0->1 (create)
+		permission 1->0 (decreate)
+		-->
+		UPDATE GROUP_INFO
+		SET PERMISSION=#{permission}
+		WHERE 
+			GROUP_INFO_SEQ=#{groupInfoSeq}
+		AND 
+			MEMBER_SEQ=#{memberSeq}
+	</update>
+
+	<select id="getAllStudyGroup" resultMap="GroupList">
+	<!-- ALl group list call -->
+	select *
+	from GROUP_INFO g
+	join MEMBER m
+		on g.MEMBER_SEQ = m.MEMBER_SEQ
+	join INTER_BIG ib
+		on g.INTER_BIG_SEQ = ib.INTER_BIG_SEQ
+	join INTER_SMALL ism
+		on g.INTER_SMALL_SEQ = ism.INTER_SMALL_SEQ
+	join (select GROUP_INFO_SEQ, count(*) as CURR_MEMBER
+			from GROUP_MEMBER
+			group by GROUP_INFO_SEQ) cur
+		on g.GROUP_INFO_SEQ = cur.GROUP_INFO_SEQ;
+</select>
+
+
+
+
+
+
+
+
+		
+		
+</mapper>

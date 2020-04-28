@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.palette.dao.MemberDao">
+ <insert id="addTodoList" parameterType="com.palette.model.TodoListDto">
+ 	INSERT INTO TODOLIST(MEMBER_SEQ, TITLE, TODO_DATE, DEL)
+	values(#{memberSeq}, #{title}, NOW(), 0);
+ </insert>
+ 
+ <select id="selectTodoList" parameterType="com.palette.model.TodoListDto" resultType="com.palette.model.TodoListDto">
+ 	SELECT TODO_SEQ, TITLE, TODO_DATE, DEL
+ 	FROM TODOLIST 
+ 	WHERE MEMBER_SEQ=#{memberSeq} 
+ </select>
+ 
+  
+ <select id="selectDoneTodoList" parameterType="com.palette.model.TodoListDto" resultType="com.palette.model.TodoListDto">
+ 	SELECT TODO_SEQ, TITLE, TODO_DATE, DEL
+ 	FROM TODOLIST 
+ 	WHERE MEMBER_SEQ=#{memberSeq} AND DEL=1
+ </select>
+
+ <select id="TodoListDoing" parameterType="com.palette.model.TodoListDto" resultType="com.palette.model.TodoListDto">
+ 	SELECT TODO_SEQ, TITLE, TODO_DATE, DEL
+ 	FROM TODOLIST 
+ 	WHERE MEMBER_SEQ=#{memberSeq} AND DEL=0
+ </select> 
+ 
+ <select id="selectOneList" parameterType="com.palette.model.TodoListDto" resultType="com.palette.model.TodoListDto">
+    SELECT TODO_SEQ, TITLE, TODO_DATE, DEL
+ 	FROM TODOLIST 
+ 	WHERE TODO_SEQ=(select max(TODO_SEQ) from TODOLIST where MEMBER_SEQ=#{memberSeq}) 
+ </select>
+ 
+ <delete id="todoDel" parameterType="com.palette.model.TodoListDto" >
+ 	DELETE FROM TODOLIST WHERE MEMBER_SEQ=#{memberSeq} AND TODO_SEQ=#{todoSeq}
+ </delete>
+ 
+ <update id="todoDone" parameterType="com.palette.model.TodoListDto" >
+ 	UPDATE TODOLIST SET DEL=1 WHERE MEMBER_SEQ=#{memberSeq} AND TODO_SEQ=#{todoSeq}
+ </update>
+ 
+ <update id="todoEdit" parameterType="com.palette.model.TodoListDto" >
+ 	UPDATE TODOLIST SET TITLE=#{title} WHERE MEMBER_SEQ=#{memberSeq} AND TODO_SEQ=#{todoSeq}
+ </update>
+ 
+ <select id="selectDate" parameterType="com.palette.model.TodoListDto" resultType="com.palette.model.TodoListDto">
+  	SELECT distinct TODO_DATE
+ 	FROM TODOLIST 
+ 	WHERE MEMBER_SEQ=#{memberSeq} 
+ </select>
+ 
+ <select id="DateAndCount" parameterType="com.palette.model.TodoListDto" resultType="com.palette.model.TodoListDto">
+ SELECT TODO_DATE, (select count(*) from TODOLIST where MEMBER_SEQ=#{memberSeq} AND del =1 AND TODO_DATE = #{todoDate}) as delcount
+ FROM TODOLIST where MEMBER_SEQ=#{memberSeq} AND TODO_DATE=#{todoDate}
+ </select>
+ 
+</mapper>

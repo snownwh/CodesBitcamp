@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.palette.dao.AdminMemberDao">
+
+
+	<select id="idpwcheck" parameterType="com.palette.model.MemberDto" resultType="com.palette.model.MemberDto">
+		SELECT MEMBER_SEQ, MEMBER_ID, MEMBER_NAME
+		FROM MEMBER
+		WHERE MEMBER_ID=#{memberId} AND PWD=#{pwd}
+	</select>
+	<!-- 
+		general Member: auth: 0
+		Group Master:  auth: 1
+	-->
+	<select id="memberSelectAll" resultType="com.palette.model.MemberDto">
+		SELECT *
+		FROM MEMBER
+		WHERE auth=0 or auth=1
+	</select>
+	
+
+
+
+
+
+
+</mapper>

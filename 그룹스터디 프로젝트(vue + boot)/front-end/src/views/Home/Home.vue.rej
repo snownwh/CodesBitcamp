@@ -1,0 +1,10 @@
+diff a/front-end/src/views/Home/Home.vue b/front-end/src/views/Home/Home.vue	(rejected hunks)
+@@ -54,7 +54,7 @@
+     HelloWorld
+   },
+   mounted(){
+-    alert(this.$store.state.s_member.isLogin)
++   
+   }
+ 
+ }
